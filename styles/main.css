@@ -949,3 +949,141 @@ a:hover {
     margin: 0.25rem 0 0;
     color: var(--muted-foreground);
 }
+
+/* =============================================================
+   MOLECULE · onto-uml-class (ports OntoUmlClass.vue)
+
+   One UML class box inside the diagram SVG. The box fill is always one of
+   the light per-prefix pastels computed by uml.rs, so its own text/divider
+   stay a fixed dark colour (not theme tokens) to read on that fill in both
+   the light and dark diagram canvas — only the interactive-state strokes
+   (hover/active/focus outline, the expand badge) come from theme tokens, so
+   they still track the app's accent colour in both themes. The source's
+   scoped-style var(--color-accent)/var(--color-ring)/var(--color-card)
+   are this app's existing --accent/--ring/--card tokens (see ground rules),
+   not a second parallel set.
+   ============================================================= */
+
+.onto-uml-class {
+    cursor: pointer;
+}
+
+.onto-uml-class .uml-box {
+    stroke: rgba(15, 23, 42, 0.35);
+    transition: stroke 0.1s ease, stroke-width 0.1s ease;
+}
+
+.onto-uml-class .uml-name,
+.onto-uml-class .uml-attr {
+    fill: #1e293b;
+}
+
+.onto-uml-class .uml-divider {
+    stroke: rgba(15, 23, 42, 0.2);
+}
+
+.onto-uml-class .uml-more {
+    fill: rgba(30, 41, 59, 0.7);
+    font-style: italic;
+}
+
+.onto-uml-class:hover .uml-box,
+.onto-uml-class.is-related .uml-box {
+    stroke: var(--accent);
+}
+
+.onto-uml-class.is-active .uml-box {
+    stroke: var(--accent);
+    stroke-width: 2;
+}
+
+.onto-uml-class:focus-visible {
+    outline: none;
+}
+
+.onto-uml-class:focus-visible .uml-box {
+    stroke: var(--ring);
+    stroke-width: 2;
+}
+
+.onto-uml-class.is-dimmed {
+    opacity: 0.4;
+}
+
+.onto-uml-class .uml-open {
+    color: rgba(15, 23, 42, 0.5);
+    cursor: pointer;
+}
+
+.onto-uml-class .uml-open:hover {
+    color: #1e293b;
+}
+
+.onto-uml-class .uml-expand {
+    cursor: pointer;
+}
+
+.onto-uml-class .uml-expand-badge {
+    fill: var(--card);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    transition: fill 0.1s ease;
+}
+
+.onto-uml-class .uml-expand:hover .uml-expand-badge,
+.onto-uml-class .uml-expand:focus-visible .uml-expand-badge {
+    fill: var(--accent);
+}
+
+.onto-uml-class .uml-expand-label {
+    fill: var(--accent);
+    pointer-events: none;
+    transition: fill 0.1s ease;
+}
+
+.onto-uml-class .uml-expand:hover .uml-expand-label,
+.onto-uml-class .uml-expand:focus-visible .uml-expand-label {
+    fill: var(--card);
+}
+
+.onto-uml-class .uml-expand:focus-visible {
+    outline: none;
+}
+
+/* =============================================================
+   MOLECULE · onto-uml-edge (ports OntoUmlEdge.vue)
+
+   One relationship line (generalization/association) in the diagram SVG,
+   plus its optional centred label. `.edge-label-bg` stands in for the
+   source's `fill-background` Tailwind utility on the label's backing rect
+   (a plain background-token fill keeping the label legible over crossing
+   lines) — this build has no Tailwind pipeline to interpret that utility.
+   ============================================================= */
+
+.onto-uml-edge .edge-line {
+    stroke: var(--muted-foreground);
+    transition: stroke 0.1s ease, stroke-width 0.1s ease;
+}
+
+.onto-uml-edge .edge-label {
+    fill: var(--muted-foreground);
+}
+
+.onto-uml-edge .edge-label-bg {
+    fill: var(--background);
+}
+
+.onto-uml-edge:hover .edge-line,
+.onto-uml-edge.is-active .edge-line {
+    stroke: var(--accent);
+    stroke-width: 2;
+}
+
+.onto-uml-edge:hover .edge-label,
+.onto-uml-edge.is-active .edge-label {
+    fill: var(--accent);
+}
+
+.onto-uml-edge.is-dimmed {
+    opacity: 0.22;
+}
