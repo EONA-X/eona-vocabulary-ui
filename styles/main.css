@@ -1619,6 +1619,94 @@ a:hover {
     background: var(--muted);
 }
 
+/* ---- class tree sidebar + scrollable canvas ---------------------------- */
+
+.onto-uml-diagram__row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.onto-uml-diagram__tree {
+    width: 16rem;
+    flex-shrink: 0;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--background);
+    padding: 0.5rem;
+}
+
+.onto-uml-tree-node__row {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: calc(var(--radius) * 0.4);
+    padding: 0.125rem 0.25rem;
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--foreground) 90%, transparent);
+}
+
+.onto-uml-tree-node__row:hover {
+    background: var(--muted);
+}
+
+.onto-uml-tree-node__row--selected {
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.onto-uml-tree-node__toggle {
+    display: flex;
+    height: 1rem;
+    width: 1rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--muted-foreground);
+    cursor: pointer;
+}
+
+.onto-uml-tree-node__toggle:hover {
+    color: var(--foreground);
+}
+
+.onto-uml-tree-node__toggle-spacer {
+    display: block;
+    width: 1rem;
+    flex-shrink: 0;
+}
+
+.onto-uml-tree-node__chevron {
+    transition: transform 0.1s ease;
+}
+
+.onto-uml-tree-node__chevron--open {
+    transform: rotate(90deg);
+}
+
+.onto-uml-tree-node__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.onto-uml-tree-node__count {
+    flex-shrink: 0;
+    color: var(--muted-foreground);
+}
+
+.onto-uml-tree-node__children {
+    margin-left: 0.5rem;
+    border-left: 1px solid var(--border);
+    padding-left: 0.5rem;
+}
+
 /* ---- scrollable canvas + SVG defs -------------------------------------- */
 
 .onto-uml-diagram__scroll {

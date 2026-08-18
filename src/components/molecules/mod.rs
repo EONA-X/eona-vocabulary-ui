@@ -16,6 +16,7 @@ mod term_ref;
 mod uml_card;
 mod uml_class;
 mod uml_edge;
+mod uml_tree_node;
 
 pub use annotation::{OntoAnnotation, OntoAnnotationProps};
 pub use term_header::{OntoTermHeader, OntoTermHeaderProps};
@@ -23,3 +24,4 @@ pub use term_ref::{OntoTermRef, OntoTermRefProps};
 pub use uml_card::{OntoUmlCard, OntoUmlCardProps};
 pub use uml_class::{OntoUmlClass, OntoUmlClassProps, UmlClassState};
 pub use uml_edge::{OntoUmlEdge, OntoUmlEdgeProps, UmlEdgeState};
+pub use uml_tree_node::{OntoUmlTreeNode, OntoUmlTreeNodeProps};

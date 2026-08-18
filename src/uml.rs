@@ -21,13 +21,6 @@
 //!     becomes a directed association labelled with the property name,
 //!   - rdfs:subClassOf between two diagrammed classes becomes a generalization.
 //!
-//! Deliberately not ported (out of scope for this workflow, see the
-//! ontology-browser Yew migration's stage plan): `classTree()` and its
-//! `UmlTreeNode` type (the sidebar "Class tree" view, which this port does
-//! not implement at all).
-//!
-//! Not yet wired into the UI (a later migration stage does that) — allow
-//! dead_code until then so the build stays warning-clean.
 #![allow(dead_code)]
 
 use std::collections::{HashMap, HashSet};
@@ -824,6 +817,54 @@ pub fn ancestor_chain(model: &OntologyModel, iri: &str) -> Vec<String> {
         cur = primary_parent.get(&c).cloned();
     }
     chain
+}
+
+/// One row of the "Class tree" sidebar forest — see [`class_tree`].
+#[derive(Clone, Debug, PartialEq)]
+pub struct UmlTreeNode {
+    pub iri: String,
+    pub label: String,
+    pub children: Vec<UmlTreeNode>,
+}
+
+fn build_tree_node(
+    iri: &str,
+    by_iri: &HashMap<String, String>,
+    children_of: &HashMap<String, Vec<String>>,
+) -> UmlTreeNode {
+    let mut children: Vec<UmlTreeNode> = children_of
+        .get(iri)
+        .map(|kids| kids.iter().map(|c| build_tree_node(c, by_iri, children_of)).collect())
+        .unwrap_or_default();
+    children.sort_by(|a, b| cmp_label(&a.label, &b.label));
+    UmlTreeNode { iri: iri.to_string(), label: by_iri[iri].clone(), children }
+}
+
+/// The full class hierarchy as a forest (multiple roots, same as the
+/// diagram's own clusters) nested by primary superclass — unlike the
+/// diagram, this always includes every diagrammed class regardless of
+/// `group_hierarchy`/`expanded` state; it's a plain outline, not itself
+/// collapsible by data, only by the tree view's own UI state.
+pub fn class_tree(model: &OntologyModel) -> Vec<UmlTreeNode> {
+    let diagram = build_uml_diagram(model, &UmlLayoutOptions::default());
+    let by_iri: HashMap<String, String> = diagram.nodes.iter().map(|n| (n.iri.clone(), n.label.clone())).collect();
+    let primary_parent = primary_parent_map(&diagram.edges);
+    let mut children_of: HashMap<String, Vec<String>> = HashMap::new();
+    for n in &diagram.nodes {
+        if let Some(p) = primary_parent.get(&n.iri) {
+            if by_iri.contains_key(p) {
+                children_of.entry(p.clone()).or_default().push(n.iri.clone());
+            }
+        }
+    }
+    let mut roots: Vec<UmlTreeNode> = diagram
+        .nodes
+        .iter()
+        .filter(|n| !primary_parent.get(&n.iri).is_some_and(|p| by_iri.contains_key(p)))
+        .map(|n| build_tree_node(&n.iri, &by_iri, &children_of))
+        .collect();
+    roots.sort_by(|a, b| cmp_label(&a.label, &b.label));
+    roots
 }
 
 fn size_nodes(nodes: &mut [UmlClassNode]) {

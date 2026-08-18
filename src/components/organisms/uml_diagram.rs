@@ -9,16 +9,11 @@
 //!
 //! Ports `containers/prez-ui/theme/app/components/ontology/organisms/OntoUmlDiagram.vue`.
 //!
-//! Deliberately NOT ported here (a prior, separate scoping decision — see
-//! the ontology-browser Yew migration's stage plan, not something this file
-//! second-guesses): the "Class tree" sidebar (`treeView`/`OntoUmlTreeNode`/
-//! `classTree`/`focusTree`), "Expand in layout" (`expandInLayout`, the
-//! foreignObject card-merge render path, `expandedCardIri`/
-//! `expandedCardSize`), and fullscreen mode (`toggleFullscreen`, the Escape
-//! handler, body-scroll lock, the fixed-viewport class swap). The selected
-//! class's info card therefore always floats (see `tooltip_pos`), and
-//! `OntoUmlClass` is always the render path for a node (never a merged
-//! `OntoUmlCard` foreignObject).
+//! Includes the "Class tree" sidebar (`tree_view`/`OntoUmlTreeNode`/
+//! `class_tree`/`focus_tree`), "Expand in layout" (`expand_in_layout`, the
+//! foreignObject card-merge render path), and fullscreen mode — all three
+//! were deferred by an earlier migration stage and ported in later,
+//! individually-committed follow-up stages.
 //!
 //! Wired into the page by `organisms::browser::OntologyBrowser`, between the
 //! ontology header and the filter/TOC card — matching where the Vue source's
@@ -28,12 +23,12 @@ use std::collections::{HashMap, HashSet};
 
 use gloo_timers::future::TimeoutFuture;
 use wasm_bindgen_futures::spawn_local;
-use web_sys::{Element, MouseEvent, WheelEvent};
+use web_sys::{Element, MouseEvent, ScrollIntoViewOptions, ScrollLogicalPosition, WheelEvent};
 use yew::prelude::*;
 
-use crate::components::molecules::{OntoUmlCard, OntoUmlClass, OntoUmlEdge, UmlClassState, UmlEdgeState};
+use crate::components::molecules::{OntoUmlCard, OntoUmlClass, OntoUmlEdge, OntoUmlTreeNode, UmlClassState, UmlEdgeState};
 use crate::ontology::{OntologyModel, PREFIXES};
-use crate::uml::{ancestor_chain, build_uml_diagram, expandable_iris, UmlDiagram, UmlEdge, UmlLayoutOptions};
+use crate::uml::{ancestor_chain, build_uml_diagram, class_tree, expandable_iris, UmlDiagram, UmlEdge, UmlLayoutOptions};
 
 const ZOOM_MIN: f64 = 0.25;
 const ZOOM_MAX: f64 = 2.0;
@@ -166,6 +161,42 @@ fn prefix_legend(diagram: &UmlDiagram, prefix_links: Option<&HashMap<String, Str
     entries
 }
 
+/// The source's `CSS.escape` call on an IRI before interpolating it into a
+/// `[data-tree-iri="..."]` attribute selector — escaping just the two
+/// characters that would otherwise break out of the selector's quoted
+/// string (IRIs are URLs, so anything fancier than a stray quote/backslash
+/// is effectively never seen in practice).
+fn css_attr_escape(s: &str) -> String {
+    s.replace('\\', "\\\\").replace('"', "\\\"")
+}
+
+/// Reveal `iri` in the class tree (expanding every collapsed ancestor
+/// between it and its own root — a forest node with no listed ancestors is
+/// already visible, so this is a no-op for a root) and scroll it into view
+/// within the tree panel — mirrors the Vue source's `focusTree`. Whatever
+/// becomes `selected` (a box click, a subclass tag jump, or the tree
+/// itself) gets revealed and scrolled to here too, so the tree never drifts
+/// out of sync with whatever the diagram is currently showing.
+fn focus_tree(model: &OntologyModel, iri: String, tree_expanded: UseStateHandle<HashSet<String>>, tree_ref: NodeRef) {
+    let chain = ancestor_chain(model, &iri);
+    if !chain.is_empty() {
+        let mut next = (*tree_expanded).clone();
+        for a in chain {
+            next.insert(a);
+        }
+        tree_expanded.set(next);
+    }
+    spawn_local(async move {
+        TimeoutFuture::new(0).await;
+        let Some(el) = tree_ref.cast::<Element>() else { return };
+        let selector = format!("[data-tree-iri=\"{}\"]", css_attr_escape(&iri));
+        let Ok(Some(target)) = el.query_selector(&selector) else { return };
+        let opts = ScrollIntoViewOptions::new();
+        opts.set_block(ScrollLogicalPosition::Nearest);
+        target.scroll_into_view_with_scroll_into_view_options(&opts);
+    });
+}
+
 fn switch_button(on: bool, onclick: Callback<MouseEvent>) -> Html {
     let switch_class = classes!("onto-uml-diagram__switch", on.then_some("onto-uml-diagram__switch--on"));
     html! {
@@ -191,6 +222,15 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
     let open = use_state(|| true);
     let zoom = use_state(|| 1.0_f64);
     let scroll_ref = use_node_ref();
+
+    // "Class tree" sidebar — its own expand state is independent of the
+    // diagram's own `expanded` (group_hierarchy): a different view, starting
+    // fully collapsed to just the roots, then growing as the viewer opens
+    // branches or as `selected` changes (see the two watchers below) — never
+    // tied to the diagram's own state.
+    let tree_view = use_state(|| false);
+    let tree_expanded = use_state(HashSet::<String>::new);
+    let tree_ref = use_node_ref();
 
     let diagram = diagram_for(&props.model, *group_hierarchy, &expanded);
 
@@ -229,6 +269,40 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                 TimeoutFuture::new(0).await;
                 scroll_center_on_graph(&scroll_ref, z, &initial);
             });
+            || ()
+        });
+    }
+
+    // Whatever becomes `selected` gets revealed + scrolled to in the tree
+    // too, while the tree is open — mirrors the Vue source's
+    // `watch(selected, (iri) => { if (iri && treeView.value) focusTree(iri); })`.
+    {
+        let tree_view = tree_view.clone();
+        let tree_expanded = tree_expanded.clone();
+        let tree_ref = tree_ref.clone();
+        let model = props.model.clone();
+        use_effect_with((*selected).clone(), move |sel| {
+            if let (Some(iri), true) = (sel.clone(), *tree_view) {
+                focus_tree(&model, iri, tree_expanded, tree_ref);
+            }
+            || ()
+        });
+    }
+
+    // Opening the tree view jumps straight to wherever the diagram's own
+    // selection already is — mirrors the Vue source's
+    // `watch(treeView, (on) => { if (on && selected.value) focusTree(selected.value); })`.
+    {
+        let selected = selected.clone();
+        let tree_expanded = tree_expanded.clone();
+        let tree_ref = tree_ref.clone();
+        let model = props.model.clone();
+        use_effect_with(*tree_view, move |on| {
+            if *on {
+                if let Some(iri) = (*selected).clone() {
+                    focus_tree(&model, iri, tree_expanded, tree_ref);
+                }
+            }
             || ()
         });
     }
@@ -437,6 +511,21 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
         })
     };
 
+    let toggle_tree_node = {
+        let tree_expanded = tree_expanded.clone();
+        Callback::from(move |iri: String| {
+            let mut next = (*tree_expanded).clone();
+            if !next.remove(&iri) {
+                next.insert(iri);
+            }
+            tree_expanded.set(next);
+        })
+    };
+    // Always the full, ungrouped forest (see `crate::uml::class_tree`) —
+    // independent of `group_hierarchy`/`expanded` — only computed while the
+    // panel is actually open.
+    let tree = if *tree_view { class_tree(&props.model) } else { Vec::new() };
+
     let neighbours = compute_neighbours(&diagram.edges);
     let selected_iri: Option<&str> = (*selected).as_deref();
     let selected_node = diagram.nodes.iter().find(|n| Some(n.iri.as_str()) == selected_iri).cloned();
@@ -566,6 +655,22 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                                     </span>
                                 </label>
                             }
+
+                            <label class="onto-uml-diagram__switch-label">
+                                { switch_button(*tree_view, {
+                                    let tree_view = tree_view.clone();
+                                    Callback::from(move |_: MouseEvent| tree_view.set(!*tree_view))
+                                }) }
+                                <span onclick={{
+                                    let tree_view = tree_view.clone();
+                                    Callback::from(move |_: MouseEvent| tree_view.set(!*tree_view))
+                                }}>{ "Class tree" }</span>
+                                <span
+                                    class="onto-uml-diagram__help"
+                                    title="Show every class as a plain outline alongside the diagram. Clicking a class there (or anywhere else) reveals and centres it in the diagram too, and expands the outline down to it."
+                                    aria-label="Show every class as a plain outline alongside the diagram. Clicking a class there or anywhere else reveals and centres it in the diagram too, and expands the outline down to it."
+                                >{ "?" }</span>
+                            </label>
                         </div>
 
                         <div class="onto-uml-diagram__controls-right">
@@ -594,6 +699,21 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                         </div>
                     </div>
 
+                    <div class="onto-uml-diagram__row">
+                    if *tree_view {
+                        <aside ref={tree_ref} class="onto-uml-diagram__tree" aria-label="Class tree">
+                            { for tree.iter().map(|root| html! {
+                                <OntoUmlTreeNode
+                                    key={root.iri.clone()}
+                                    node={root.clone()}
+                                    selected={(*selected).clone()}
+                                    expanded={(*tree_expanded).clone()}
+                                    on_select={focus_class.clone()}
+                                    on_toggle={toggle_tree_node.clone()}
+                                />
+                            }) }
+                        </aside>
+                    }
                     <div ref={scroll_ref} class="onto-uml-diagram__scroll" onwheel={onwheel}>
                         <div
                             class="onto-uml-diagram__stage"
@@ -725,6 +845,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                                 </div>
                             }
                         </div>
+                    </div>
                     </div>
                 </div>
             }
