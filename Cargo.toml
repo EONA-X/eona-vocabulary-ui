@@ -5,5 +5,7 @@ edition = "2024"
 
 [dependencies]
 log = "0.4.33"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = { version = "1.0.151", features = ["preserve_order"] }
 wasm-logger = "0.2.0"
 yew = { version = "0.23.0", features = ["csr"] }
