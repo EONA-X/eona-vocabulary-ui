@@ -13,12 +13,6 @@
 //!
 //! Ports `containers/prez-ui/theme/app/components/ontology/organisms/OntologyBrowser.vue`.
 //!
-//! *** The `OntoUmlDiagram` class-diagram visualisation that the Vue source
-//! renders between the header and the filter card (a ~2300-line subsystem:
-//! `containers/prez-ui/theme/app/utils/uml.ts`'s custom circle-packing layout
-//! engine plus its own render components) is deferred to a later, separate
-//! piece of work and intentionally not stubbed out here. ***
-//!
 //! Deviations from the Vue source, both pragmatic simplifications of its
 //! Vue-reactivity-driven wiring:
 //! - The Vue source registers a single `hashchange` listener once at
@@ -48,6 +42,7 @@ use yew::prelude::*;
 use crate::components::atoms::{BadgeVariant, OntoBadge};
 use crate::components::molecules::{OntoAnnotation, OntoTermRef};
 use crate::components::organisms::section::OntoSection;
+use crate::components::organisms::uml_diagram::OntoUmlDiagram;
 use crate::ontology::{OntologyModel, OntologySection, Term, TermKind};
 
 /// Expand modestly-sized sections by default; keep very large ones collapsed.
@@ -56,10 +51,10 @@ const DEFAULT_OPEN_MAX: usize = 40;
 #[derive(Properties, PartialEq, Clone)]
 pub struct OntologyBrowserProps {
     pub model: OntologyModel,
-    /// prefix -> slug, for ontologies published in this browser. Unused by
-    /// this component directly — the Vue source only threads it through to
-    /// `OntoUmlDiagram` (deferred, see module docs) — but kept in the props
-    /// signature so callers don't need to change when that piece lands.
+    /// prefix -> slug, for ontologies published in this browser. Threaded
+    /// straight through to `OntoUmlDiagram`, same as the Vue source's
+    /// `OntologyBrowser.vue` passing its own `prefixLinks` prop down to
+    /// `OntoUmlDiagram.vue`.
     #[prop_or_default]
     pub prefix_links: Option<HashMap<String, String>>,
 }
@@ -257,7 +252,7 @@ pub fn ontology_browser(props: &OntologyBrowserProps) -> Html {
                 </header>
             }
 
-            // OntoUmlDiagram deferred — see module docs.
+            <OntoUmlDiagram model={props.model.clone()} prefix_links={props.prefix_links.clone()} />
 
             <div class="onto-filter">
                 <div class="onto-filter__input-wrap">

@@ -20,10 +20,9 @@
 //! `OntoUmlClass` is always the render path for a node (never a merged
 //! `OntoUmlCard` foreignObject).
 //!
-//! Not yet wired into the page (a later migration stage does that) — allow
-//! dead_code until then so the build stays warning-clean, same convention
-//! as `components::molecules`.
-#![allow(dead_code)]
+//! Wired into the page by `organisms::browser::OntologyBrowser`, between the
+//! ontology header and the filter/TOC card — matching where the Vue source's
+//! `OntologyBrowser.vue` places `<OntoUmlDiagram>`.
 
 use std::collections::{HashMap, HashSet};
 
