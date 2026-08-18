@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+gloo-net = { version = "0.7.0", default-features = false, features = ["http"] }
 gloo-timers = { version = "0.4.0", features = ["futures"] }
 js-sys = "0.3.104"
 log = "0.4.33"
@@ -12,5 +13,5 @@ serde_json = { version = "1.0.151", features = ["preserve_order"] }
 wasm-bindgen = "0.2.127"
 wasm-bindgen-futures = "0.4.77"
 wasm-logger = "0.2.0"
-web-sys = { version = "0.3.104", features = ["Navigator", "Clipboard", "Window", "HtmlSelectElement", "Document", "Element", "Location", "EventTarget", "HtmlInputElement", "ScrollIntoViewOptions", "ScrollBehavior", "ScrollLogicalPosition"] }
+web-sys = { version = "0.3.104", features = ["Navigator", "Clipboard", "Window", "HtmlSelectElement", "Document", "Element", "Location", "EventTarget", "HtmlInputElement", "ScrollIntoViewOptions", "ScrollBehavior", "ScrollLogicalPosition", "History", "UrlSearchParams"] }
 yew = { version = "0.23.0", features = ["csr"] }

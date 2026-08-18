@@ -882,3 +882,70 @@ a:hover {
     font-size: 0.75rem;
     color: var(--muted-foreground);
 }
+
+/* =============================================================
+   PAGE · ontologies (ports pages/ontologies.vue)
+
+   The page shell: a centred, max-width column (`container mx-auto
+   max-w-5xl px-4 py-8` in the Vue source), its intro header, the
+   selector's own margin-bottom, and the shared loading/fatal-error
+   "state" card reused for both the manifest and the per-document fetch.
+   ============================================================= */
+
+.eovoc-page {
+    box-sizing: content-box;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.eovoc-page__header {
+    margin-bottom: 1.5rem;
+}
+
+.eovoc-page__title {
+    margin: 0;
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+}
+
+.eovoc-page__lede {
+    margin: 0.5rem 0 0;
+    max-width: 42rem;
+    font-size: 0.875rem;
+    line-height: 1.625;
+    color: var(--muted-foreground);
+}
+
+.eovoc-page__selector {
+    margin-bottom: 1.5rem;
+}
+
+.eovoc-state {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.eovoc-state--error {
+    border-color: color-mix(in srgb, var(--destructive) 40%, transparent);
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.eovoc-state__title {
+    margin: 0;
+    font-weight: 600;
+    color: var(--destructive);
+}
+
+.eovoc-state__message {
+    margin: 0.25rem 0 0;
+    color: var(--muted-foreground);
+}
