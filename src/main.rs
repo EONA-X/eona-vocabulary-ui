@@ -13,6 +13,7 @@
 //! `components::`.
 mod components;
 mod ontology;
+mod uml;
 
 use std::collections::HashMap;
 
