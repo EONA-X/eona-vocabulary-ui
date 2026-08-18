@@ -16,14 +16,10 @@
 //! applies its own drag offset on top of wherever the caller places it.
 //!
 //! `fill`: the Vue source stretches the card to a `<foreignObject>`'s full
-//! height only for "Expand in layout" (deferred — see `uml.rs`'s module
-//! docs), so in this port `fill` is always false in practice; still accepted
-//! as a prop for structural parity, and does the same body-sizing swap the
-//! source makes when set, with no extra handling beyond that.
-//!
-//! Not yet wired into the UI (a later stage does that) — allow dead_code
-//! until then so the build stays warning-clean, same convention as the
-//! rest of `components::molecules`.
+//! height only for "Expand in layout" — set true by `OntoUmlDiagram` when
+//! the selected node's box has been merged with the card (see
+//! `OntoUmlDiagram`'s `expand_in_layout` state); `false` (the default) in
+//! every other case, where the card floats over the box instead.
 #![allow(dead_code)]
 
 use std::collections::HashSet;

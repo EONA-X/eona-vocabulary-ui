@@ -28,7 +28,9 @@ use yew::prelude::*;
 
 use crate::components::molecules::{OntoUmlCard, OntoUmlClass, OntoUmlEdge, OntoUmlTreeNode, UmlClassState, UmlEdgeState};
 use crate::ontology::{OntologyModel, PREFIXES};
-use crate::uml::{ancestor_chain, build_uml_diagram, class_tree, expandable_iris, UmlDiagram, UmlEdge, UmlLayoutOptions};
+use crate::uml::{
+    ancestor_chain, build_uml_diagram, class_tree, expandable_iris, UmlBoxSize, UmlDiagram, UmlEdge, UmlLayoutOptions,
+};
 
 const ZOOM_MIN: f64 = 0.25;
 const ZOOM_MAX: f64 = 2.0;
@@ -55,19 +57,30 @@ pub struct OntoUmlDiagramProps {
     pub prefix_links: Option<HashMap<String, String>>,
 }
 
-/// Diagram derivation for the current `group_hierarchy`/`expanded` state —
-/// factored out so both the render body and every interaction callback
-/// (which each need to know a freshly-collapsed/expanded/regrouped layout's
-/// coordinates, not the one from before their own state change) can call
-/// the same pure computation `build_uml_diagram` already is.
-fn diagram_for(model: &OntologyModel, group_hierarchy: bool, expanded: &HashSet<String>) -> UmlDiagram {
+/// Diagram derivation for the current `group_hierarchy`/`expanded`/"Expand
+/// in layout" state — factored out so both the render body and every
+/// interaction callback (which each need to know a freshly-collapsed/
+/// expanded/regrouped layout's coordinates, not the one from before their
+/// own state change) can call the same pure computation `build_uml_diagram`
+/// already is. `expanded_card_iri` mirrors the Vue source's
+/// `expandInLayout.value ? selected.value : null` — callers pass `None`
+/// unless "Expand in layout" is on. `expanded_card_size` is passed
+/// unconditionally, same as the Vue source's own `expandedCardSize`: it's a
+/// no-op in `build_uml_diagram` unless `expanded_card_iri` also names a
+/// currently-visible node.
+fn diagram_for(
+    model: &OntologyModel,
+    group_hierarchy: bool,
+    expanded: &HashSet<String>,
+    expanded_card_iri: Option<String>,
+) -> UmlDiagram {
     build_uml_diagram(
         model,
         &UmlLayoutOptions {
             group_hierarchy,
             expanded: Some(expanded.clone()),
-            expanded_card_iri: None,
-            expanded_card_size: None,
+            expanded_card_iri,
+            expanded_card_size: Some(UmlBoxSize { w: CARD_W, h: CARD_MAXH_ESTIMATE }),
         },
     )
 }
@@ -219,6 +232,12 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
     let expand_all = use_state(|| false);
     let selected = use_state(|| None::<String>);
     let hover_edge = use_state(|| None::<usize>);
+    // "Expand in layout": instead of floating the info card over a
+    // normal-sized box (the default), merge it INTO the selected class's own
+    // box, sized to CARD_W/CARD_MAXH_ESTIMATE, and recalculate the whole
+    // layout around that larger footprint (see `diagram_for`'s
+    // `expanded_card_iri`) — an opt-in, more disruptive alternative.
+    let expand_in_layout = use_state(|| false);
     let open = use_state(|| true);
     let zoom = use_state(|| 1.0_f64);
     let scroll_ref = use_node_ref();
@@ -232,14 +251,17 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
     let tree_expanded = use_state(HashSet::<String>::new);
     let tree_ref = use_node_ref();
 
-    let diagram = diagram_for(&props.model, *group_hierarchy, &expanded);
+    let expanded_card_iri = if *expand_in_layout { (*selected).clone() } else { None };
+    let diagram = diagram_for(&props.model, *group_hierarchy, &expanded, expanded_card_iri.clone());
 
     // Reset selection/hover whenever the canvas reshapes for a reason OTHER
     // than the selection itself — grouping, an expand/collapse, or a new
-    // ontology. Deliberately not keyed on `diagram` itself (which would
-    // also fire from `expandInLayout`-driven changes in the Vue source);
-    // with that feature out of scope here, `group_hierarchy`/`expanded`/
-    // `model` are exactly the diagram's real dependencies anyway.
+    // ontology. Deliberately NOT keyed on `diagram` itself, nor on
+    // `expand_in_layout`/`selected`: with "Expand in layout" on, `diagram`
+    // also depends on `selected` (see `expanded_card_iri` above), and
+    // clearing `selected` on every `diagram` change would immediately wipe
+    // out any selection the instant it's made — mirrors the Vue source's own
+    // comment on its `watch([groupHierarchy, expanded, () => props.model])`.
     {
         let selected = selected.clone();
         let hover_edge = hover_edge.clone();
@@ -307,6 +329,36 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
         });
     }
 
+    // With `expand_in_layout` on, the selected box's size (and so its
+    // position, once the rest of the layout reflows around it) changes on
+    // both a new selection AND toggling the switch itself — re-centre on it
+    // either way, once the recalculated layout has taken effect. Mirrors the
+    // Vue source's `watch([selected, expandInLayout], ...)`.
+    {
+        let group_hierarchy = group_hierarchy.clone();
+        let expanded = expanded.clone();
+        let scroll_ref = scroll_ref.clone();
+        let zoom = zoom.clone();
+        let model = props.model.clone();
+        use_effect_with(((*selected).clone(), *expand_in_layout), move |(sel, on)| {
+            if let (true, Some(iri)) = (*on, sel.clone()) {
+                let group_hierarchy_val = *group_hierarchy;
+                let expanded_val = (*expanded).clone();
+                let scroll_ref = scroll_ref.clone();
+                let model = model.clone();
+                let zoom_val = *zoom;
+                spawn_local(async move {
+                    TimeoutFuture::new(0).await;
+                    let diagram = diagram_for(&model, group_hierarchy_val, &expanded_val, Some(iri.clone()));
+                    if let Some(n) = diagram.nodes.iter().find(|x| x.iri == iri) {
+                        scroll_center(&scroll_ref, zoom_val, n.x + n.w / 2.0, n.y + n.h / 2.0);
+                    }
+                });
+            }
+            || ()
+        });
+    }
+
     if diagram.nodes.is_empty() {
         return Html::default();
     }
@@ -337,6 +389,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
         let scroll_ref = scroll_ref.clone();
         let zoom = zoom.clone();
         let model = props.model.clone();
+        let expanded_card_iri = expanded_card_iri.clone();
         Callback::from(move |iri: String| {
             let was_expanded = expanded.contains(&iri);
             let mut next = (*expanded).clone();
@@ -351,9 +404,10 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
             let model = model.clone();
             let group_hierarchy_val = *group_hierarchy;
             let zoom_val = *zoom;
+            let expanded_card_iri = expanded_card_iri.clone();
             spawn_local(async move {
                 TimeoutFuture::new(0).await;
-                let diagram = diagram_for(&model, group_hierarchy_val, &next);
+                let diagram = diagram_for(&model, group_hierarchy_val, &next, expanded_card_iri);
                 let Some(n) = diagram.nodes.iter().find(|x| x.iri == iri) else { return };
                 if was_expanded {
                     scroll_center(&scroll_ref, zoom_val, n.x + n.w / 2.0, n.y + n.h / 2.0);
@@ -380,6 +434,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
         let scroll_ref = scroll_ref.clone();
         let zoom = zoom.clone();
         let model = props.model.clone();
+        let expanded_card_iri = expanded_card_iri.clone();
         Callback::from(move |_: MouseEvent| {
             let new_on = !*group_hierarchy;
             group_hierarchy.set(new_on);
@@ -395,9 +450,10 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
             let scroll_ref = scroll_ref.clone();
             let model = model.clone();
             let zoom_val = *zoom;
+            let expanded_card_iri = expanded_card_iri.clone();
             spawn_local(async move {
                 TimeoutFuture::new(0).await;
-                let diagram = diagram_for(&model, new_on, &next_expanded);
+                let diagram = diagram_for(&model, new_on, &next_expanded, expanded_card_iri);
                 scroll_center_on_graph(&scroll_ref, zoom_val, &diagram);
             });
         })
@@ -413,6 +469,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
         let scroll_ref = scroll_ref.clone();
         let zoom = zoom.clone();
         let model = props.model.clone();
+        let expanded_card_iri = expanded_card_iri.clone();
         Callback::from(move |_: MouseEvent| {
             let new_val = !*expand_all;
             expand_all.set(new_val);
@@ -423,9 +480,10 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
             let model = model.clone();
             let group_hierarchy_val = *group_hierarchy;
             let zoom_val = *zoom;
+            let expanded_card_iri = expanded_card_iri.clone();
             spawn_local(async move {
                 TimeoutFuture::new(0).await;
-                let diagram = diagram_for(&model, group_hierarchy_val, &next_expanded);
+                let diagram = diagram_for(&model, group_hierarchy_val, &next_expanded, expanded_card_iri);
                 scroll_center_on_graph(&scroll_ref, zoom_val, &diagram);
             });
         })
@@ -478,6 +536,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
         let group_hierarchy = group_hierarchy.clone();
         let expanded = expanded.clone();
         let selected = selected.clone();
+        let expand_in_layout = expand_in_layout.clone();
         let scroll_ref = scroll_ref.clone();
         let zoom = zoom.clone();
         let model = props.model.clone();
@@ -496,6 +555,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
             }
 
             let selected = selected.clone();
+            let expand_in_layout_val = *expand_in_layout;
             let scroll_ref = scroll_ref.clone();
             let model = model.clone();
             let zoom_val = *zoom;
@@ -503,7 +563,11 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
             spawn_local(async move {
                 TimeoutFuture::new(0).await;
                 selected.set(Some(iri.clone()));
-                let diagram = diagram_for(&model, group_hierarchy_val, &next_expanded);
+                // The card merges into whatever just became `selected` — see
+                // `diagram_for`'s own doc comment — so this passes `iri`
+                // itself, not the pre-jump `expanded_card_iri` snapshot.
+                let expanded_card_iri = expand_in_layout_val.then(|| iri.clone());
+                let diagram = diagram_for(&model, group_hierarchy_val, &next_expanded, expanded_card_iri);
                 if let Some(n) = diagram.nodes.iter().find(|x| x.iri == iri) {
                     scroll_center(&scroll_ref, zoom_val, n.x + n.w / 2.0, n.y + n.h / 2.0);
                 }
@@ -533,7 +597,10 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
     // in scaled coordinates — rendered outside the zoom-transformed wrapper
     // (see the template below) so the card itself always reads at 100%
     // regardless of diagram zoom; only its anchor point scales with `zoom`.
-    let tooltip_pos = selected_node.as_ref().map(|n| {
+    // Suppressed entirely when `expand_in_layout` is on: the box itself IS
+    // the card then (see the foreignObject branch in the template below), so
+    // floating a second copy on top would just duplicate it.
+    let tooltip_pos = selected_node.as_ref().filter(|_| !*expand_in_layout).map(|n| {
         let scaled_w = diagram.width * *zoom;
         let scaled_h = diagram.height * *zoom;
         let left = (n.x * *zoom).min(scaled_w - CARD_W - 4.0).max(4.0);
@@ -671,6 +738,22 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                                     aria-label="Show every class as a plain outline alongside the diagram. Clicking a class there or anywhere else reveals and centres it in the diagram too, and expands the outline down to it."
                                 >{ "?" }</span>
                             </label>
+
+                            <label class="onto-uml-diagram__switch-label">
+                                { switch_button(*expand_in_layout, {
+                                    let expand_in_layout = expand_in_layout.clone();
+                                    Callback::from(move |_: MouseEvent| expand_in_layout.set(!*expand_in_layout))
+                                }) }
+                                <span onclick={{
+                                    let expand_in_layout = expand_in_layout.clone();
+                                    Callback::from(move |_: MouseEvent| expand_in_layout.set(!*expand_in_layout))
+                                }}>{ "Expand in layout" }</span>
+                                <span
+                                    class="onto-uml-diagram__help"
+                                    title="Merge the info card into the selected class's own box instead of floating it on top, recalculating the layout to make room for it at its real size."
+                                    aria-label="Merge the info card into the selected class's own box instead of floating it on top, recalculating the layout to make room for it at its real size."
+                                >{ "?" }</span>
+                            </label>
                         </div>
 
                         <div class="onto-uml-diagram__controls-right">
@@ -806,6 +889,21 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                                     }) }
 
                                     { for diagram.nodes.iter().map(|node| {
+                                        // "Expand in layout": the selected box IS the card here
+                                        // (sized to it — see `diagram_for`'s `expanded_card_iri`),
+                                        // so replace it outright rather than draw both.
+                                        if *expand_in_layout && selected_iri == Some(node.iri.as_str()) {
+                                            return html! {
+                                                <foreignObject
+                                                    key={node.iri.clone()}
+                                                    x={node.x.to_string()} y={node.y.to_string()}
+                                                    width={node.w.to_string()} height={node.h.to_string()}
+                                                    class="onto-uml-diagram__expanded-card"
+                                                >
+                                                    <OntoUmlCard node={node.clone()} fill=true on_focus={focus_class.clone()} />
+                                                </foreignObject>
+                                            };
+                                        }
                                         let on_toggle = {
                                             let select_class = select_class.clone();
                                             let iri = node.iri.clone();

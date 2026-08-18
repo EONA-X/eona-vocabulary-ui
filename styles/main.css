@@ -1766,3 +1766,11 @@ a:hover {
 .onto-uml-diagram__tooltip .onto-uml-card {
     pointer-events: auto;
 }
+
+/* "Expand in layout": smooth resize/move as the box grows to card size (or
+   shrinks back) and the rest of the layout reflows around it — x/y/width/
+   height are plain SVG geometry attributes here, but modern browsers animate
+   them via a CSS transition the same as any other animatable property. */
+.onto-uml-diagram__expanded-card {
+    transition: x 0.25s ease, y 0.25s ease, width 0.25s ease, height 0.25s ease;
+}
