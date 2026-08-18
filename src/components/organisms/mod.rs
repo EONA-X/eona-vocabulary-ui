@@ -11,7 +11,9 @@
 #![allow(dead_code, unused_imports)]
 
 mod section;
+mod selector;
 mod term_card;
 
 pub use section::{OntoSection, OntoSectionProps};
+pub use selector::{OntologySelector, OntologySelectorProps};
 pub use term_card::{OntoTermCard, OntoTermCardProps};
