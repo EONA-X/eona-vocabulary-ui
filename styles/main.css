@@ -1338,6 +1338,20 @@ a:hover {
     }
 }
 
+/* Full-viewport mode: the whole card becomes a fixed, full-window overlay
+   instead of the page's normal content width. */
+.onto-uml-diagram--fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .onto-uml-diagram__toggle {
     display: flex;
     width: 100%;
@@ -1393,6 +1407,13 @@ a:hover {
 
 .onto-uml-diagram__body {
     margin-top: 0.75rem;
+}
+
+.onto-uml-diagram__body--fullscreen {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
 }
 
 /* ---- legend --------------------------------------------------------- */
@@ -1619,11 +1640,34 @@ a:hover {
     background: var(--muted);
 }
 
+.onto-uml-diagram__fullscreen-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    background: none;
+    cursor: pointer;
+}
+
+.onto-uml-diagram__fullscreen-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
 /* ---- class tree sidebar + scrollable canvas ---------------------------- */
 
 .onto-uml-diagram__row {
     display: flex;
     gap: 0.75rem;
+}
+
+.onto-uml-diagram__row--fullscreen {
+    min-height: 0;
+    flex: 1 1 auto;
 }
 
 .onto-uml-diagram__tree {
@@ -1635,6 +1679,11 @@ a:hover {
     border: 1px solid var(--border);
     background: var(--background);
     padding: 0.5rem;
+}
+
+.onto-uml-diagram__tree--fullscreen {
+    max-height: none;
+    min-height: 0;
 }
 
 .onto-uml-tree-node__row {
@@ -1717,6 +1766,12 @@ a:hover {
     border: 1px solid var(--border);
     background: var(--background);
     padding: 0.5rem;
+}
+
+.onto-uml-diagram__scroll--fullscreen {
+    max-height: none;
+    min-height: 0;
+    flex: 1 1 auto;
 }
 
 .onto-uml-diagram__stage {

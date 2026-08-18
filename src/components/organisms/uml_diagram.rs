@@ -22,8 +22,10 @@
 use std::collections::{HashMap, HashSet};
 
 use gloo_timers::future::TimeoutFuture;
+use wasm_bindgen::closure::Closure;
+use wasm_bindgen::JsCast;
 use wasm_bindgen_futures::spawn_local;
-use web_sys::{Element, MouseEvent, ScrollIntoViewOptions, ScrollLogicalPosition, WheelEvent};
+use web_sys::{window, Element, KeyboardEvent, MouseEvent, ScrollIntoViewOptions, ScrollLogicalPosition, WheelEvent};
 use yew::prelude::*;
 
 use crate::components::molecules::{OntoUmlCard, OntoUmlClass, OntoUmlEdge, OntoUmlTreeNode, UmlClassState, UmlEdgeState};
@@ -241,6 +243,10 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
     let open = use_state(|| true);
     let zoom = use_state(|| 1.0_f64);
     let scroll_ref = use_node_ref();
+    // Full-viewport mode: the whole card becomes a fixed, full-window
+    // overlay (see the template below) so a large diagram gets the entire
+    // browser window instead of the page's normal content width/height.
+    let fullscreen = use_state(|| false);
 
     // "Class tree" sidebar — its own expand state is independent of the
     // diagram's own `expanded` (group_hierarchy): a different view, starting
@@ -356,6 +362,55 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                 });
             }
             || ()
+        });
+    }
+
+    // Body scroll lock while fullscreen, so the page underneath can't scroll
+    // behind the overlay — mirrors the Vue source's `watch(fullscreen, ...)`.
+    // The cleanup (run before every re-run, and once on unmount) always
+    // resets `overflow` back to unset, same belt-and-suspenders the Vue
+    // source's own `onBeforeUnmount` adds on top of its watcher.
+    {
+        let on = *fullscreen;
+        use_effect_with(on, move |on| {
+            let on = *on;
+            if let Some(body) = window().and_then(|w| w.document()).and_then(|d| d.body()) {
+                let _ = body.style().set_property("overflow", if on { "hidden" } else { "" });
+            }
+            move || {
+                if let Some(body) = window().and_then(|w| w.document()).and_then(|d| d.body()) {
+                    let _ = body.style().set_property("overflow", "");
+                }
+            }
+        });
+    }
+
+    // Escape exits fullscreen, same as any other full-screen UI — mirrors
+    // the Vue source's window "keydown" listener (registered once at mount,
+    // removed at unmount there; this port instead re-registers whenever
+    // `fullscreen` itself changes, so the handler always closes over the
+    // current value — same convention `browser.rs` uses for its own
+    // "hashchange" listener, which explains the same staleness concern).
+    {
+        let fullscreen = fullscreen.clone();
+        let on = *fullscreen;
+        use_effect_with(on, move |on| {
+            let currently_fullscreen = *on;
+            let fullscreen = fullscreen.clone();
+            let listener = Closure::wrap(Box::new(move |e: KeyboardEvent| {
+                if currently_fullscreen && e.key() == "Escape" {
+                    fullscreen.set(false);
+                }
+            }) as Box<dyn Fn(KeyboardEvent)>);
+            if let Some(win) = window() {
+                let _ = win.add_event_listener_with_callback("keydown", listener.as_ref().unchecked_ref());
+            }
+            move || {
+                if let Some(win) = window() {
+                    let _ = win.remove_event_listener_with_callback("keydown", listener.as_ref().unchecked_ref());
+                }
+                drop(listener);
+            }
         });
     }
 
@@ -575,6 +630,18 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
         })
     };
 
+    let toggle_fullscreen = {
+        let fullscreen = fullscreen.clone();
+        let open = open.clone();
+        Callback::from(move |_: MouseEvent| {
+            let next = !*fullscreen;
+            fullscreen.set(next);
+            if next {
+                open.set(true);
+            }
+        })
+    };
+
     let toggle_tree_node = {
         let tree_expanded = tree_expanded.clone();
         Callback::from(move |iri: String| {
@@ -621,7 +688,10 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
     };
 
     html! {
-        <section class="onto-uml-diagram" aria-label="Class diagram">
+        <section
+            class={classes!("onto-uml-diagram", (*fullscreen).then_some("onto-uml-diagram--fullscreen"))}
+            aria-label="Class diagram"
+        >
             <button
                 type="button"
                 class="onto-uml-diagram__toggle"
@@ -643,7 +713,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
             </button>
 
             if *open {
-                <div class="onto-uml-diagram__body">
+                <div class={classes!("onto-uml-diagram__body", (*fullscreen).then_some("onto-uml-diagram__body--fullscreen"))}>
                     <div class="onto-uml-diagram__legend">
                         <span class="onto-uml-diagram__legend-item">
                             <svg width="34" height="10" aria-hidden="true">
@@ -779,12 +849,37 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                                     onclick={zoom_in}
                                 >{ "+" }</button>
                             </div>
+
+                            <button
+                                type="button"
+                                class="onto-uml-diagram__fullscreen-btn"
+                                aria-pressed={(*fullscreen).to_string()}
+                                title={if *fullscreen { "Exit full screen (Esc)" } else { "Full screen" }}
+                                onclick={toggle_fullscreen}
+                            >
+                                if !*fullscreen {
+                                    <svg
+                                        width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                    ><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" /></svg>
+                                } else {
+                                    <svg
+                                        width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                    ><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" /></svg>
+                                }
+                                { if *fullscreen { "Exit full screen" } else { "Full screen" } }
+                            </button>
                         </div>
                     </div>
 
-                    <div class="onto-uml-diagram__row">
+                    <div class={classes!("onto-uml-diagram__row", (*fullscreen).then_some("onto-uml-diagram__row--fullscreen"))}>
                     if *tree_view {
-                        <aside ref={tree_ref} class="onto-uml-diagram__tree" aria-label="Class tree">
+                        <aside
+                            ref={tree_ref}
+                            class={classes!("onto-uml-diagram__tree", (*fullscreen).then_some("onto-uml-diagram__tree--fullscreen"))}
+                            aria-label="Class tree"
+                        >
                             { for tree.iter().map(|root| html! {
                                 <OntoUmlTreeNode
                                     key={root.iri.clone()}
@@ -797,7 +892,11 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                             }) }
                         </aside>
                     }
-                    <div ref={scroll_ref} class="onto-uml-diagram__scroll" onwheel={onwheel}>
+                    <div
+                        ref={scroll_ref}
+                        class={classes!("onto-uml-diagram__scroll", (*fullscreen).then_some("onto-uml-diagram__scroll--fullscreen"))}
+                        onwheel={onwheel}
+                    >
                         <div
                             class="onto-uml-diagram__stage"
                             style={format!("width: {}px; height: {}px", diagram.width * *zoom, diagram.height * *zoom)}
