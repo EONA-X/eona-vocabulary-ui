@@ -248,6 +248,19 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
     // browser window instead of the page's normal content width/height.
     let fullscreen = use_state(|| false);
 
+    // "Expand in layout" merge target: Yew decides an element's namespace
+    // purely from its DOM parent's `namespace_uri()` (see
+    // yew::dom_bundle::btag), with no special case for `<foreignObject>` —
+    // an ordinary `<OntoUmlCard>` nested directly inside one via html! would
+    // silently be created in the SVG namespace and never paint. The fix is a
+    // portal: `expanded_card_host` is a plain HTML `<div>`, created by hand
+    // via `Document::create_element` (always HTML namespace, regardless of
+    // ancestor) and appended into the `<foreignObject>` Yew renders (see the
+    // effect below and the template's foreignObject branch), so the actual
+    // `OntoUmlCard` content portals into a genuinely HTML-namespaced host.
+    let expanded_card_fo_ref = use_node_ref();
+    let expanded_card_host = use_state(|| None::<Element>);
+
     // "Class tree" sidebar — its own expand state is independent of the
     // diagram's own `expanded` (group_hierarchy): a different view, starting
     // fully collapsed to just the roots, then growing as the viewer opens
@@ -411,6 +424,30 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                 }
                 drop(listener);
             }
+        });
+    }
+
+    // (Re)provision the portal host whenever the merge target changes (a
+    // different node is selected, or the feature toggles on/off) — see
+    // `expanded_card_host`'s own doc comment above.
+    {
+        let expanded_card_fo_ref = expanded_card_fo_ref.clone();
+        let expanded_card_host = expanded_card_host.clone();
+        let target = expanded_card_iri.clone();
+        use_effect_with(target, move |target| {
+            if target.is_some() {
+                if let Some(fo) = expanded_card_fo_ref.cast::<Element>() {
+                    if let Some(doc) = window().and_then(|w| w.document()) {
+                        if let Ok(host) = doc.create_element("div") {
+                            let _ = fo.append_child(&host);
+                            expanded_card_host.set(Some(host));
+                        }
+                    }
+                }
+            } else {
+                expanded_card_host.set(None);
+            }
+            || ()
         });
     }
 
@@ -992,14 +1029,27 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                                         // (sized to it — see `diagram_for`'s `expanded_card_iri`),
                                         // so replace it outright rather than draw both.
                                         if *expand_in_layout && selected_iri == Some(node.iri.as_str()) {
+                                            // See `expanded_card_host`'s doc comment: the card
+                                            // portals into a manually-created HTML host div
+                                            // rather than nesting directly (which Yew would
+                                            // silently create in the SVG namespace here).
+                                            let portal = expanded_card_host.as_ref().map(|host| {
+                                                yew::virtual_dom::VNode::from(yew::virtual_dom::VPortal::new(
+                                                    html! {
+                                                        <OntoUmlCard node={node.clone()} fill=true on_focus={focus_class.clone()} />
+                                                    },
+                                                    host.clone(),
+                                                ))
+                                            });
                                             return html! {
                                                 <foreignObject
+                                                    ref={expanded_card_fo_ref.clone()}
                                                     key={node.iri.clone()}
                                                     x={node.x.to_string()} y={node.y.to_string()}
                                                     width={node.w.to_string()} height={node.h.to_string()}
                                                     class="onto-uml-diagram__expanded-card"
                                                 >
-                                                    <OntoUmlCard node={node.clone()} fill=true on_focus={focus_class.clone()} />
+                                                    { portal.unwrap_or_default() }
                                                 </foreignObject>
                                             };
                                         }
