@@ -361,3 +361,189 @@ a:hover {
     margin-left: 0.375rem;
     vertical-align: middle;
 }
+
+/* =============================================================
+   ORGANISM · term-card (ports OntoTermCard.vue)
+
+   A complete, anchorable entry for a single ontology term: header,
+   descriptions, typed relations (as wrapped term-ref chips), a
+   "Properties" listing, notes and remaining annotations. `.term-card__row`
+   reproduces the label/content grid used throughout (a fixed-width label
+   column from the `sm` breakpoint up, same shape as `.annotation` above)
+   so the term-card's own dt/dd rows read as members of the same family.
+   ============================================================= */
+
+.term-card {
+    scroll-margin-top: 6rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 640px) {
+    .term-card {
+        padding: 1.25rem;
+    }
+}
+
+.term-card__descriptions {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.625;
+    color: var(--foreground);
+    opacity: 0.9;
+}
+
+.term-card__description {
+    margin: 0;
+    white-space: pre-line;
+}
+
+.term-card__relations,
+.term-card__properties,
+.term-card__notes,
+.term-card__annotations {
+    margin: 0.75rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.term-card__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+}
+
+@media (min-width: 640px) {
+    .term-card__row {
+        grid-template-columns: 10rem 1fr;
+        gap: 1rem;
+    }
+}
+
+.term-card__row-label {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
+}
+
+.term-card__relation-refs {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.term-card__properties-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.term-card__property {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .term-card__property {
+        flex-direction: row;
+        align-items: baseline;
+    }
+}
+
+.term-card__property-desc {
+    font-size: 0.875rem;
+    line-height: 1.625;
+    color: var(--muted-foreground);
+}
+
+/* =============================================================
+   ORGANISM · onto-section (ports OntoSection.vue)
+
+   A titled, collapsible group of term-cards: a clickable header button
+   (rotating chevron, title, count pill) toggling a list that is only
+   mounted into the DOM while open.
+   ============================================================= */
+
+.onto-section {
+    scroll-margin-top: 5rem;
+}
+
+.onto-section__toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--secondary) 40%, transparent);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.onto-section__toggle:hover {
+    border-color: var(--accent);
+}
+
+.onto-section__toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+.onto-section__toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.onto-section__chevron {
+    flex-shrink: 0;
+    color: var(--muted-foreground);
+    transition: transform 0.2s ease;
+}
+
+.onto-section__chevron--open {
+    transform: rotate(90deg);
+}
+
+.onto-section__title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.onto-section__count {
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background: var(--muted);
+    padding: 0.125rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+}
+
+.onto-section__list {
+    margin-top: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
