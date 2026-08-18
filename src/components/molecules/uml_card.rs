@@ -149,17 +149,25 @@ pub fn onto_uml_card(props: &OntoUmlCardProps) -> Html {
 
     html! {
         <div class={card_class} role="tooltip" style={style}>
-            <div
-                class={handle_class}
-                role="button"
-                aria-label="Drag to move this card"
-                onpointerdown={ondragstart}
-                onpointermove={ondragmove}
-                onpointerup={ondragend.clone()}
-                onpointercancel={ondragend}
-            >
-                <span class="onto-uml-card__grip" aria-hidden="true" />
-            </div>
+            // The drag handle only makes sense for the normal floating card:
+            // with `fill` (the "Expand in layout" merge), the box's position
+            // is driven by the diagram's own layout, not freely draggable, so
+            // the handle would be a dead affordance — deliberately hidden
+            // here rather than ported 1:1 from the Vue source, which shows it
+            // unconditionally.
+            if !props.fill {
+                <div
+                    class={handle_class}
+                    role="button"
+                    aria-label="Drag to move this card"
+                    onpointerdown={ondragstart}
+                    onpointermove={ondragmove}
+                    onpointerup={ondragend.clone()}
+                    onpointercancel={ondragend}
+                >
+                    <span class="onto-uml-card__grip" aria-hidden="true" />
+                </div>
+            }
 
             <div class="onto-uml-card__header">
                 <div class="onto-uml-card__header-row">
