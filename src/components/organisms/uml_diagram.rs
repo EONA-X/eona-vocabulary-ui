@@ -439,6 +439,25 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                 if let Some(fo) = expanded_card_fo_ref.cast::<Element>() {
                     if let Some(doc) = window().and_then(|w| w.document()) {
                         if let Ok(host) = doc.create_element("div") {
+                            // A bare <div> defaults to height:auto (shrink-to-fit
+                            // its content), so `.onto-uml-card--fill`'s own
+                            // height:100% has nothing definite to resolve
+                            // against and is ignored — the card (and this host)
+                            // silently fall back to sizing themselves to
+                            // content instead of filling the foreignObject,
+                            // leaving a gap between the card's real rendered
+                            // bottom and `node.h` (where edges are routed to).
+                            // Sizing the host to 100%/100% up front gives the
+                            // percentage-height chain a definite box to
+                            // resolve against — a <foreignObject> establishes
+                            // a proper CSS containing block for its contents
+                            // sized to its own width/height attributes, so
+                            // 100% here means the full node.w x node.h.
+                            if let Some(html_el) = host.dyn_ref::<web_sys::HtmlElement>() {
+                                let style = html_el.style();
+                                let _ = style.set_property("width", "100%");
+                                let _ = style.set_property("height", "100%");
+                            }
                             let _ = fo.append_child(&host);
                             expanded_card_host.set(Some(host));
                         }
