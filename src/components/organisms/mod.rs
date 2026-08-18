@@ -14,8 +14,10 @@ mod browser;
 mod section;
 mod selector;
 mod term_card;
+mod uml_diagram;
 
 pub use browser::{OntologyBrowser, OntologyBrowserProps};
 pub use section::{OntoSection, OntoSectionProps};
 pub use selector::{OntologySelector, OntologySelectorProps};
 pub use term_card::{OntoTermCard, OntoTermCardProps};
+pub use uml_diagram::{OntoUmlDiagram, OntoUmlDiagramProps};
