@@ -1,8 +1,127 @@
+/* =============================================================
+   EONA-X design tokens for EOVoc UI.
+
+   Ported from containers/prez-ui/theme/app/assets/css/eona-prez-theme.css
+   (source of truth: @eona/design-system -> src/styles/prez-theme.css),
+   as plain CSS custom properties instead of Tailwind utilities — this
+   Trunk/Yew build has no Tailwind pipeline. Component stylesheets in this
+   app should reference these variables (not hardcode colours) so the two
+   UIs read as the same product. EONA is dark-first: dark palette lives on
+   :root, light overrides under [data-theme="light"] / .light.
+   ============================================================= */
+
+:root {
+    --eona-font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --eona-bg-page: linear-gradient(180deg, #050916 0%, #0f1a33 100%);
+    --eona-bg-header: linear-gradient(90deg, #0b1228 0%, #142a52 100%);
+    --eona-shadow-md: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+    --background: #0a0f1f;
+    --foreground: #f8fafc;
+
+    --card: rgba(255, 255, 255, 0.05);
+    --card-foreground: #f8fafc;
+
+    --popover: #101a35;
+    --popover-foreground: #f8fafc;
+
+    --primary: #2563eb;
+    --primary-foreground: #ffffff;
+
+    --secondary: rgba(255, 255, 255, 0.12);
+    --secondary-foreground: #f8fafc;
+
+    --tertiary: #0b1228;
+    --tertiary-foreground: #f8fafc;
+
+    --link: #4da6ff;
+    --link-foreground: #90e0ef;
+
+    --muted: rgba(255, 255, 255, 0.05);
+    --muted-foreground: #9fb4d6;
+
+    --accent: #4da6ff;
+    --accent-foreground: #07101f;
+
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+
+    --border: rgba(255, 255, 255, 0.12);
+    --input: rgba(255, 255, 255, 0.18);
+    --ring: #2563eb;
+
+    --chart-1: #4da6ff;
+    --chart-2: #2563eb;
+    --chart-3: #90e0ef;
+    --chart-4: #826eff;
+    --chart-5: #16a34a;
+
+    --radius: 0.75rem;
+}
+
+:root[data-theme="light"],
+.light,
+.light-mode {
+    --eona-bg-page: linear-gradient(180deg, #eff5fb 0%, #e6edf7 52%, #edf3fa 100%);
+    --eona-bg-header: linear-gradient(90deg, #f8fafc 0%, #e8eef8 100%);
+    --eona-shadow-md: 0 10px 25px rgba(15, 23, 42, 0.12);
+
+    --background: #eff5fb;
+    --foreground: #0f172a;
+
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+
+    --secondary: #eef3ff;
+    --secondary-foreground: #0f172a;
+
+    --tertiary: #f8fafc;
+    --tertiary-foreground: #0f172a;
+
+    --link: #2563eb;
+    --link-foreground: #1d4ed8;
+
+    --muted: #f7f9fd;
+    --muted-foreground: #4b5563;
+
+    --accent: #2563eb;
+    --accent-foreground: #ffffff;
+
+    --border: #d9e3f0;
+    --input: #d2dbe8;
+    --ring: rgba(37, 99, 235, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--eona-font-family);
+    background: var(--eona-bg-page);
+    background-attachment: fixed;
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--link-foreground);
 }
 
 .app-header {
-  padding: 1rem;
+    padding: 1rem;
+    background: var(--eona-bg-header);
+    box-shadow: var(--eona-shadow-md);
 }
