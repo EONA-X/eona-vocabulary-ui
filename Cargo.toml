@@ -13,5 +13,5 @@ serde_json = { version = "1.0.151", features = ["preserve_order"] }
 wasm-bindgen = "0.2.127"
 wasm-bindgen-futures = "0.4.77"
 wasm-logger = "0.2.0"
-web-sys = { version = "0.3.104", features = ["Navigator", "Clipboard", "Window", "HtmlSelectElement", "Document", "Element", "Location", "EventTarget", "HtmlInputElement", "ScrollIntoViewOptions", "ScrollBehavior", "ScrollLogicalPosition", "History", "UrlSearchParams", "KeyboardEvent"] }
+web-sys = { version = "0.3.104", features = ["Navigator", "Clipboard", "Window", "HtmlSelectElement", "Document", "Element", "Location", "EventTarget", "HtmlInputElement", "ScrollIntoViewOptions", "ScrollBehavior", "ScrollLogicalPosition", "History", "UrlSearchParams", "KeyboardEvent", "PointerEvent"] }
 yew = { version = "0.23.0", features = ["csr"] }

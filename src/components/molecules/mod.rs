@@ -13,11 +13,13 @@
 mod annotation;
 mod term_header;
 mod term_ref;
+mod uml_card;
 mod uml_class;
 mod uml_edge;
 
 pub use annotation::{OntoAnnotation, OntoAnnotationProps};
 pub use term_header::{OntoTermHeader, OntoTermHeaderProps};
 pub use term_ref::{OntoTermRef, OntoTermRefProps};
+pub use uml_card::{OntoUmlCard, OntoUmlCardProps};
 pub use uml_class::{OntoUmlClass, OntoUmlClassProps, UmlClassState};
 pub use uml_edge::{OntoUmlEdge, OntoUmlEdgeProps, UmlEdgeState};
