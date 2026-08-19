@@ -1339,7 +1339,17 @@ a:hover {
 }
 
 /* Full-viewport mode: the whole card becomes a fixed, full-window overlay
-   instead of the page's normal content width. */
+   instead of the page's normal content width. `.onto-uml-diagram`'s own
+   background (--card) is a deliberately near-transparent tint meant to sit
+   as a subtle card ON TOP of the page's own gradient — correct for the
+   normal in-flow card, but wrong here: this element leaves normal flow
+   (position: fixed), so the rest of the page reflows underneath it and its
+   own header/filter/TOC controls end up occupying the same screen area,
+   ghosting through the ~5%-opaque card background. Fullscreen needs to
+   fully occlude the page it's covering, so it gets its own opaque
+   background instead — the same page-level gradient `body` itself uses
+   (--eona-bg-page), so the diagram reads as if it temporarily became the
+   whole page, not a translucent panel floating over a jumbled page behind it. */
 .onto-uml-diagram--fullscreen {
     position: fixed;
     inset: 0;
@@ -1350,6 +1360,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background: var(--eona-bg-page);
 }
 
 .onto-uml-diagram__toggle {
