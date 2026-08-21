@@ -1770,6 +1770,15 @@ a:hover {
 /* ---- scrollable canvas + SVG defs -------------------------------------- */
 
 .onto-uml-diagram__scroll {
+    /* flex-grow so this pane always fills `.onto-uml-diagram__row`'s width,
+       even when the SVG content itself is narrower than the row (e.g. a
+       small ontology) — without it, a flex item with no flex-grow just
+       shrinks to its content size, leaving the row's own already-100vw-wide
+       card looking narrow because its background only shows through where
+       this pane happens to reach. min-width: 0 lets it still shrink below
+       that content size when the content is WIDER than the row, so
+       overflow: auto scrolling keeps working for large diagrams. */
+    flex: 1 1 auto;
     min-width: 0;
     max-height: 85vh;
     overflow: auto;
