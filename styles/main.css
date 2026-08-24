@@ -2423,3 +2423,21 @@ a:hover {
     letter-spacing: 0.02em;
     color: var(--muted-foreground);
 }
+
+/* =============================================================
+   PAGE · catalog (pages::catalog — DCAT vocabulary catalog, route "/")
+
+   The dataset cards below are edc-web-components' DatasetCard, a
+   patternfly-yew component rendered on patternfly's own light card surface
+   (--pf-t--global--background--color--100). PatternFly's own base text
+   colour rule is `:where(body) { color: ... }` — a `:where()` selector always
+   contributes zero specificity, so this app's own `body { color:
+   var(--foreground) }` (a real element selector, specificity 0,0,1) wins
+   over it unconditionally and washes out to near-invisible on the cards'
+   white background. Re-establish patternfly's own text colour within its own
+   component subtree.
+   ============================================================= */
+
+.eovoc-catalog__gallery {
+    color: var(--pf-t--global--text--color--regular);
+}
