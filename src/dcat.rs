@@ -15,12 +15,19 @@ use serde_json::{Map, Value};
 
 const DCAT: &str = "http://www.w3.org/ns/dcat#";
 const DCTERMS: &str = "http://purl.org/dc/terms/";
+const FOAF: &str = "http://xmlns.com/foaf/0.1/";
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct Distribution {
     pub title: String,
     pub download_url: String,
     pub media_type: String,
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct Creator {
+    pub name: String,
+    pub thumbnail: Option<String>,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -35,6 +42,13 @@ pub struct CatalogDataset {
     /// declares "2.2"). `pages::catalog` is responsible for degrading
     /// gracefully when it isn't parseable.
     pub version: Option<String>,
+    /// The card's hero image — the default owl illustration for every
+    /// dataset (see generate.py's DEFAULT_THUMBNAIL).
+    pub thumbnail: Option<String>,
+    /// The upstream standards body this ontology is derived from, when it
+    /// is one (see generate.py's UPSTREAM_CREATORS) — absent for Eona-X's
+    /// own originals, which have no external upstream to credit.
+    pub creator: Option<Creator>,
     pub distributions: Vec<Distribution>,
 }
 
@@ -114,6 +128,14 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
             let landing_page = first_ref(node, &format!("{DCAT}landingPage"));
             let conforms_to = first_ref(node, &format!("{DCTERMS}conformsTo"));
             let version = first_literal(node, &format!("{DCAT}version"));
+            let thumbnail = first_ref(node, &format!("{FOAF}thumbnail"));
+            let creator = first_ref(node, &format!("{DCTERMS}creator"))
+                .and_then(|iri| node_map.get(iri.as_str()).copied())
+                .and_then(|agent| {
+                    let name = first_literal(agent, &format!("{FOAF}name"))?;
+                    let thumbnail = first_ref(agent, &format!("{FOAF}thumbnail"));
+                    Some(Creator { name, thumbnail })
+                });
 
             let distributions: Vec<Distribution> = arr(node.get(format!("{DCAT}distribution").as_str()))
                 .into_iter()
@@ -128,7 +150,7 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
                 })
                 .collect();
 
-            Some(CatalogDataset { slug, title, description, landing_page, conforms_to, version, distributions })
+            Some(CatalogDataset { slug, title, description, landing_page, conforms_to, version, thumbnail, creator, distributions })
         })
         .collect();
 

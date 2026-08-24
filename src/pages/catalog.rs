@@ -10,7 +10,7 @@
 //! deep-links to the ontology's term browser at `/ontologies?ontology=<slug>`
 //! (see `pages::ontologies`, the former "/" route, now at "/ontologies").
 use edc_web_components::components::DatasetCard;
-use edc_web_components::models::DataspaceDataset;
+use edc_web_components::models::{Creator, DataspaceDataset, Thumbnail};
 use patternfly_yew::prelude::*;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
@@ -30,6 +30,13 @@ const DOCS_BASE: &str = "/docs";
 /// "$Date: ...$" string.
 fn parse_loose_semver(raw: &str) -> Option<semver::Version> {
     semver::Version::parse(raw).ok().or_else(|| semver::Version::parse(&format!("{raw}.0")).ok())
+}
+
+/// A `catalog.jsonld` `foaf:thumbnail`/`dcat:downloadURL`-style IRI (minted
+/// under `https://vocab.eona-x.eu/docs/...`) resolved to the actual path
+/// this site serves it at, under `DOCS_BASE`.
+fn asset_url(iri: &str) -> String {
+    format!("{DOCS_BASE}{}", site_relative(iri))
 }
 
 #[function_component(CatalogPage)]
@@ -109,8 +116,11 @@ pub fn catalog_page() -> Html {
                             title: dataset.title.clone(),
                             version: dataset.version.as_deref().and_then(parse_loose_semver),
                             comment: dataset.description.clone(),
-                            thumbnail: None,
-                            creator: None,
+                            thumbnail: dataset.thumbnail.as_deref().map(|iri| Thumbnail { resource: Some(asset_url(iri)) }),
+                            creator: dataset.creator.as_ref().map(|c| Creator {
+                                name: Some(c.name.clone()),
+                                thumbnail: c.thumbnail.as_deref().map(|iri| Thumbnail { resource: Some(asset_url(iri)) }),
+                            }),
                             keywords: Vec::new(),
                             policies: Vec::new(),
                             dcterm_types: Vec::new(),
