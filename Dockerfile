@@ -10,10 +10,17 @@
 # at containers/eovoc-ui alone could never reach. Every COPY below is
 # therefore repo-root-relative.
 ARG RUST_VERSION=1.97.1
+# Pinned: `trunk`'s `[[node_packages]]` resolver (Trunk.toml, pulls in
+# patternfly-yew's CSS for pages::catalog — see index.html) needs 0.22+; the
+# unpinned `cargo install trunk` previously here resolved 0.21.14, which
+# doesn't support it and fails the build. Same version dataspace-rs/edc-web-ui
+# pins, for the same reason.
+ARG TRUNK_VERSION=0.22.0-beta.2
 
 FROM rust:${RUST_VERSION}-slim AS build
 RUN rustup target add wasm32-unknown-unknown
-RUN cargo install trunk --locked
+ARG TRUNK_VERSION
+RUN cargo install trunk@${TRUNK_VERSION} --locked
 
 WORKDIR /app
 COPY crates/eona-crosswalk-transform/ ./crates/eona-crosswalk-transform/
