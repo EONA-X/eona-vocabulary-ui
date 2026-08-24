@@ -145,6 +145,7 @@ pub fn ontologies_page() -> Html {
     html! {
         <main class="eovoc-page">
             <nav class="crosswalk-page__nav">
+                <a href="/">{ "\u{2190} Catalog" }</a>
                 <a href="/crosswalk">{ "Crosswalk 3D \u{2192}" }</a>
             </nav>
             <div class="eovoc-page__header">

@@ -206,7 +206,8 @@ pub fn crosswalk_page() -> Html {
     html! {
         <main class="crosswalk-page">
             <nav class="crosswalk-page__nav">
-                <a href="/">{ "\u{2190} Ontology Browser" }</a>
+                <a href="/">{ "\u{2190} Catalog" }</a>
+                <a href="/ontologies">{ "Ontology Browser" }</a>
             </nav>
             <div class="eovoc-page__header">
                 <h1 class="eovoc-page__title">{ "Crosswalk 3D" }</h1>
