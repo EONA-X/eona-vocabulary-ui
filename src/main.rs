@@ -12,6 +12,8 @@
 //! rendered by the atoms -> molecules -> organisms components under
 //! `components::`.
 mod components;
+mod crosswalk;
+mod crosswalk3d;
 mod ontology;
 mod uml;
 
