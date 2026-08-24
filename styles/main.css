@@ -1091,13 +1091,11 @@ a:hover {
 /* =============================================================
    MOLECULE · onto-uml-card (ports OntoUmlCard.vue)
 
-   The floating info panel shown while a class is selected in the diagram:
-   a drag handle, a fixed header, and a scrollable body of foldable
-   sections. Positioned by its caller (a later stage anchors it over the
-   selected box); this component only ever applies its own drag translate
-   on top of that. `--fill` mirrors the source's `fill` prop (see uml_card.rs
-   — always false in this port in practice) by stretching the body to the
-   card's own height instead of capping it at 13 lines.
+   The info panel shown while a class is selected in the diagram, merged
+   into the selected class's own box: a fixed header and a scrollable body
+   of foldable sections, sized to fill its container (`--fill`, the only
+   presentation this port has — see uml_card.rs's module doc comment for the
+   floating/draggable variant this app used to also have).
    ============================================================= */
 
 .onto-uml-card {
@@ -1119,32 +1117,6 @@ a:hover {
     display: flex;
     height: 100%;
     flex-direction: column;
-}
-
-.onto-uml-card__handle {
-    display: flex;
-    height: 1rem;
-    align-items: center;
-    justify-content: center;
-    touch-action: none;
-    background: color-mix(in srgb, var(--muted) 60%, transparent);
-    cursor: grab;
-}
-
-.onto-uml-card__handle:hover {
-    background: var(--muted);
-}
-
-.onto-uml-card__handle--dragging {
-    cursor: grabbing;
-}
-
-.onto-uml-card__grip {
-    height: 0.25rem;
-    width: 2rem;
-    border-radius: 9999px;
-    background: var(--border);
-    user-select: none;
 }
 
 .onto-uml-card__header {
@@ -1827,22 +1799,7 @@ a:hover {
     stroke: var(--accent);
 }
 
-.onto-uml-diagram__tooltip {
-    position: absolute;
-    z-index: 10;
-    /* Only the card itself (see onto-uml-card__handle etc.) should capture
-       pointer events — this wrapper's own footprint is otherwise just an
-       anchored positioning box, and must stay click-through so the canvas
-       under a clamped/repositioned corner of it can still be interacted
-       with. */
-    pointer-events: none;
-}
-
-.onto-uml-diagram__tooltip .onto-uml-card {
-    pointer-events: auto;
-}
-
-/* "Expand in layout": smooth resize/move as the box grows to card size (or
+/* The selected class's box smoothly resizes/moves to card size (or
    shrinks back) and the rest of the layout reflows around it — x/y/width/
    height are plain SVG geometry attributes here, but modern browsers animate
    them via a CSS transition the same as any other animatable property. */

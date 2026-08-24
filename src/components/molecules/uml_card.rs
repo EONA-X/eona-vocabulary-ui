@@ -1,31 +1,31 @@
 //! MOLECULE · OntoUmlCard
 //!
-//! The info panel shown while a class is selected in the diagram: a drag
-//! handle, a fixed header (colour swatch, name, monospace IRI), and a
-//! scrollable body listing the description plus four independently
-//! foldable sections — superclasses, subclasses, attributes, associations —
-//! each starting open and hidden entirely when its underlying list is
-//! empty. Clicking a superclass/subclass tag never navigates directly; it
-//! asks the parent (via `on_focus`) to reveal and jump to that class in the
-//! diagram itself (wired up in a later stage — see `OntoUmlClass`'s own
-//! `on_toggle`/`on_expand` for the sibling pattern this mirrors).
+//! The info panel shown while a class is selected in the diagram, merged
+//! into the selected class's own box (a fixed header — colour swatch, name,
+//! monospace IRI — and a scrollable body listing the description plus four
+//! independently foldable sections: superclasses, subclasses, attributes,
+//! associations — each starting open and hidden entirely when its
+//! underlying list is empty). Clicking a superclass/subclass tag never
+//! navigates directly; it asks the parent (via `on_focus`) to reveal and
+//! jump to that class in the diagram itself (see `OntoUmlClass`'s own
+//! `on_toggle`/`on_expand` for the sibling pattern this mirrors). Sizing
+//! (stretching to fill the `<foreignObject>` `OntoUmlDiagram` merges it
+//! into) is entirely the caller's concern.
 //!
 //! Ports `containers/prez-ui/theme/app/components/ontology/molecules/OntoUmlCard.vue`.
-//! Positioning (anchoring the card over the clicked box) is entirely the
-//! caller's concern, same as the Vue source — this component only ever
-//! applies its own drag offset on top of wherever the caller places it.
 //!
-//! `fill`: the Vue source stretches the card to a `<foreignObject>`'s full
-//! height only for "Expand in layout" — set true by `OntoUmlDiagram` when
-//! the selected node's box has been merged with the card (see
-//! `OntoUmlDiagram`'s `expand_in_layout` state); `false` (the default) in
-//! every other case, where the card floats over the box instead.
+//! The Vue source also has a `fill` prop (false by default) for a second,
+//! floating/draggable presentation, positioned by the caller instead of
+//! merged into a box — ported here too in an earlier stage, reachable then
+//! via an "Expand in layout" toggle in `OntoUmlDiagram`. Once that toggle
+//! was removed and merging became the sole, unconditional behaviour, the
+//! floating variant became unreachable and was removed outright (its drag
+//! handle/offset state included) rather than left as dead code.
 #![allow(dead_code)]
 
 use std::collections::HashSet;
 
-use wasm_bindgen::JsCast;
-use web_sys::{Element, MouseEvent, PointerEvent};
+use web_sys::MouseEvent;
 use yew::prelude::*;
 
 use crate::uml::UmlClassNode;
@@ -52,23 +52,9 @@ fn all_sections_open() -> HashSet<UmlCardSection> {
     ])
 }
 
-/// Pointer position + drag offset captured on `pointerdown`, mirrors the
-/// source's `dragStart` ref.
-#[derive(Clone, Copy, Debug, PartialEq)]
-struct DragStart {
-    x: f64,
-    y: f64,
-    ox: f64,
-    oy: f64,
-}
-
 #[derive(Properties, PartialEq, Clone)]
 pub struct OntoUmlCardProps {
     pub node: UmlClassNode,
-    /// See the module doc comment above — always false/absent in practice
-    /// in this port, accepted for structural parity with the Vue source.
-    #[prop_or_default]
-    pub fill: bool,
     /// Fires with a superclass/subclass's IRI when its tag is clicked.
     pub on_focus: Callback<String>,
 }
@@ -89,86 +75,13 @@ pub fn onto_uml_card(props: &OntoUmlCardProps) -> Html {
         })
     };
 
-    // Drag offset, applied as a translate on top of the caller's own anchor
-    // positioning. Resets whenever a different class is selected (mirrors
-    // the source's `watch(() => props.node.iri, ...)`); `openSections`
-    // itself is NOT reset here, matching the source (folding is a per-card
-    // convenience, not tied to which class is currently shown).
-    let drag_x = use_state(|| 0.0_f64);
-    let drag_y = use_state(|| 0.0_f64);
-    let drag_start = use_state(|| None::<DragStart>);
-    {
-        let drag_x = drag_x.clone();
-        let drag_y = drag_y.clone();
-        use_effect_with(node.iri.clone(), move |_| {
-            drag_x.set(0.0);
-            drag_y.set(0.0);
-            || ()
-        });
-    }
-
-    // Pointer capture on the handle itself (set on pointerdown) means
-    // move/up keep firing on it even once the pointer leaves its bounds —
-    // no window-level listeners to add and clean up, same as the source.
-    let ondragstart = {
-        let drag_start = drag_start.clone();
-        let drag_x = *drag_x;
-        let drag_y = *drag_y;
-        Callback::from(move |e: PointerEvent| {
-            drag_start.set(Some(DragStart { x: e.client_x() as f64, y: e.client_y() as f64, ox: drag_x, oy: drag_y }));
-            if let Some(el) = e.current_target().and_then(|t| t.dyn_into::<Element>().ok()) {
-                let _ = el.set_pointer_capture(e.pointer_id());
-            }
-        })
-    };
-    let ondragmove = {
-        let drag_start = drag_start.clone();
-        let drag_x = drag_x.clone();
-        let drag_y = drag_y.clone();
-        Callback::from(move |e: PointerEvent| {
-            let Some(start) = *drag_start else { return };
-            drag_x.set(start.ox + (e.client_x() as f64 - start.x));
-            drag_y.set(start.oy + (e.client_y() as f64 - start.y));
-        })
-    };
-    let ondragend = {
-        let drag_start = drag_start.clone();
-        Callback::from(move |_: PointerEvent| drag_start.set(None))
-    };
-
-    let card_class = classes!("onto-uml-card", props.fill.then_some("onto-uml-card--fill"));
-    let handle_class =
-        classes!("onto-uml-card__handle", drag_start.is_some().then_some("onto-uml-card__handle--dragging"));
-    let body_class = classes!("onto-uml-card__body", props.fill.then_some("onto-uml-card__body--fill"));
-    let style = format!("transform: translate({}px, {}px)", *drag_x, *drag_y);
-
     let nothing_to_show = node.attributes.is_empty()
         && node.associations.is_empty()
         && node.subclasses.is_empty()
         && node.superclasses.is_empty();
 
     html! {
-        <div class={card_class} role="tooltip" style={style}>
-            // The drag handle only makes sense for the normal floating card:
-            // with `fill` (the "Expand in layout" merge), the box's position
-            // is driven by the diagram's own layout, not freely draggable, so
-            // the handle would be a dead affordance — deliberately hidden
-            // here rather than ported 1:1 from the Vue source, which shows it
-            // unconditionally.
-            if !props.fill {
-                <div
-                    class={handle_class}
-                    role="button"
-                    aria-label="Drag to move this card"
-                    onpointerdown={ondragstart}
-                    onpointermove={ondragmove}
-                    onpointerup={ondragend.clone()}
-                    onpointercancel={ondragend}
-                >
-                    <span class="onto-uml-card__grip" aria-hidden="true" />
-                </div>
-            }
-
+        <div class="onto-uml-card onto-uml-card--fill" role="tooltip">
             <div class="onto-uml-card__header">
                 <div class="onto-uml-card__header-row">
                     <span
@@ -181,7 +94,7 @@ pub fn onto_uml_card(props: &OntoUmlCardProps) -> Html {
                 <p class="onto-uml-card__iri">{ node.iri.clone() }</p>
             </div>
 
-            <div class={body_class}>
+            <div class="onto-uml-card__body onto-uml-card__body--fill">
                 if let Some(description) = &node.description {
                     <p class="onto-uml-card__description">{ description.clone() }</p>
                 }
