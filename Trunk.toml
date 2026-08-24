@@ -7,3 +7,15 @@ ignore = ["dist"]
 
 [serve]
 port = 8080
+
+# Resolved by Trunk itself (no system npm/node required) for the `sass`/
+# `copy-dir` links in index.html that pull in patternfly-yew's CSS — same
+# packages/versions dataspace-rs/edc-web-ui pins, since edc-web-components was
+# built and tested against these.
+[[node_packages]]
+name = "@patternfly/patternfly"
+version = "6.4.0"
+
+[[node_packages]]
+name = "@fortawesome/fontawesome-free"
+version = "7.1.0"

@@ -4,6 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>EOVoc UI</title>
+    <!-- patternfly-yew (pages::catalog's DatasetCard/Gallery) needs the actual
+         PatternFly CSS — it's a class-based design system, not something
+         patternfly-yew generates styles for on its own. Pulled via Trunk's
+         node_packages resolver (see Trunk.toml), same package/version pin as
+         dataspace-rs/edc-web-ui, the project this pattern is ported from. -->
+    <link data-trunk rel="sass" href="target/node_modules/@patternfly/patternfly/6.4.0/patternfly.scss">
+    <link data-trunk rel="sass" href="target/node_modules/@patternfly/patternfly/6.4.0/patternfly-addons.scss">
+    <link data-trunk rel="copy-dir" href="target/node_modules/@patternfly/patternfly/6.4.0/assets" data-target-path="assets/">
+    <!-- patternfly_yew::Icon (used by pages::catalog's error EmptyState, and
+         internally by DatasetCard) renders `<i class="fas ...">` — Font
+         Awesome webfont glyphs, not inline SVG — so the webfont files must be
+         served too. -->
+    <link data-trunk rel="copy-dir" href="target/node_modules/@fortawesome/fontawesome-free/7.1.0/webfonts">
     <link data-trunk rel="css" href="styles/main.css" />
   </head>
   <body></body>
