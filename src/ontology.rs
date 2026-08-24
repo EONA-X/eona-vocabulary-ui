@@ -563,6 +563,15 @@ fn extract_nodes(doc: &Value) -> Vec<&Map<String, Value>> {
 ///   for terms from other ontologies in this browser resolve to their
 ///   declared prefix instead of falling back to the static PREFIXES table or
 ///   bare local names.
+/// namespace IRI -> prefix, built from every manifest entry that declares
+/// both — shared by both pages (`pages::ontologies` threads it into
+/// `parse_ontology` so cross-ontology term-refs resolve to their declared
+/// prefix; `pages::crosswalk` needs the exact same map for its own
+/// `parse_ontology` calls over each side + the alignment document).
+pub fn namespace_prefixes(ontologies: &[OntologyEntry]) -> HashMap<String, String> {
+    ontologies.iter().filter_map(|o| Some((o.namespace.clone()?, o.prefix.clone()?))).collect()
+}
+
 pub fn parse_ontology(doc: &Value, namespace_prefixes: Option<&HashMap<String, String>>) -> OntologyModel {
     let nodes = extract_nodes(doc);
 

@@ -1837,3 +1837,362 @@ a:hover {
 .onto-uml-diagram__expanded-card {
     transition: x 0.25s ease, y 0.25s ease, width 0.25s ease, height 0.25s ease;
 }
+
+/* =============================================================
+   ORGANISM · crosswalk-scene (ports OntoCrosswalkScene.vue)
+
+   Legend/stats bar, the two filter-toggle switches (same pill-switch shape
+   as the UML diagram's own toggles), the WebGL canvas + its hover tooltip
+   and click inspector panel, and the always-rendered accessible mapping
+   table below it (the deliberate no-WebGL/assistive-tech fallback).
+   ============================================================= */
+
+.crosswalk-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.crosswalk-scene__legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.crosswalk-scene__swatch {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 0.15rem;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.crosswalk-scene__swatch--mapping {
+    width: 1.25rem;
+    height: 0.375rem;
+    border-radius: 0.15rem;
+    background: #f5d0fe;
+    box-shadow: none;
+}
+
+.crosswalk-scene__swatch--edge {
+    width: 1.25rem;
+    height: 0.25rem;
+    border-radius: 0.15rem;
+    background: color-mix(in srgb, var(--muted-foreground) 50%, transparent);
+    box-shadow: none;
+}
+
+.crosswalk-scene__coverage {
+    margin-left: auto;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--foreground);
+}
+
+.crosswalk-scene__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.crosswalk-scene__switch-label {
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 2.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    border: none;
+    background: var(--muted);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.crosswalk-scene__switch--on {
+    background: var(--accent);
+}
+
+.crosswalk-scene__switch-knob {
+    position: absolute;
+    left: 0.125rem;
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    border-radius: 9999px;
+    background: var(--card-foreground);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transition: transform 0.15s ease;
+}
+
+.crosswalk-scene__switch--on .crosswalk-scene__switch-knob {
+    transform: translateX(1.125rem);
+}
+
+.crosswalk-scene__hint {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__canvas-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 560px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+.crosswalk-scene__canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}
+
+.crosswalk-scene__no-webgl {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__tooltip {
+    position: absolute;
+    z-index: 20;
+    max-width: 18em;
+    pointer-events: none;
+    border-radius: calc(var(--radius) * 0.65);
+    border: 1px solid var(--border);
+    background: var(--popover);
+    padding: 0.375rem 0.625rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.crosswalk-scene__tooltip-title {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--popover-foreground);
+}
+
+.crosswalk-scene__tooltip-curie {
+    margin: 0.125rem 0 0;
+    overflow-wrap: break-word;
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.625rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__tooltip-body {
+    margin: 0.125rem 0 0;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    color: var(--popover-foreground);
+    opacity: 0.85;
+}
+
+.crosswalk-scene__inspector {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 22em;
+    max-width: calc(100% - 1.5rem);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--popover);
+    padding: 0.75rem;
+    text-align: left;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.crosswalk-scene__inspector-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.crosswalk-scene__inspector-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.crosswalk-scene__inspector-title h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--popover-foreground);
+}
+
+.crosswalk-scene__inspector-close {
+    border: none;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1rem;
+}
+
+.crosswalk-scene__inspector-close:hover {
+    color: var(--popover-foreground);
+}
+
+.crosswalk-scene__inspector-curie {
+    margin: 0.125rem 0 0;
+    overflow-wrap: break-word;
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.6875rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__inspector-desc {
+    margin: 0.5rem 0 0;
+    font-size: 0.75rem;
+    line-height: 1.625;
+    color: var(--popover-foreground);
+    opacity: 0.9;
+}
+
+.crosswalk-scene__inspector-mappings {
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.5rem;
+}
+
+.crosswalk-scene__inspector-mappings-title {
+    margin: 0;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__inspector-mappings ul {
+    margin: 0.25rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.crosswalk-scene__inspector-mappings li {
+    font-size: 0.75rem;
+}
+
+.crosswalk-scene__inspector-link {
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-weight: 500;
+    color: var(--link);
+    cursor: pointer;
+}
+
+.crosswalk-scene__inspector-link:hover {
+    color: var(--link-foreground);
+}
+
+.crosswalk-scene__inspector-match {
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__inspector-rationale {
+    margin: 0.125rem 0 0;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__table-details {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+.crosswalk-scene__table-details summary {
+    cursor: pointer;
+    user-select: none;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.crosswalk-scene__table-wrap {
+    overflow-x: auto;
+    border-top: 1px solid var(--border);
+}
+
+.crosswalk-scene__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.75rem;
+}
+
+.crosswalk-scene__table th {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-scene__table td {
+    border-top: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    vertical-align: top;
+}
+
+/* =============================================================
+   PAGE · crosswalk (ports pages/crosswalk.vue)
+
+   Same page-shell shape as .eovoc-page, just a touch wider (max-w-6xl in
+   the Vue source, vs. max-w-5xl for the ontology browser) since the 3D
+   canvas benefits from the extra room.
+   ============================================================= */
+
+.crosswalk-page {
+    box-sizing: content-box;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.crosswalk-page__nav {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8125rem;
+}
+
+.crosswalk-page__nav a {
+    font-weight: 500;
+}
