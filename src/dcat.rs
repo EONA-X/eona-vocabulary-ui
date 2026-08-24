@@ -30,6 +30,11 @@ pub struct CatalogDataset {
     pub description: Option<String>,
     pub landing_page: Option<String>,
     pub conforms_to: Option<String>,
+    /// The ontology's own owl:versionInfo, verbatim (see generate.py's
+    /// find_version_info) — not necessarily valid semver (e.g. odrl22
+    /// declares "2.2"). `pages::catalog` is responsible for degrading
+    /// gracefully when it isn't parseable.
+    pub version: Option<String>,
     pub distributions: Vec<Distribution>,
 }
 
@@ -108,6 +113,7 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
             let description = first_literal(node, &format!("{DCTERMS}description"));
             let landing_page = first_ref(node, &format!("{DCAT}landingPage"));
             let conforms_to = first_ref(node, &format!("{DCTERMS}conformsTo"));
+            let version = first_literal(node, &format!("{DCAT}version"));
 
             let distributions: Vec<Distribution> = arr(node.get(format!("{DCAT}distribution").as_str()))
                 .into_iter()
@@ -122,7 +128,7 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
                 })
                 .collect();
 
-            Some(CatalogDataset { slug, title, description, landing_page, conforms_to, distributions })
+            Some(CatalogDataset { slug, title, description, landing_page, conforms_to, version, distributions })
         })
         .collect();
 

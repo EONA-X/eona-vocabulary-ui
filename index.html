@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+  pf-v6-theme-dark on the root: this app is permanently dark-themed (no
+  light/dark toggle), so pages::catalog's patternfly-yew components
+  (DatasetCard/Gallery) need PatternFly's own dark design tokens switched on
+  at the same scope — otherwise they render on PatternFly's *light* card
+  surface/text tokens, clashing with the rest of the app. Same class
+  dataspace-rs/edc-web-ui's ToggleTheme sets on `document.documentElement`
+  for its dark mode; ours is just static since there's no toggle here.
+-->
+<html lang="en" class="pf-v6-theme-dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

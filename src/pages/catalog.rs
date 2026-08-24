@@ -21,6 +21,16 @@ use crate::net::fetch_json;
 
 const DOCS_BASE: &str = "/docs";
 
+/// Best-effort parse of an ontology's free-text `owl:versionInfo` as a
+/// `semver::Version` — DatasetCard's version badge needs one, but not every
+/// ontology declares valid semver (e.g. odrl22 declares plain "2.2"; one
+/// leading `.0` short of valid). Falls back to `None` (no badge) rather than
+/// showing a mangled/misleading version, e.g. datatourisme's SVN-style
+/// "$Date: ...$" string.
+fn parse_loose_semver(raw: &str) -> Option<semver::Version> {
+    semver::Version::parse(raw).ok().or_else(|| semver::Version::parse(&format!("{raw}.0")).ok())
+}
+
 #[function_component(CatalogPage)]
 pub fn catalog_page() -> Html {
     let catalog = use_state(CatalogModel::default);
@@ -93,13 +103,12 @@ pub fn catalog_page() -> Html {
                     </EmptyState>
                 </Bullseye>
             } else {
-                <div class="eovoc-catalog__gallery">
                 <Gallery gutter=true>
                     { for (*catalog).datasets.iter().map(|dataset| {
                         let dataspace_dataset = DataspaceDataset {
                             id: dataset.slug.clone(),
                             title: dataset.title.clone(),
-                            version: None,
+                            version: dataset.version.as_deref().and_then(parse_loose_semver),
                             comment: dataset.description.clone(),
                             thumbnail: None,
                             creator: None,
@@ -121,7 +130,6 @@ pub fn catalog_page() -> Html {
                         }
                     }) }
                 </Gallery>
-                </div>
             }
         </main>
     }

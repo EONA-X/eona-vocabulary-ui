@@ -740,6 +740,7 @@ dependencies = [
  "js-sys",
  "log",
  "patternfly-yew",
+ "semver",
  "serde",
  "serde_json",
  "wasm-bindgen",
