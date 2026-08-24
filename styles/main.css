@@ -668,6 +668,37 @@ a:hover {
 }
 
 /* =============================================================
+   ORGANISM · crosswalk-selector (ports CrosswalkSelector.vue)
+
+   Reuses .ontology-selector's card/label/row/downloads/description rules
+   (same component family); these two are crosswalk-specific: the plain-text
+   title shown instead of a <select> when there's only one crosswalk, and the
+   "SideA <-> SideB" line under the row.
+   ============================================================= */
+
+.crosswalk-selector__title {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+    .crosswalk-selector__title {
+        flex: 1 1 auto;
+    }
+}
+
+.crosswalk-selector__sides {
+    margin: 0.75rem 0 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+}
+
+/* =============================================================
    ORGANISM · ontology-browser (ports OntologyBrowser.vue)
 
    The page-level composite: the ontology header card, a live-filter card

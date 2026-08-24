@@ -17,7 +17,24 @@
 
 use std::collections::{HashMap, HashSet};
 
-use crate::ontology::{OntologyModel, Term, TermKind};
+use serde::Deserialize;
+
+use crate::ontology::{OntologyDownloads, OntologyModel, Term, TermKind};
+
+/// One entry of the static `/docs/alignments.json` manifest (emitted by the
+/// publish-widoco-docs pipeline) that drives the crosswalk selector — mirrors
+/// the Vue source's `AlignmentEntry` (defined inline in `pages/crosswalk.vue`).
+#[derive(Clone, Debug, PartialEq, Deserialize)]
+pub struct AlignmentEntry {
+    pub slug: String,
+    pub title: String,
+    pub description: Option<String>,
+    pub jsonld: String,
+    /// ontology slugs this crosswalk bridges, resolved server-side by
+    /// `generate.py`'s `find_alignment_sides` — never hardcoded client-side.
+    pub sides: Vec<String>,
+    pub downloads: Option<OntologyDownloads>,
+}
 
 // Well-known predicate IRIs (kept local; same convention as uml.ts / uml.rs).
 const RDF: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
