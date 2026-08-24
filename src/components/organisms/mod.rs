@@ -13,6 +13,7 @@
 mod browser;
 mod crosswalk_scene;
 mod crosswalk_selector;
+mod crosswalk_transform_form;
 mod section;
 mod selector;
 mod term_card;
@@ -21,6 +22,7 @@ mod uml_diagram;
 pub use browser::{OntologyBrowser, OntologyBrowserProps};
 pub use crosswalk_scene::{CrosswalkScene, CrosswalkSceneProps};
 pub use crosswalk_selector::{CrosswalkSelector, CrosswalkSelectorProps};
+pub use crosswalk_transform_form::{CrosswalkTransformForm, CrosswalkTransformFormProps};
 pub use section::{OntoSection, OntoSectionProps};
 pub use selector::{OntologySelector, OntologySelectorProps};
 pub use term_card::{OntoTermCard, OntoTermCardProps};

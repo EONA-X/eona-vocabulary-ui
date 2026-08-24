@@ -8,15 +8,24 @@ use serde::Deserialize;
 use wasm_bindgen::JsValue;
 use web_sys::{window, UrlSearchParams};
 
-/// Fetch a static file as text and `serde_json`-parse it — robust regardless
-/// of the content-type nginx serves it with (`.jsonld` has no default MIME
-/// mapping), mirroring the Vue source's `fetchJson` helper.
-pub async fn fetch_json<T: for<'de> Deserialize<'de>>(url: &str) -> Result<T, String> {
+/// Fetch a static file as plain text — robust regardless of the
+/// content-type nginx serves it with (`.jsonld` has no default MIME
+/// mapping). The raw text itself matters (not just its parsed shape) to
+/// `pages::crosswalk`, which hands the alignment document's raw JSON-LD to
+/// `eona_crosswalk_transform::build_mapping` (it wants the reified-SKOS
+/// document text, not the `OntologyModel` `parse_ontology` builds from it).
+pub async fn fetch_text(url: &str) -> Result<String, String> {
     let resp = gloo_net::http::Request::get(url).send().await.map_err(|e| e.to_string())?;
     if !resp.ok() {
         return Err(format!("HTTP {}", resp.status()));
     }
-    let text = resp.text().await.map_err(|e| e.to_string())?;
+    resp.text().await.map_err(|e| e.to_string())
+}
+
+/// [`fetch_text`] + `serde_json`-parse, mirroring the Vue source's
+/// `fetchJson` helper.
+pub async fn fetch_json<T: for<'de> Deserialize<'de>>(url: &str) -> Result<T, String> {
+    let text = fetch_text(url).await?;
     serde_json::from_str(&text).map_err(|e| e.to_string())
 }
 

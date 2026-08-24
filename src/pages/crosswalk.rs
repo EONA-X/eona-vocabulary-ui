@@ -20,10 +20,10 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
 
-use crate::components::organisms::{CrosswalkScene, CrosswalkSelector};
+use crate::components::organisms::{CrosswalkScene, CrosswalkSelector, CrosswalkTransformForm};
 use crate::crosswalk::{build_crosswalk_graph, AlignmentEntry, XwalkGraph};
 use crate::crosswalk3d::layout_crosswalk_3d;
-use crate::net::{fetch_json, query_param, sync_url_slug};
+use crate::net::{fetch_json, fetch_text, query_param, sync_url_slug};
 use crate::ontology::{namespace_prefixes, parse_ontology, OntologyEntry};
 
 const DOCS_BASE: &str = "/docs";
@@ -52,6 +52,12 @@ pub fn crosswalk_page() -> Html {
     let ontologies = use_state(Vec::<OntologyEntry>::new);
     let selected_slug = use_state(String::new);
     let graph = use_state(|| None::<XwalkGraph>);
+    // The alignment document's raw JSON-LD text, kept alongside the parsed
+    // `graph` — `eona_crosswalk_transform::build_mapping` wants the
+    // reified-SKOS document itself, not the `OntologyModel` `parse_ontology`
+    // builds from it for the 3D view, and re-fetching it a second time for
+    // that purpose alone would be wasteful.
+    let alignment_text = use_state(|| None::<String>);
     let loading_manifest = use_state(|| true);
     let loading_graph = use_state(|| false);
     let error = use_state(|| None::<String>);
@@ -112,6 +118,7 @@ pub fn crosswalk_page() -> Html {
         let alignments = alignments.clone();
         let ontologies = ontologies.clone();
         let graph = graph.clone();
+        let alignment_text = alignment_text.clone();
         let loading_graph = loading_graph.clone();
         let error = error.clone();
         use_effect_with((*selected_slug).clone(), move |slug| {
@@ -122,6 +129,7 @@ pub fn crosswalk_page() -> Html {
                 loading_graph.set(true);
                 error.set(None);
                 graph.set(None);
+                alignment_text.set(None);
                 let ns_prefixes = namespace_prefixes(&ontologies);
                 let side_entries: Vec<OntologyEntry> =
                     entry.sides.iter().filter_map(|s| ontologies.iter().find(|o| &o.slug == s).cloned()).collect();
@@ -138,8 +146,11 @@ pub fn crosswalk_page() -> Html {
                     let side_urls: Vec<String> = side_entries.iter().map(|o| format!("{DOCS_BASE}/{}", o.jsonld)).collect();
                     let alignment_url = format!("{DOCS_BASE}/{}", entry.jsonld);
                     let side_docs = join_all(side_urls.iter().map(|u| fetch_json::<serde_json::Value>(u)));
-                    let alignment_doc = fetch_json::<serde_json::Value>(&alignment_url);
-                    let (side_docs, alignment_doc) = futures::join!(side_docs, alignment_doc);
+                    // Text, not fetch_json: build_mapping wants the raw
+                    // reified-SKOS document, parse_ontology (below) wants it
+                    // as a parsed Value — fetch once, use both ways.
+                    let alignment_raw = fetch_text(&alignment_url);
+                    let (side_docs, alignment_raw) = futures::join!(side_docs, alignment_raw);
 
                     let mut sides = Vec::with_capacity(side_entries.len());
                     let mut ok = true;
@@ -152,8 +163,15 @@ pub fn crosswalk_page() -> Html {
                             }
                         }
                     }
-                    let alignment_model = match alignment_doc {
-                        Ok(doc) => Some(parse_ontology(&doc, Some(&ns_prefixes))),
+                    let alignment_model = match &alignment_raw {
+                        Ok(text) => match serde_json::from_str::<serde_json::Value>(text) {
+                            Ok(doc) => Some(parse_ontology(&doc, Some(&ns_prefixes))),
+                            Err(e) => {
+                                log::error!("failed to parse {}/{}: {e}", DOCS_BASE, entry.jsonld);
+                                ok = false;
+                                None
+                            }
+                        },
                         Err(e) => {
                             log::error!("failed to load {}/{}: {e}", DOCS_BASE, entry.jsonld);
                             ok = false;
@@ -166,6 +184,7 @@ pub fn crosswalk_page() -> Html {
                             let mut built = build_crosswalk_graph(&sides, &alignment_model);
                             layout_crosswalk_3d(&mut built);
                             graph.set(Some(built));
+                            alignment_text.set(alignment_raw.ok());
                         }
                     } else {
                         error.set(Some(fail()));
@@ -223,7 +242,14 @@ pub fn crosswalk_page() -> Html {
                             <p class="eovoc-state__message">{ msg }</p>
                         </div>
                     } else if let Some(g) = (*graph).clone() {
-                        <CrosswalkScene graph={g} />
+                        <>
+                            <CrosswalkScene graph={g.clone()} />
+                            if let Some(text) = (*alignment_text).clone() {
+                                <div class="crosswalk-page__form-wrap">
+                                    <CrosswalkTransformForm graph={g} alignment_text={AttrValue::from(text)} />
+                                </div>
+                            }
+                        </>
                     }
                 </>
             }

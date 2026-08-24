@@ -2196,3 +2196,230 @@ a:hover {
 .crosswalk-page__nav a {
     font-weight: 500;
 }
+
+.crosswalk-page__form-wrap {
+    margin-top: 1.5rem;
+}
+
+/* =============================================================
+   ORGANISM · crosswalk-form (CrosswalkTransformForm — new functionality,
+   no Vue source to port)
+
+   The interactive "try the crosswalk" section: directional switch +
+   confidence selector, an input textarea, a Transform action, and a
+   two-column result (rewritten JSON-LD / interpretation report).
+   ============================================================= */
+
+.crosswalk-form {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 1.25rem;
+}
+
+.crosswalk-form__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.crosswalk-form__lede {
+    margin: 0.375rem 0 1rem;
+    max-width: 48rem;
+    font-size: 0.8125rem;
+    line-height: 1.625;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-form__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.crosswalk-form__switch {
+    display: inline-flex;
+    border-radius: calc(var(--radius) * 0.65);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.crosswalk-form__switch-option {
+    border: none;
+    background: transparent;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    cursor: pointer;
+}
+
+.crosswalk-form__switch-option + .crosswalk-form__switch-option {
+    border-left: 1px solid var(--border);
+}
+
+.crosswalk-form__switch-option--active {
+    background: var(--accent);
+    color: var(--accent-foreground);
+}
+
+.crosswalk-form__confidence {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-form__confidence select {
+    border-radius: calc(var(--radius) * 0.65);
+    border: 1px solid var(--input);
+    background: var(--background);
+    padding: 0.375rem 0.5rem;
+    font: inherit;
+    color: var(--foreground);
+}
+
+.crosswalk-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    margin-bottom: 0.75rem;
+}
+
+.crosswalk-form__field > span {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-form__textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 10rem;
+    resize: vertical;
+    border-radius: calc(var(--radius) * 0.65);
+    border: 1px solid var(--input);
+    background: var(--background);
+    padding: 0.625rem 0.75rem;
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--foreground);
+}
+
+.crosswalk-form__textarea:focus-visible {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+.crosswalk-form__submit {
+    border-radius: calc(var(--radius) * 0.65);
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    padding: 0.5rem 1.125rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--primary-foreground);
+    cursor: pointer;
+}
+
+.crosswalk-form__submit:hover {
+    filter: brightness(1.08);
+}
+
+.crosswalk-form__result {
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.25rem;
+}
+
+.crosswalk-form__output-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+    .crosswalk-form__output-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.crosswalk-form__subheading {
+    margin: 0 0 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-form__subheading:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.crosswalk-form__pre {
+    margin: 0;
+    max-height: 28rem;
+    overflow: auto;
+    border-radius: calc(var(--radius) * 0.65);
+    border: 1px solid var(--border);
+    background: var(--background);
+    padding: 0.75rem;
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: var(--foreground);
+}
+
+.crosswalk-form__empty {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+.crosswalk-form__report-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    max-height: 12rem;
+    overflow: auto;
+}
+
+.crosswalk-form__report-list li {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--foreground);
+}
+
+.crosswalk-form__report-list code {
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.6875rem;
+    color: var(--foreground);
+    overflow-wrap: anywhere;
+}
+
+.crosswalk-form__report-list--plain code {
+    color: var(--muted-foreground);
+}
+
+.crosswalk-form__match-tag {
+    display: inline-block;
+    margin-left: 0.375rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    padding: 0 0.375rem;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--muted-foreground);
+}
