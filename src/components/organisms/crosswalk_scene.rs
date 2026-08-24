@@ -532,15 +532,15 @@ pub fn crosswalk_scene(props: &CrosswalkSceneProps) -> Html {
     let canvas_ref = use_node_ref();
     let host_ref = use_node_ref();
 
-    let graph = use_memo((props.graph.clone(), *show_code_values, *mapped_only), |(g, show_code, mapped)| {
+    let visible = use_memo((props.graph.clone(), *show_code_values, *mapped_only), |(g, show_code, mapped)| {
         visible_graph(g, *show_code, *mapped)
     });
 
-    let by_iri: HashMap<&str, &XwalkNode> = graph.nodes.iter().map(|n| (n.iri.as_str(), n)).collect();
+    let by_iri: HashMap<&str, &XwalkNode> = visible.nodes.iter().map(|n| (n.iri.as_str(), n)).collect();
     let selected_node = selected_iri.as_deref().and_then(|iri| by_iri.get(iri)).copied();
     let selected_mappings: Vec<(&XwalkEdge, Option<&XwalkNode>)> = selected_node
         .map(|n| {
-            graph
+            visible
                 .edges
                 .iter()
                 .filter(|e| e.kind == XwalkEdgeKind::Mapping && (e.source == n.iri || e.target == n.iri))
@@ -552,7 +552,7 @@ pub fn crosswalk_scene(props: &CrosswalkSceneProps) -> Html {
         })
         .unwrap_or_default();
 
-    let hovered_edge = hovered_edge_key.as_deref().and_then(|k| graph.edges.iter().find(|e| edge_key(e) == k));
+    let hovered_edge = hovered_edge_key.as_deref().and_then(|k| visible.edges.iter().find(|e| edge_key(e) == k));
     let tooltip: Option<Tooltip> = if let Some(iri) = hovered_iri.as_deref() {
         by_iri.get(iri).map(|n| Tooltip { title: n.label.clone(), curie: Some(n.curie.clone()), body: n.description.clone() })
     } else {
@@ -830,7 +830,7 @@ pub fn crosswalk_scene(props: &CrosswalkSceneProps) -> Html {
     // Rebuild the mesh list whenever the filtered/laid-out graph changes.
     {
         let scene = scene.clone();
-        let graph_for_effect = (*graph).clone();
+        let graph_for_effect = (*visible).clone();
         use_effect_with(graph_for_effect, move |g| {
             if let Some(s) = scene.borrow_mut().as_mut() {
                 s.rebuild(g);
@@ -861,7 +861,7 @@ pub fn crosswalk_scene(props: &CrosswalkSceneProps) -> Html {
     html! {
         <div class="crosswalk-scene">
             <div class="crosswalk-scene__legend">
-                { for graph.sides.iter().map(|s| html! {
+                { for props.graph.sides.iter().map(|s| html! {
                     <span key={s.slug.clone()} class="crosswalk-scene__legend-item">
                         <span class="crosswalk-scene__swatch" style={format!("background-color:{}", s.color)} aria-hidden="true" />
                         { s.title.clone() }
@@ -870,14 +870,14 @@ pub fn crosswalk_scene(props: &CrosswalkSceneProps) -> Html {
                 }) }
                 <span class="crosswalk-scene__legend-item">
                     <span class="crosswalk-scene__swatch crosswalk-scene__swatch--mapping" aria-hidden="true" />
-                    { format!("mapping (exact {} \u{b7} close {} \u{b7} related {})", graph.stats.by_match.exact, graph.stats.by_match.close, graph.stats.by_match.related) }
+                    { format!("mapping (exact {} \u{b7} close {} \u{b7} related {})", props.graph.stats.by_match.exact, props.graph.stats.by_match.close, props.graph.stats.by_match.related) }
                 </span>
                 <span class="crosswalk-scene__legend-item">
                     <span class="crosswalk-scene__swatch crosswalk-scene__swatch--edge" aria-hidden="true" />
                     { "structure / association" }
                 </span>
                 <span class="crosswalk-scene__coverage">
-                    { format!("{} of {} concepts mapped ({}%)", graph.stats.mapped, graph.stats.nodes, if graph.stats.nodes > 0 { graph.stats.mapped * 100 / graph.stats.nodes } else { 0 }) }
+                    { format!("{} of {} concepts mapped ({}%)", props.graph.stats.mapped, props.graph.stats.nodes, if props.graph.stats.nodes > 0 { props.graph.stats.mapped * 100 / props.graph.stats.nodes } else { 0 }) }
                 </span>
             </div>
 
@@ -914,7 +914,7 @@ pub fn crosswalk_scene(props: &CrosswalkSceneProps) -> Html {
                     <canvas
                         ref={canvas_ref}
                         role="img"
-                        aria-label={format!("3D crosswalk scene: {}", graph.sides.iter().map(|s| s.title.clone()).collect::<Vec<_>>().join(" mapped to "))}
+                        aria-label={format!("3D crosswalk scene: {}", props.graph.sides.iter().map(|s| s.title.clone()).collect::<Vec<_>>().join(" mapped to "))}
                         class="crosswalk-scene__canvas"
                     />
                 }
@@ -975,14 +975,14 @@ pub fn crosswalk_scene(props: &CrosswalkSceneProps) -> Html {
             </div>
 
             <details class="crosswalk-scene__table-details">
-                <summary>{ format!("Mapping table ({})", graph.stats.mapped) }</summary>
+                <summary>{ format!("Mapping table ({})", props.graph.stats.mapped) }</summary>
                 <div class="crosswalk-scene__table-wrap">
                     <table class="crosswalk-scene__table">
                         <thead>
                             <tr><th>{ "Term" }</th><th>{ "Match" }</th><th>{ "Term" }</th><th>{ "Rationale" }</th></tr>
                         </thead>
                         <tbody>
-                            { for graph.edges.iter().filter(|e| e.kind == XwalkEdgeKind::Mapping).map(|e| html! {
+                            { for props.graph.edges.iter().filter(|e| e.kind == XwalkEdgeKind::Mapping).map(|e| html! {
                                 <tr key={format!("{}-{}", e.source, e.target)}>
                                     <td>{ by_iri.get(e.source.as_str()).map(|n| n.label.clone()).unwrap_or_else(|| e.source.clone()) }</td>
                                     <td>{ format!("{}Match", e.matched.map(|m| m.label()).unwrap_or("")) }</td>
