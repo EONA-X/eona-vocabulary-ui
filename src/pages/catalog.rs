@@ -117,10 +117,7 @@ pub fn catalog_page() -> Html {
                             version: dataset.version.as_deref().and_then(parse_loose_semver),
                             comment: dataset.description.clone(),
                             thumbnail: dataset.thumbnail.as_deref().map(|iri| Thumbnail { resource: Some(asset_url(iri)) }),
-                            creator: dataset.creator.as_ref().map(|c| Creator {
-                                name: Some(c.name.clone()),
-                                thumbnail: c.thumbnail.as_deref().map(|iri| Thumbnail { resource: Some(asset_url(iri)) }),
-                            }),
+                            creator: dataset.creator.as_ref().map(|c| Creator { name: Some(c.name.clone()), thumbnail: None }),
                             keywords: Vec::new(),
                             policies: Vec::new(),
                             dcterm_types: Vec::new(),
