@@ -11,6 +11,7 @@
 #![allow(dead_code, unused_imports)]
 
 mod browser;
+mod crosswalk_scene;
 mod crosswalk_selector;
 mod section;
 mod selector;
@@ -18,6 +19,7 @@ mod term_card;
 mod uml_diagram;
 
 pub use browser::{OntologyBrowser, OntologyBrowserProps};
+pub use crosswalk_scene::{CrosswalkScene, CrosswalkSceneProps};
 pub use crosswalk_selector::{CrosswalkSelector, CrosswalkSelectorProps};
 pub use section::{OntoSection, OntoSectionProps};
 pub use selector::{OntologySelector, OntologySelectorProps};
