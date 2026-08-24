@@ -11,6 +11,8 @@
 
 mod badge;
 mod iri;
+mod theme_toggle;
 
 pub use badge::{BadgeVariant, OntoBadge, OntoBadgeProps};
 pub use iri::{OntoIri, OntoIriProps};
+pub use theme_toggle::ThemeToggle;

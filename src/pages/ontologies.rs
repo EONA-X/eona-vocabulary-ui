@@ -17,7 +17,7 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
 
-use crate::components::organisms::{OntologyBrowser, OntologySelector};
+use crate::components::organisms::{NavRoute, Navbar, OntologyBrowser, OntologySelector};
 use crate::net::{fetch_json, query_param, sync_url_slug};
 use crate::ontology::{namespace_prefixes, parse_ontology, OntologyEntry, OntologyModel};
 
@@ -144,10 +144,7 @@ pub fn ontologies_page() -> Html {
 
     html! {
         <main class="eovoc-page">
-            <nav class="crosswalk-page__nav">
-                <a href="/">{ "\u{2190} Catalog" }</a>
-                <a href="/crosswalk">{ "Crosswalk 3D \u{2192}" }</a>
-            </nav>
+            <Navbar current={NavRoute::Ontologies} />
             <div class="eovoc-page__header">
                 <h1 class="eovoc-page__title">{ "Ontology Browser" }</h1>
                 <p class="eovoc-page__lede">

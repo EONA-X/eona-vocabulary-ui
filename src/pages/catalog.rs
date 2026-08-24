@@ -16,6 +16,7 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
 
+use crate::components::organisms::{NavRoute, Navbar};
 use crate::dcat::{parse_catalog, site_relative, CatalogModel};
 use crate::net::fetch_json;
 
@@ -80,9 +81,7 @@ pub fn catalog_page() -> Html {
 
     html! {
         <main class="eovoc-page">
-            <nav class="crosswalk-page__nav">
-                <a href="/crosswalk">{ "Crosswalk 3D \u{2192}" }</a>
-            </nav>
+            <Navbar current={NavRoute::Catalog} />
             <div class="eovoc-page__header">
                 <h1 class="eovoc-page__title">{ "Vocabulary Catalog" }</h1>
                 <p class="eovoc-page__lede">

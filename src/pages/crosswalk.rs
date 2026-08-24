@@ -20,7 +20,7 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
 
-use crate::components::organisms::{CrosswalkScene, CrosswalkSelector, CrosswalkTransformForm};
+use crate::components::organisms::{CrosswalkScene, CrosswalkSelector, CrosswalkTransformForm, NavRoute, Navbar};
 use crate::crosswalk::{build_crosswalk_graph, AlignmentEntry, XwalkGraph};
 use crate::crosswalk3d::layout_crosswalk_3d;
 use crate::net::{fetch_json, fetch_text, query_param, sync_url_slug};
@@ -205,10 +205,7 @@ pub fn crosswalk_page() -> Html {
 
     html! {
         <main class="crosswalk-page">
-            <nav class="crosswalk-page__nav">
-                <a href="/">{ "\u{2190} Catalog" }</a>
-                <a href="/ontologies">{ "Ontology Browser" }</a>
-            </nav>
+            <Navbar current={NavRoute::Crosswalk} />
             <div class="eovoc-page__header">
                 <h1 class="eovoc-page__title">{ "Crosswalk 3D" }</h1>
                 <p class="eovoc-page__lede">

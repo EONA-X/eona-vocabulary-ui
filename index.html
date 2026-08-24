@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<!--
-  pf-v6-theme-dark on the root: this app is permanently dark-themed (no
-  light/dark toggle), so pages::catalog's patternfly-yew components
-  (DatasetCard/Gallery) need PatternFly's own dark design tokens switched on
-  at the same scope — otherwise they render on PatternFly's *light* card
-  surface/text tokens, clashing with the rest of the app. Same class
-  dataspace-rs/edc-web-ui's ToggleTheme sets on `document.documentElement`
-  for its dark mode; ours is just static since there's no toggle here.
--->
 <html lang="en" class="pf-v6-theme-dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>EOVoc UI</title>
+    <!-- Applies the persisted theme (components::atoms::theme_toggle,
+         localStorage key "eovoc-theme") before Yew mounts, so a returning
+         visitor who picked light mode doesn't see a dark flash first. Dark
+         is the default (class="pf-v6-theme-dark" above already covers it),
+         so this only ever needs to *remove* that class + set data-theme for
+         a "light" preference — kept in sync with apply_theme() in
+         theme_toggle.rs, which is the only other place that touches these. -->
+    <script>
+      if (localStorage.getItem("eovoc-theme") === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+        document.documentElement.className = "";
+      }
+    </script>
     <!-- patternfly-yew (pages::catalog's DatasetCard/Gallery) needs the actual
          PatternFly CSS — it's a class-based design system, not something
          patternfly-yew generates styles for on its own. Pulled via Trunk's

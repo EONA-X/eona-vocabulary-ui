@@ -930,6 +930,63 @@ a:hover {
     padding: 2rem 1rem;
 }
 
+/* =============================================================
+   ORGANISM · Navbar (components::organisms::navbar)
+
+   Shared top bar for every route — see main.rs's routing and each
+   page's own top-level markup. Sits inside the page's own max-width
+   column (same as the crosswalk-page__nav bare links it replaces), not
+   full-bleed across the viewport.
+   ============================================================= */
+
+.eovoc-navbar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: -0.5rem -1rem 1.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.eovoc-navbar__brand {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--foreground);
+    white-space: nowrap;
+}
+
+.eovoc-navbar__links {
+    display: flex;
+    flex: 1;
+    gap: 1.25rem;
+    font-size: 0.8125rem;
+}
+
+.eovoc-navbar__link {
+    font-weight: 500;
+    color: var(--muted-foreground);
+}
+
+.eovoc-navbar__link--active {
+    color: var(--accent);
+}
+
+.eovoc-theme-toggle {
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    background: var(--secondary);
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--foreground);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.eovoc-theme-toggle:hover {
+    border-color: var(--accent);
+}
+
 .eovoc-page__header {
     margin-bottom: 1.5rem;
 }
@@ -2184,17 +2241,6 @@ a:hover {
     max-width: 72rem;
     margin: 0 auto;
     padding: 2rem 1rem;
-}
-
-.crosswalk-page__nav {
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 1rem;
-    font-size: 0.8125rem;
-}
-
-.crosswalk-page__nav a {
-    font-weight: 500;
 }
 
 .crosswalk-page__form-wrap {
