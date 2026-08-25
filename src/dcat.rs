@@ -29,6 +29,28 @@ pub struct Creator {
     pub name: String,
 }
 
+/// The `dcterms:type` literal on a `dcat:Dataset` (see generate.py's
+/// `build_catalog_turtle`) — today always exactly "OWL Ontology" or "SHACL
+/// Shapes Graph". `Other` carries any future/unrecognised literal through
+/// verbatim instead of panicking; `pages::catalog` skips the type badge for
+/// it rather than showing something misleading.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum DatasetKind {
+    Owl,
+    Shacl,
+    Other(String),
+}
+
+impl From<&str> for DatasetKind {
+    fn from(raw: &str) -> Self {
+        match raw {
+            "OWL Ontology" => DatasetKind::Owl,
+            "SHACL Shapes Graph" => DatasetKind::Shacl,
+            other => DatasetKind::Other(other.to_string()),
+        }
+    }
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub struct CatalogDataset {
     pub slug: String,
@@ -49,6 +71,10 @@ pub struct CatalogDataset {
     /// is one (see generate.py's UPSTREAM_CREATORS) — absent for Eona-X's
     /// own originals, which have no external upstream to credit.
     pub creator: Option<Creator>,
+    /// This ontology's `dcterms:type` (see `DatasetKind`) — `None` when the
+    /// catalog was generated before that predicate existed, so callers must
+    /// degrade gracefully (no badge) rather than assume it's always set.
+    pub kind: Option<DatasetKind>,
     pub distributions: Vec<Distribution>,
 }
 
@@ -128,6 +154,7 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
             let landing_page = first_ref(node, &format!("{DCAT}landingPage"));
             let conforms_to = first_ref(node, &format!("{DCTERMS}conformsTo"));
             let version = first_literal(node, &format!("{DCAT}version"));
+            let kind = first_literal(node, &format!("{DCTERMS}type")).map(|raw| DatasetKind::from(raw.as_str()));
             let thumbnail = first_ref(node, &format!("{FOAF}thumbnail"));
             let creator = first_ref(node, &format!("{DCTERMS}creator"))
                 .and_then(|iri| node_map.get(iri.as_str()).copied())
@@ -146,7 +173,7 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
                 })
                 .collect();
 
-            Some(CatalogDataset { slug, title, description, landing_page, conforms_to, version, thumbnail, creator, distributions })
+            Some(CatalogDataset { slug, title, description, landing_page, conforms_to, version, kind, thumbnail, creator, distributions })
         })
         .collect();
 

@@ -17,7 +17,7 @@ use web_sys::window;
 use yew::prelude::*;
 
 use crate::components::organisms::{NavRoute, Navbar};
-use crate::dcat::{parse_catalog, site_relative, CatalogModel};
+use crate::dcat::{parse_catalog, site_relative, CatalogModel, DatasetKind};
 use crate::net::fetch_json;
 
 const DOCS_BASE: &str = "/docs";
@@ -30,6 +30,17 @@ const DOCS_BASE: &str = "/docs";
 /// "$Date: ...$" string.
 fn parse_loose_semver(raw: &str) -> Option<semver::Version> {
     semver::Version::parse(raw).ok().or_else(|| semver::Version::parse(&format!("{raw}.0")).ok())
+}
+
+/// Short badge text for a dataset's `dcterms:type` — `None` for a missing or
+/// unrecognised kind, so the caller skips the badge rather than showing raw
+/// literal text like "OWL Ontology" that would crowd the thumbnail.
+fn kind_badge_label(kind: &DatasetKind) -> Option<&'static str> {
+    match kind {
+        DatasetKind::Owl => Some("OWL"),
+        DatasetKind::Shacl => Some("SHACL"),
+        DatasetKind::Other(_) => None,
+    }
 }
 
 /// A `catalog.jsonld` `foaf:thumbnail`/`dcat:downloadURL`-style IRI (minted
@@ -125,14 +136,19 @@ pub fn catalog_page() -> Html {
                         let href = dataset.landing_page.as_deref().map(site_relative)
                             .unwrap_or_else(|| format!("/ontologies?ontology={}", dataset.slug));
                         let on_offer_click = on_navigate.reform(move |()| href.clone());
+                        let type_badge = dataset.kind.as_ref().and_then(kind_badge_label).map(|label| html! {
+                            <span class="eovoc-catalog__type-badge">{ label }</span>
+                        });
 
                         html! {
-                            <DatasetCard
-                                key={dataset.slug.clone()}
-                                dataset={dataspace_dataset}
-                                {on_offer_click}
-                                button_label="View documentation"
-                            />
+                            <div class="eovoc-catalog__card" key={dataset.slug.clone()}>
+                                { for type_badge }
+                                <DatasetCard
+                                    dataset={dataspace_dataset}
+                                    {on_offer_click}
+                                    button_label="View documentation"
+                                />
+                            </div>
                         }
                     }) }
                 </Gallery>
