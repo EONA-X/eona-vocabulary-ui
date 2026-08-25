@@ -229,6 +229,13 @@ const MIN_W: f64 = 128.0;
 const MAX_W: f64 = 260.0;
 const MAX_ATTRS: usize = 12; // beyond this a "+N more" line keeps boxes proportioned
 const MAX_MEMBERS: usize = 8; // same idea for `UmlClassNode::members` (external reference boxes can collect a lot of instances)
+// A hub with more direct subclasses than this auto-collapses behind its "+N"
+// badge even in flat (non-group_hierarchy) mode — see `build_uml_diagram`'s
+// `collapse_threshold`. Above this, one straight generalization edge per
+// child converging on a single box visually crowds regardless of canvas
+// size; below it, a typical small hierarchy stays exactly as fully-flat as
+// before this existed.
+const MAX_FLAT_FANOUT: usize = 8;
 const H_GAP: f64 = 44.0;
 const V_GAP: f64 = 72.0;
 const MARGIN: f64 = 28.0;
@@ -591,98 +598,107 @@ pub fn build_uml_diagram(model: &OntologyModel, options: &UmlLayoutOptions) -> U
     }
 
     let group_hierarchy = options.group_hierarchy;
-    let mut cluster_of: Option<HashMap<String, String>> = None;
-    let mut root_iris: Vec<String> = Vec::new();
-    let visible_edges: Vec<UmlEdge>;
+    // With `group_hierarchy` on, every class with any subclasses collapses
+    // behind its primary superclass by default (the toggle's original,
+    // unchanged meaning: "only roots start visible"). Off, a typical small
+    // hierarchy still renders fully flat as before — but a hub whose own
+    // fan-out is large enough to visually crowd the diagram (see
+    // MAX_FLAT_FANOUT: a straight generalization edge per child, all
+    // converging on one box, becomes an unreadable tangle well before 33 —
+    // this file's own scale test) auto-collapses the same way, unprompted.
+    // Either way `options.expanded` reveals a specific collapsed hub's
+    // children regardless of which of the two reasons collapsed it —
+    // `OntoUmlClass`'s "+N" badge is already unconditional on `child_count`
+    // (see uml_class.rs), so populating it here is the only change expand/
+    // collapse needs to also work for an auto-collapsed flat-mode hub; the
+    // organism's click handler already just toggles `expanded` regardless of
+    // `group_hierarchy`'s value.
+    let collapse_threshold = if group_hierarchy { 0 } else { MAX_FLAT_FANOUT };
 
-    // group_hierarchy: collapse every class behind its primary superclass by
-    // default — only roots (no superclass) start visible — expanding
-    // exactly the IRIs the caller passed in `options.expanded`. See
-    // `UmlLayoutOptions` for why this (rather than an always-expanded
-    // "grouped" layout mode) is what actually keeps the diagram compact and
-    // readable.
-    if group_hierarchy {
-        let primary_parent = primary_parent_map(&edges);
-        let mut children_of: HashMap<String, Vec<String>> = HashMap::new();
-        for n in nodes.iter() {
-            if let Some(parent_iri) = primary_parent.get(&n.iri) {
-                if index_of.contains_key(parent_iri) {
-                    children_of.entry(parent_iri.clone()).or_default().push(n.iri.clone());
-                }
+    let primary_parent = primary_parent_map(&edges);
+    let mut children_of: HashMap<String, Vec<String>> = HashMap::new();
+    for n in nodes.iter() {
+        if let Some(parent_iri) = primary_parent.get(&n.iri) {
+            if index_of.contains_key(parent_iri) {
+                children_of.entry(parent_iri.clone()).or_default().push(n.iri.clone());
             }
         }
-        for n in nodes.iter_mut() {
-            n.child_count = children_of.get(&n.iri).map(Vec::len).unwrap_or(0);
-        }
-
-        let empty_expanded: HashSet<String> = HashSet::new();
-        let expanded = options.expanded.as_ref().unwrap_or(&empty_expanded);
-        let mut clusters: HashMap<String, String> = HashMap::new();
-
-        for n in nodes.iter() {
-            let has_visible_parent = primary_parent.get(&n.iri).is_some_and(|p| index_of.contains_key(p));
-            if !has_visible_parent {
-                root_iris.push(n.iri.clone()); // roots start every cluster and are always visible
-            }
-        }
-        for root_iri in root_iris.clone() {
-            reveal(&root_iri, &root_iri, &mut clusters, &children_of, expanded, &index_of, &mut nodes);
-        }
-        root_iris.sort_by(|a, b| cmp_label(&nodes[index_of[a]].label, &nodes[index_of[b]].label));
-
-        nodes.retain(|n| clusters.contains_key(&n.iri));
-        cluster_of = Some(clusters);
-        let clusters_ref = cluster_of.as_ref().unwrap();
-
-        // A hidden (collapsed) endpoint doesn't just drop its edges — it
-        // redirects them to its nearest VISIBLE ancestor (walking up
-        // primary_parent, recursively through as many collapsed levels as
-        // needed; a root is always visible, so this always terminates at
-        // worst at the root carrying the "+N" badge), so a relationship one
-        // of a collapsed group's children has isn't silently lost, just
-        // shown at whatever level is currently expanded — including
-        // associations, which used to be dropped outright once either end
-        // fell inside a different cluster than the other. Every node keeps
-        // an absolute (x, y) after packing (see below), in one shared
-        // coordinate space, so route_edges (called globally, once all
-        // clusters are placed) can draw a straight line between any two
-        // visible nodes regardless of which cluster each belongs to.
-        let nearest_visible = |iri: &str| -> Option<String> {
-            let mut cur = iri.to_string();
-            let mut seen: HashSet<String> = HashSet::new();
-            loop {
-                if clusters_ref.contains_key(&cur) {
-                    return Some(cur);
-                }
-                if seen.contains(&cur) {
-                    return None; // cycle guard
-                }
-                seen.insert(cur.clone());
-                match primary_parent.get(&cur) {
-                    Some(p) => cur = p.clone(),
-                    None => return None,
-                }
-            }
-        };
-        let mut redirected_keys: HashSet<String> = HashSet::new();
-        let mut redirected: Vec<UmlEdge> = Vec::new();
-        for e in &edges {
-            let (Some(s), Some(t)) = (nearest_visible(&e.source), nearest_visible(&e.target)) else { continue };
-            if s == t {
-                continue;
-            }
-            let key = edge_key(e.kind, &s, &t, e.label.as_deref());
-            if redirected_keys.contains(&key) {
-                continue;
-            }
-            redirected_keys.insert(key);
-            redirected.push(UmlEdge { kind: e.kind, source: s, target: t, label: e.label.clone(), d: String::new(), label_x: 0.0, label_y: 0.0 });
-        }
-        visible_edges = redirected;
-    } else {
-        visible_edges = edges;
     }
-    let mut visible_edges = visible_edges;
+    for n in nodes.iter_mut() {
+        // Zero (not the raw count) for a hub at or below `collapse_threshold`
+        // in flat mode: its children stay always-visible below (`reveal`
+        // recurses into any non-empty `children_of` entry regardless of this
+        // field — see there), and `OntoUmlClass`'s badge is unconditional on
+        // `child_count > 0`, so leaving it at the raw count here would draw
+        // a "+N"/collapse badge on an ordinary small hierarchy that was
+        // never actually collapsed, in flat mode's typical case.
+        let raw_child_count = children_of.get(&n.iri).map(Vec::len).unwrap_or(0);
+        n.child_count = if raw_child_count > collapse_threshold { raw_child_count } else { 0 };
+    }
+
+    let empty_expanded: HashSet<String> = HashSet::new();
+    let expanded = options.expanded.as_ref().unwrap_or(&empty_expanded);
+    let mut clusters: HashMap<String, String> = HashMap::new();
+    let mut root_iris: Vec<String> = Vec::new();
+
+    for n in nodes.iter() {
+        let has_visible_parent = primary_parent.get(&n.iri).is_some_and(|p| index_of.contains_key(p));
+        if !has_visible_parent {
+            root_iris.push(n.iri.clone()); // roots start every cluster and are always visible
+        }
+    }
+    for root_iri in root_iris.clone() {
+        reveal(&root_iri, &root_iri, &mut clusters, &children_of, expanded, &index_of, &mut nodes);
+    }
+    root_iris.sort_by(|a, b| cmp_label(&nodes[index_of[a]].label, &nodes[index_of[b]].label));
+
+    nodes.retain(|n| clusters.contains_key(&n.iri));
+
+    // A hidden (collapsed) endpoint doesn't just drop its edges — it
+    // redirects them to its nearest VISIBLE ancestor (walking up
+    // primary_parent, recursively through as many collapsed levels as
+    // needed; a root is always visible, so this always terminates at worst
+    // at the root carrying the "+N" badge), so a relationship one of a
+    // collapsed group's children has isn't silently lost, just shown at
+    // whatever level is currently expanded — including associations, which
+    // used to be dropped outright once either end fell inside a different
+    // cluster than the other. Every node keeps an absolute (x, y) after
+    // packing (see below), in one shared coordinate space, so route_edges
+    // (called globally, once all clusters are placed) can draw a straight
+    // line between any two visible nodes regardless of which cluster each
+    // belongs to.
+    let nearest_visible = |iri: &str| -> Option<String> {
+        let mut cur = iri.to_string();
+        let mut seen: HashSet<String> = HashSet::new();
+        loop {
+            if clusters.contains_key(&cur) {
+                return Some(cur);
+            }
+            if seen.contains(&cur) {
+                return None; // cycle guard
+            }
+            seen.insert(cur.clone());
+            match primary_parent.get(&cur) {
+                Some(p) => cur = p.clone(),
+                None => return None,
+            }
+        }
+    };
+    let mut redirected_keys: HashSet<String> = HashSet::new();
+    let mut redirected: Vec<UmlEdge> = Vec::new();
+    for e in &edges {
+        let (Some(s), Some(t)) = (nearest_visible(&e.source), nearest_visible(&e.target)) else { continue };
+        if s == t {
+            continue;
+        }
+        let key = edge_key(e.kind, &s, &t, e.label.as_deref());
+        if redirected_keys.contains(&key) {
+            continue;
+        }
+        redirected_keys.insert(key);
+        redirected.push(UmlEdge { kind: e.kind, source: s, target: t, label: e.label.clone(), d: String::new(), label_x: 0.0, label_y: 0.0 });
+    }
+    let mut visible_edges = redirected;
 
     // One pastel per distinct prefix, assigned in stable (sorted) order.
     let mut prefixes: Vec<String> = nodes.iter().map(|n| n.prefix.clone()).collect::<HashSet<_>>().into_iter().collect();
@@ -708,11 +724,19 @@ pub fn build_uml_diagram(model: &OntologyModel, options: &UmlLayoutOptions) -> U
         }
     }
 
-    let Some(cluster_of) = cluster_of else {
+    // Layout style is strictly the manual toggle's concern, independent of
+    // *why* anything above was collapsed: `group_hierarchy` gets the
+    // circle-packed per-cluster treatment below (unchanged); flat mode
+    // (including a hub that just auto-collapsed on fan-out alone) gets ONE
+    // ordinary layout() call over whatever `nodes`/`visible_edges` survived
+    // the filtering above — auto-collapsing never introduces cluster
+    // circles into a diagram the user left in flat mode.
+    if !group_hierarchy {
         let (width, height) = layout(&mut nodes, &visible_edges, options);
         route_edges(&nodes, &mut visible_edges);
         return UmlDiagram { nodes, edges: visible_edges, width, height, clusters: Vec::new() };
-    };
+    }
+    let cluster_of = clusters;
 
     // Independent per-cluster layout: each root + its currently-revealed
     // descendants gets its own layout() call (so a cluster's internal
@@ -876,11 +900,16 @@ pub fn build_uml_diagram(model: &OntologyModel, options: &UmlLayoutOptions) -> U
     }
 }
 
-/// Recursively reveal `iri` (and, if it carries children and is itself in
-/// `expanded`, its direct children too) into `clusters`/`cluster_root`, all
-/// tagged with `root_iri`. A free function (not a closure) so it can
-/// recurse while holding a `&mut [UmlClassNode]` — mirrors `buildUmlDiagram`'s
-/// inner `reveal` closure in uml.ts.
+/// Recursively reveal `iri` into `clusters`/`cluster_root` (tagged with
+/// `root_iri`), then its direct children too — always, when `iri` isn't a
+/// collapse-worthy hub (its `child_count` field is already 0 in that case,
+/// whatever its real child count; see `build_uml_diagram`'s
+/// `collapse_threshold`, which decides that before calling this), or only
+/// when `iri` is also in `expanded` otherwise. A free function (not a
+/// closure) so it can recurse while holding a `&mut [UmlClassNode]` —
+/// mirrors `buildUmlDiagram`'s inner `reveal` closure in uml.ts (which
+/// predates the flat-mode auto-collapse case and only ever had the
+/// collapse-worthy branch below).
 fn reveal(
     iri: &str,
     root_iri: &str,
@@ -896,14 +925,14 @@ fn reveal(
     clusters.insert(iri.to_string(), root_iri.to_string());
     let idx = index_of[iri];
     nodes[idx].cluster_root = Some(root_iri.to_string());
-    let child_count = nodes[idx].child_count;
-    if child_count > 0 && expanded.contains(iri) {
-        nodes[idx].children_expanded = true;
-        if let Some(kids) = children_of.get(iri) {
-            let kids = kids.clone();
-            for k in &kids {
-                reveal(k, root_iri, clusters, children_of, expanded, index_of, nodes);
-            }
+    let Some(kids) = children_of.get(iri).cloned() else { return };
+    let collapse_worthy = nodes[idx].child_count > 0;
+    if collapse_worthy {
+        nodes[idx].children_expanded = expanded.contains(iri);
+    }
+    if !collapse_worthy || expanded.contains(iri) {
+        for k in &kids {
+            reveal(k, root_iri, clusters, children_of, expanded, index_of, nodes);
         }
     }
 }
