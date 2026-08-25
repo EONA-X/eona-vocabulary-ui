@@ -16,11 +16,21 @@ ARG RUST_VERSION=1.97.1
 # doesn't support it and fails the build. Same version dataspace-rs/edc-web-ui
 # pins, for the same reason.
 ARG TRUNK_VERSION=0.22.0-beta.2
+# Must match the `wasm-bindgen` crate version pinned in Cargo.lock exactly
+# (trunk's own wasm-bindgen invocation errors on any mismatch). Installed via
+# cargo (this whole layer is cached, and cargo install retries a stalled
+# crates.io download on its own) rather than left to trunk's own first-use
+# auto-download of the prebuilt release archive straight from GitHub, which
+# repeatedly stalled ~30s into the transfer and failed the build outright —
+# with no persistent cache, every retry re-downloaded from scratch.
+ARG WASM_BINDGEN_VERSION=0.2.127
 
 FROM rust:${RUST_VERSION}-slim AS build
 RUN rustup target add wasm32-unknown-unknown
 ARG TRUNK_VERSION
 RUN cargo install trunk@${TRUNK_VERSION} --locked
+ARG WASM_BINDGEN_VERSION
+RUN cargo install wasm-bindgen-cli@${WASM_BINDGEN_VERSION} --locked
 
 WORKDIR /app
 COPY crates/eona-crosswalk-transform/ ./crates/eona-crosswalk-transform/
