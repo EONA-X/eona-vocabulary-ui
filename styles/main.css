@@ -2489,6 +2489,15 @@ a:hover {
 
 .eovoc-catalog__card {
     position: relative;
+    /* Gallery lays out its items on CSS grid, whose rows stretch every item
+       to the row's tallest by default — but only the grid item itself
+       (patternfly's own .pf-v6-l-gallery__item wrapper), not this wrapper
+       nested one level inside it. Without an explicit height here,
+       DatasetCard's `full_height=true` (a plain height: 100%) resolves
+       against this div's shrink-to-fit content height instead of the grid
+       row's height, so cards with a shorter description end up visibly
+       shorter than their row siblings instead of lining up. */
+    height: 100%;
 }
 
 .eovoc-catalog__type-badge {
