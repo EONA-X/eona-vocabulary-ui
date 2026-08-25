@@ -39,7 +39,20 @@ fn kind_badge_label(kind: &DatasetKind) -> Option<&'static str> {
     match kind {
         DatasetKind::Owl => Some("OWL"),
         DatasetKind::Shacl => Some("SHACL"),
+        DatasetKind::Crosswalk => Some("CROSSWALK"),
         DatasetKind::Other(_) => None,
+    }
+}
+
+/// CSS modifier class per kind — gives each type badge its own accent color
+/// (see styles/main.css) instead of all three reading identically save for
+/// their text.
+fn kind_badge_class(kind: &DatasetKind) -> &'static str {
+    match kind {
+        DatasetKind::Owl => "eovoc-catalog__type-badge--owl",
+        DatasetKind::Shacl => "eovoc-catalog__type-badge--shacl",
+        DatasetKind::Crosswalk => "eovoc-catalog__type-badge--crosswalk",
+        DatasetKind::Other(_) => "",
     }
 }
 
@@ -133,12 +146,16 @@ pub fn catalog_page() -> Html {
                             policies: Vec::new(),
                             dcterm_types: Vec::new(),
                         };
+                        let is_crosswalk = dataset.kind == Some(DatasetKind::Crosswalk);
                         let href = dataset.landing_page.as_deref().map(site_relative)
                             .unwrap_or_else(|| format!("/ontologies?ontology={}", dataset.slug));
                         let on_offer_click = on_navigate.reform(move |()| href.clone());
-                        let type_badge = dataset.kind.as_ref().and_then(kind_badge_label).map(|label| html! {
-                            <span class="eovoc-catalog__type-badge">{ label }</span>
+                        let type_badge = dataset.kind.as_ref().and_then(|kind| {
+                            let label = kind_badge_label(kind)?;
+                            let class = classes!("eovoc-catalog__type-badge", kind_badge_class(kind));
+                            Some(html! { <span class={class}>{ label }</span> })
                         });
+                        let button_label = if is_crosswalk { "View 3D crosswalk" } else { "View documentation" };
 
                         html! {
                             <div class="eovoc-catalog__card" key={dataset.slug.clone()}>
@@ -146,7 +163,7 @@ pub fn catalog_page() -> Html {
                                 <DatasetCard
                                     dataset={dataspace_dataset}
                                     {on_offer_click}
-                                    button_label="View documentation"
+                                    {button_label}
                                 />
                             </div>
                         }

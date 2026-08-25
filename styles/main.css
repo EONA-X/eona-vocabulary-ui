@@ -2476,11 +2476,15 @@ a:hover {
    patch/fork)
 
    A thin positioning wrapper around each DatasetCard so we can float our
-   own dcterms:type badge (OWL/SHACL) over the top-left corner of its hero
-   image, mirroring DatasetCard's own "vX.Y.Z" badge, which its internal
-   CSS pins top-right of the same image. A solid --card fill plus --border
-   keep the label readable over both the default owl illustration and a
-   photographic upstream logo.
+   own dcterms:type badge (OWL/SHACL/Crosswalk) over the top-left corner of
+   its hero image, mirroring DatasetCard's own "vX.Y.Z" badge, which its
+   internal CSS pins top-right of the same image. A solid --card fill plus
+   --border keep the label readable over both the default owl illustration
+   and a photographic upstream logo.
+
+   Each kind gets its own existing chart-token color (not just its own text,
+   which would make the three read identically at a glance) so the catalog
+   grid is scannable by color, not just by reading each label.
    ============================================================= */
 
 .eovoc-catalog__card {
@@ -2500,5 +2504,20 @@ a:hover {
     font-weight: 600;
     line-height: 1.4;
     color: var(--accent);
+}
+
+.eovoc-catalog__type-badge--owl {
+    color: var(--chart-1);
+    border-color: var(--chart-1);
+}
+
+.eovoc-catalog__type-badge--shacl {
+    color: var(--chart-4);
+    border-color: var(--chart-4);
+}
+
+.eovoc-catalog__type-badge--crosswalk {
+    color: var(--chart-5);
+    border-color: var(--chart-5);
 }
 

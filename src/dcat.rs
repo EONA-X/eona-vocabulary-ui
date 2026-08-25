@@ -30,14 +30,16 @@ pub struct Creator {
 }
 
 /// The `dcterms:type` literal on a `dcat:Dataset` (see generate.py's
-/// `build_catalog_turtle`) — today always exactly "OWL Ontology" or "SHACL
-/// Shapes Graph". `Other` carries any future/unrecognised literal through
-/// verbatim instead of panicking; `pages::catalog` skips the type badge for
-/// it rather than showing something misleading.
+/// `build_catalog_turtle`) — today always exactly "OWL Ontology", "SHACL
+/// Shapes Graph", or "Crosswalk" (an alignment between two ontologies, see
+/// `KIND_LABELS` in generate.py). `Other` carries any future/unrecognised
+/// literal through verbatim instead of panicking; `pages::catalog` skips the
+/// type badge for it rather than showing something misleading.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum DatasetKind {
     Owl,
     Shacl,
+    Crosswalk,
     Other(String),
 }
 
@@ -46,6 +48,7 @@ impl From<&str> for DatasetKind {
         match raw {
             "OWL Ontology" => DatasetKind::Owl,
             "SHACL Shapes Graph" => DatasetKind::Shacl,
+            "Crosswalk" => DatasetKind::Crosswalk,
             other => DatasetKind::Other(other.to_string()),
         }
     }
