@@ -40,11 +40,19 @@ use crate::uml::{
 const ZOOM_MIN: f64 = 0.25;
 const ZOOM_MAX: f64 = 2.0;
 const ZOOM_STEP: f64 = 0.25;
-// Matches OntoUmlCard's own `w-[41.6em]` at the default 16px root, and a
-// generous upper-bound estimate of its height (header + up to 13 lines +
-// padding) — the size a selected class's box is forced to so the merged
-// card fits it (see `diagram_for`'s `expanded_card_size` below, and the
-// Vue source's own CARD_W/CARD_MAXH_ESTIMATE consts).
+// Roughly OntoUmlCard's own intrinsic `w-[41.6em]` width, and a generous
+// upper-bound estimate of its height (header + up to 13 lines + padding) —
+// the size a selected class's box is forced to so the merged card fits it
+// (see `diagram_for`'s `expanded_card_size` below, and the Vue source's own
+// CARD_W/CARD_MAXH_ESTIMATE consts). Only ever needs to be *roughly* right,
+// not exactly matched to that em value at some assumed root font-size: the
+// card's actual rendered width always fills this box exactly regardless
+// (`.onto-uml-card--fill`'s own `width: 100%`, mirroring the `height: 100%`
+// `expanded_card_host`'s doc comment below already relies on for the same
+// reason) — a real mismatch here would only ever crop or under-fill the
+// card's content area, never leave a gap between it and the box's own edge
+// (and by extension the generalization/association lines routed to that
+// edge), the way an unfilled fixed-`em` width used to.
 const CARD_W: f64 = 666.0;
 const CARD_MAXH_ESTIMATE: f64 = 416.0;
 // Large diagrams start zoomed out a bit so the initial view isn't a wall of
