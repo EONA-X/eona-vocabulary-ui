@@ -40,15 +40,17 @@ enum UmlCardSection {
     Subclasses,
     Attributes,
     Associations,
+    Members,
 }
 
-/// All four sections open — the source's `openSections` initial value.
+/// All sections open — the source's `openSections` initial value.
 fn all_sections_open() -> HashSet<UmlCardSection> {
     HashSet::from([
         UmlCardSection::Superclasses,
         UmlCardSection::Subclasses,
         UmlCardSection::Attributes,
         UmlCardSection::Associations,
+        UmlCardSection::Members,
     ])
 }
 
@@ -78,7 +80,8 @@ pub fn onto_uml_card(props: &OntoUmlCardProps) -> Html {
     let nothing_to_show = node.attributes.is_empty()
         && node.associations.is_empty()
         && node.subclasses.is_empty()
-        && node.superclasses.is_empty();
+        && node.superclasses.is_empty()
+        && node.members.is_empty();
 
     html! {
         <div class="onto-uml-card onto-uml-card--fill" role="tooltip">
@@ -92,6 +95,11 @@ pub fn onto_uml_card(props: &OntoUmlCardProps) -> Html {
                     <h4 class="onto-uml-card__name">{ node.label.clone() }</h4>
                 </div>
                 <p class="onto-uml-card__iri">{ node.iri.clone() }</p>
+                if let Some(url) = &node.external_url {
+                    <a class="onto-uml-card__external" href={url.clone()} target="_blank" rel="noopener noreferrer">
+                        { "Defined in the W3C ODRL vocabulary \u{2197}" }
+                    </a>
+                }
             </div>
 
             <div class="onto-uml-card__body onto-uml-card__body--fill">
@@ -166,9 +174,32 @@ pub fn onto_uml_card(props: &OntoUmlCardProps) -> Html {
                     </div>
                 }
 
+                if !node.members.is_empty() {
+                    <div class="onto-uml-card__section">
+                        { section_toggle_button(
+                            "Members",
+                            node.members.len(),
+                            open_sections.contains(&UmlCardSection::Members),
+                            {
+                                let toggle_section = toggle_section.clone();
+                                Callback::from(move |_| toggle_section.emit(UmlCardSection::Members))
+                            },
+                        ) }
+                        if open_sections.contains(&UmlCardSection::Members) {
+                            <ul class="onto-uml-card__list">
+                                { for node.members.iter().enumerate().map(|(i, m)| html! {
+                                    <li key={i} class="onto-uml-card__list-item">
+                                        <span class="onto-uml-card__list-name">{ m.name.clone() }</span>
+                                    </li>
+                                }) }
+                            </ul>
+                        }
+                    </div>
+                }
+
                 if nothing_to_show {
                     <p class="onto-uml-card__empty">
-                        { "No superclasses, subclasses, attributes or associations" }
+                        { "No superclasses, subclasses, attributes, associations or members" }
                     </p>
                 }
             </div>

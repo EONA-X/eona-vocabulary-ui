@@ -1061,6 +1061,17 @@ a:hover {
     transition: stroke 0.1s ease, stroke-width 0.1s ease;
 }
 
+/* External reference node (see uml.rs's `external_reference`): a term this
+   ontology relates to but doesn't define itself — e.g. the W3C ODRL
+   vocabulary's own Action/LeftOperand classes a profile extends. Dashed
+   border marks "defined elsewhere"; its "open" icon (below) links out to
+   that vocabulary's own reference documentation instead of an in-page
+   anchor, since there is none here. */
+.onto-uml-class.is-external .uml-box {
+    stroke-dasharray: 5 3;
+    fill-opacity: 0.55;
+}
+
 .onto-uml-class .uml-name,
 .onto-uml-class .uml-attr {
     fill: #1e293b;
@@ -1073,6 +1084,16 @@ a:hover {
 .onto-uml-class .uml-more {
     fill: rgba(30, 41, 59, 0.7);
     font-style: italic;
+}
+
+/* Member row (see uml.rs's membership pass): an individual belonging to
+   this class without a diagram box of its own, e.g. one of a grouping
+   class's grouped terms, or one instance of an external reference class.
+   Styled distinctly from a plain attribute (no "name: type" shape, so
+   italicising it signals "this is one of, not has one"). */
+.onto-uml-class .uml-member {
+    font-style: italic;
+    opacity: 0.85;
 }
 
 .onto-uml-class:hover .uml-box,
@@ -1238,6 +1259,18 @@ a:hover {
     font-size: 0.6875rem;
     color: var(--muted-foreground);
     overflow-wrap: anywhere;
+}
+
+.onto-uml-card__external {
+    display: inline-block;
+    margin: 0.25rem 0 0;
+    font-size: 0.6875rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.onto-uml-card__external:hover {
+    text-decoration: underline;
 }
 
 .onto-uml-card__body {

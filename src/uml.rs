@@ -33,6 +33,37 @@ const SUBCLASS_OF: &str = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
 const DOMAIN: &str = "http://www.w3.org/2000/01/rdf-schema#domain";
 const RANGE: &str = "http://www.w3.org/2000/01/rdf-schema#range";
 
+/// Registry of external vocabularies a local class/individual can reference
+/// (by `rdfs:subClassOf` or `rdf:type`) without this ontology defining the
+/// target itself — an IRI outside `model`'s own namespace that would
+/// otherwise just be a dropped edge. Each entry recognises a namespace,
+/// builds the deep link into that vocabulary's own reference documentation
+/// for a term IRI in it, and gives the pastel-colour prefix a synthesized
+/// node should use (same role `prefix_of` plays for local CURIEs). Seeded
+/// with just the W3C ODRL vocabulary (every ODRL profile ontology in this
+/// hub extends it); add another `(namespace, spec_base, prefix)` triple here
+/// to cover a further vocabulary the same way.
+const EXTERNAL_VOCABS: [(&str, &str, &str); 1] =
+    [("http://www.w3.org/ns/odrl/2/", "https://www.w3.org/TR/odrl-vocab/#term-", "odrl")];
+
+/// The external reference documentation URL and CURIE prefix for `iri`, when
+/// it falls in a vocabulary `EXTERNAL_VOCABS` recognises — e.g.
+/// `http://www.w3.org/ns/odrl/2/LeftOperand` ->
+/// (`https://www.w3.org/TR/odrl-vocab/#term-LeftOperand`, "odrl") (the ODRL
+/// vocab spec uses one `#term-<Name>` anchor per class and per property
+/// alike). `None` for anything else, including every term local to `model`
+/// itself.
+fn external_reference(iri: &str) -> Option<(String, &'static str)> {
+    EXTERNAL_VOCABS.iter().find_map(|(ns, spec_base, prefix)| iri.strip_prefix(ns).map(|local| (format!("{spec_base}{local}"), *prefix)))
+}
+
+/// Display label for a synthesized external reference node: the last
+/// non-empty path/fragment segment of its IRI (e.g. "LeftOperand" from
+/// ".../odrl/2/LeftOperand").
+fn external_reference_label(iri: &str) -> String {
+    iri.rsplit(['#', '/']).find(|s| !s.is_empty()).unwrap_or(iri).to_string()
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub struct UmlAttribute {
     /// property display label
@@ -78,6 +109,13 @@ pub struct UmlClassNode {
     pub anchor: String,
     /// CURIE prefix (e.g. "odrl"), or "" when the IRI has no known prefix
     pub prefix: String,
+    /// Set only for a synthesized *external reference* node — a class this
+    /// ontology relates to (by `rdfs:subClassOf` or `rdf:type`) but doesn't
+    /// define itself, in a vocabulary `external_reference_url` recognises
+    /// (currently just the W3C ODRL vocabulary). Drawn with a dashed border
+    /// and an outbound-link glyph instead of the term-card "open" icon
+    /// (there's no local anchor to open), pointing here.
+    pub external_url: Option<String>,
     /// pastel fill assigned per prefix (one colour per prefix)
     pub color: String,
     /// the class's description(s), for the highlight tooltip card
@@ -88,6 +126,18 @@ pub struct UmlClassNode {
     pub hidden_count: usize,
     /// object properties leaving this class (the diagram's arrows), for the card
     pub associations: Vec<UmlAssociation>,
+    /// Terms that are members of this class without being diagrammed as
+    /// classes themselves — an individual whose `rdf:type` is this class
+    /// (e.g. an `odrl:LeftOperand` instance, once `odrl:LeftOperand` is a
+    /// diagrammed external reference node), or any non-class term related to
+    /// this class by some other object-valued predicate (e.g. this
+    /// ontology's own `emds:group`). Shown as a compact list inside the box
+    /// (the box caps at MAX_MEMBERS; the card shows all), same idea as
+    /// `attributes` but for instance-of/grouped-into rather than
+    /// domain-typed relations.
+    pub members: Vec<UmlRef>,
+    /// members beyond what the box renders, surfaced as a "+N more" line
+    pub member_hidden_count: usize,
     /// every direct subclass (rdfs:subClassOf pointing at this class), for
     /// the card's Subclasses tab — unlike `child_count` below, this is
     /// independent of `group_hierarchy`/collapse state: it's the full set,
@@ -178,6 +228,7 @@ const ATTR_H: f64 = 18.0;
 const MIN_W: f64 = 128.0;
 const MAX_W: f64 = 260.0;
 const MAX_ATTRS: usize = 12; // beyond this a "+N more" line keeps boxes proportioned
+const MAX_MEMBERS: usize = 8; // same idea for `UmlClassNode::members` (external reference boxes can collect a lot of instances)
 const H_GAP: f64 = 44.0;
 const V_GAP: f64 = 72.0;
 const MARGIN: f64 = 28.0;
@@ -226,7 +277,10 @@ fn text_width(s: &str, font_size: f64, bold: bool) -> f64 {
 }
 
 /// Clip a label to fit `width` px of box (minus padding), with an ellipsis.
-fn clip(s: &str, width: f64) -> String {
+/// `pub`: attribute rows precompute their clipped `display` in `size_nodes`
+/// (there's a name+type string to build first), but a member row is just
+/// `name`, so `OntoUmlClass` clips it directly at render time instead.
+pub fn clip(s: &str, width: f64) -> String {
     let max = ((width - 2.0 * 10.0) / CHAR_W).floor().max(4.0) as usize;
     if s.chars().count() <= max {
         s.to_string()
@@ -353,12 +407,73 @@ pub fn build_uml_diagram(model: &OntologyModel, options: &UmlLayoutOptions) -> U
                 child_count: 0,
                 children_expanded: false,
                 cluster_root: None,
+                external_url: None,
+                members: Vec::new(),
+                member_hidden_count: 0,
                 x: 0.0,
                 y: 0.0,
                 w: 0.0,
                 h: 0.0,
             });
         }
+    }
+
+    // External reference nodes: classes this ontology relates to (by
+    // rdfs:subClassOf, on a local class, or rdf:type, on a local
+    // individual) without defining locally, in a vocabulary
+    // `external_reference` recognises. Synthesized before any edges are
+    // built, purely by adding ordinary `index_of` entries for them — the
+    // subClassOf/domain/range logic right below needs no special-casing to
+    // pick these up, it just stops finding every such target missing.
+    let mut external_iris: Vec<String> = Vec::new();
+    let mut seen_external: HashSet<String> = HashSet::new();
+    for section in &model.sections {
+        if section.kind == TermKind::Class {
+            for t in &section.terms {
+                for r in rel_refs(t, SUBCLASS_OF) {
+                    if !index_of.contains_key(&r.iri) && external_reference(&r.iri).is_some() && seen_external.insert(r.iri.clone()) {
+                        external_iris.push(r.iri.clone());
+                    }
+                }
+            }
+        } else {
+            for t in &section.terms {
+                for type_iri in &t.types {
+                    if !index_of.contains_key(type_iri) && external_reference(type_iri).is_some() && seen_external.insert(type_iri.clone()) {
+                        external_iris.push(type_iri.clone());
+                    }
+                }
+            }
+        }
+    }
+    for iri in external_iris {
+        let (url, prefix) = external_reference(&iri).expect("filtered to recognised external IRIs above");
+        let label = external_reference_label(&iri);
+        index_of.insert(iri.clone(), nodes.len());
+        nodes.push(UmlClassNode {
+            iri,
+            label: label.clone(),
+            label_display: label,
+            anchor: String::new(),
+            prefix: prefix.to_string(),
+            color: String::new(),
+            description: Some(format!("Defined by the W3C ODRL vocabulary, not by this ontology — see {url}")),
+            attributes: Vec::new(),
+            hidden_count: 0,
+            associations: Vec::new(),
+            subclasses: Vec::new(),
+            superclasses: Vec::new(),
+            child_count: 0,
+            children_expanded: false,
+            cluster_root: None,
+            external_url: Some(url),
+            members: Vec::new(),
+            member_hidden_count: 0,
+            x: 0.0,
+            y: 0.0,
+            w: 0.0,
+            h: 0.0,
+        });
     }
 
     let mut edge_set: HashSet<String> = HashSet::new();
@@ -426,6 +541,42 @@ pub fn build_uml_diagram(model: &OntologyModel, options: &UmlLayoutOptions) -> U
         }
     }
 
+    // Membership: a non-class term related to a diagrammed class without
+    // being diagrammed as a class itself — typed `rdf:type` that class (an
+    // ODRL `LeftOperand`/`Action` instance, once that class is a
+    // synthesized external reference node above) or connected to it by some
+    // other object-valued predicate this ontology defines (e.g.
+    // deployEMDS's own `emds:group`, an ungrouped-domain property linking a
+    // claim term to the class it belongs to). Listed inside the target
+    // class's box — the same idea `attributes` is for domain-typed
+    // properties, but for "is one of these" rather than "has one of these".
+    // Scoped to NamedIndividual/Other terms: Class terms get their own box,
+    // and a Property's own domain/range refs would otherwise list it as a
+    // "member" of its own domain/range classes, which isn't what this means.
+    for section in &model.sections {
+        if section.kind != TermKind::NamedIndividual && section.kind != TermKind::Other {
+            continue;
+        }
+        for t in &section.terms {
+            let mut target_iris: HashSet<String> = HashSet::new();
+            for rel in &t.relations {
+                for r in &rel.refs {
+                    if index_of.contains_key(&r.iri) {
+                        target_iris.insert(r.iri.clone());
+                    }
+                }
+            }
+            for type_iri in &t.types {
+                if index_of.contains_key(type_iri) {
+                    target_iris.insert(type_iri.clone());
+                }
+            }
+            for target_iri in target_iris {
+                nodes[index_of[&target_iri]].members.push(UmlRef { name: t.label.clone(), iri: t.iri.clone() });
+            }
+        }
+    }
+
     for n in nodes.iter_mut() {
         n.attributes.sort_by(|a, b| cmp_label(&a.name, &b.name));
         // Keep the full list (the tooltip card shows it); the box caps its own.
@@ -435,6 +586,8 @@ pub fn build_uml_diagram(model: &OntologyModel, options: &UmlLayoutOptions) -> U
         n.associations.sort_by(|a, b| cmp_label(&a.name, &b.name));
         n.subclasses.sort_by(|a, b| cmp_label(&a.name, &b.name));
         n.superclasses.sort_by(|a, b| cmp_label(&a.name, &b.name));
+        n.members.sort_by(|a, b| cmp_label(&a.name, &b.name));
+        n.member_hidden_count = n.members.len().saturating_sub(MAX_MEMBERS);
     }
 
     let group_hierarchy = options.group_hierarchy;
@@ -771,6 +924,15 @@ pub fn box_attributes(n: &UmlClassNode) -> &[UmlAttribute] {
     }
 }
 
+/// Members the box renders (the rest are summarised as a "+N more" line).
+pub fn box_members(n: &UmlClassNode) -> &[UmlRef] {
+    if n.member_hidden_count > 0 {
+        &n.members[..MAX_MEMBERS.min(n.members.len())]
+    } else {
+        &n.members
+    }
+}
+
 /// Each class's primary (first-declared) superclass, from its
 /// generalization edges — the "one parent" a class collapses behind in
 /// `group_hierarchy` mode and walks up in `ancestor_chain`. Shared by
@@ -870,9 +1032,13 @@ pub fn class_tree(model: &OntologyModel) -> Vec<UmlTreeNode> {
 fn size_nodes(nodes: &mut [UmlClassNode]) {
     for n in nodes.iter_mut() {
         let shown: Vec<UmlAttribute> = box_attributes(n).to_vec();
+        let shown_members: Vec<UmlRef> = box_members(n).to_vec();
         let mut w = text_width(&n.label, 13.0, true);
         for a in &shown {
             w = w.max(text_width(&attr_text(a), ATTR_FS, false));
+        }
+        for m in &shown_members {
+            w = w.max(text_width(&m.name, ATTR_FS, false));
         }
         n.w = clamp(w.ceil() + 2.0 * PAD_X, MIN_W, MAX_W);
         n.label_display = clip(&n.label, n.w);
@@ -880,7 +1046,9 @@ fn size_nodes(nodes: &mut [UmlClassNode]) {
             let text = attr_text(a);
             a.display = clip(&text, n.w);
         }
-        let rows = shown.len() + if n.hidden_count > 0 { 1 } else { 0 };
+        let attr_rows = shown.len() + if n.hidden_count > 0 { 1 } else { 0 };
+        let member_rows = shown_members.len() + if n.member_hidden_count > 0 { 1 } else { 0 };
+        let rows = attr_rows + member_rows;
         n.h = HEADER_H + if rows > 0 { rows as f64 * ATTR_H + 8.0 } else { 8.0 };
     }
 }

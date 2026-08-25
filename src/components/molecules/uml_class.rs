@@ -26,7 +26,7 @@
 use web_sys::{KeyboardEvent, MouseEvent};
 use yew::prelude::*;
 
-use crate::uml::{attr_text, box_attributes, UmlClassNode};
+use crate::uml::{attr_text, box_attributes, box_members, clip, UmlClassNode};
 
 /// Mirrors the Vue source's `state?: "normal" | "active" | "related" |
 /// "dimmed"` prop.
@@ -91,6 +91,11 @@ pub fn onto_uml_class(props: &OntoUmlClassProps) -> Html {
     };
 
     let shown_attrs = box_attributes(node);
+    let shown_members = box_members(node);
+    // Member rows continue directly below the attribute compartment's own
+    // rows (including its "+N more" line, if any) — one shared list of
+    // fixed-height text rows top to bottom, attributes first.
+    let member_row_offset = shown_attrs.len() + if node.hidden_count > 0 { 1 } else { 0 };
 
     let onclick = {
         let on_toggle = props.on_toggle.clone();
@@ -134,7 +139,11 @@ pub fn onto_uml_class(props: &OntoUmlClassProps) -> Html {
         })
     };
 
-    let class = classes!("onto-uml-class", state.css_class());
+    let class = classes!(
+        "onto-uml-class",
+        state.css_class(),
+        node.external_url.is_some().then_some("is-external")
+    );
     let name_x = node.x + node.w / 2.0;
     let name_y = node.y + 18.0;
     let divider_y = node.y + 28.0;
@@ -198,7 +207,34 @@ pub fn onto_uml_class(props: &OntoUmlClassProps) -> Html {
                     { format!("+{} more…", node.hidden_count) }
                 </text>
             }
-            // open the class's term card (does not toggle the highlight)
+            // members: individuals typed as, or otherwise related to, this
+            // class without a diagram box of their own (see uml.rs's
+            // membership pass) — same row grid as attributes, continuing
+            // straight on from wherever those left off.
+            { for shown_members.iter().enumerate().map(|(i, m)| {
+                let y = node.y + 28.0 + 14.0 + (member_row_offset + i) as f64 * 18.0;
+                html! {
+                    <text x={attr_x.to_string()} y={y.to_string()} class="uml-attr uml-member" font-size="12">
+                        <title>{ m.name.clone() }</title>
+                        { clip(&m.name, node.w) }
+                    </text>
+                }
+            }) }
+            if node.member_hidden_count > 0 {
+                <text
+                    x={attr_x.to_string()}
+                    y={(node.y + 28.0 + 14.0 + (member_row_offset + shown_members.len()) as f64 * 18.0).to_string()}
+                    class="uml-attr uml-member uml-more"
+                    font-size="12"
+                >
+                    <title>{ node.members.iter().skip(shown_members.len()).map(|m| m.name.clone()).collect::<Vec<_>>().join("\n") }</title>
+                    { format!("+{} more…", node.member_hidden_count) }
+                </text>
+            }
+            // open the class's term card, or (for an external reference
+            // node — see uml.rs's `external_reference`) the matching W3C
+            // ODRL vocabulary entry in a new tab. Does not toggle the
+            // highlight.
             if !node.anchor.is_empty() {
                 <a
                     href={format!("#{}", node.anchor)}
@@ -208,6 +244,39 @@ pub fn onto_uml_class(props: &OntoUmlClassProps) -> Html {
                     onkeydown={open_onkeydown}
                 >
                     <title>{ format!("Open {} details", node.label) }</title>
+                    <rect
+                        x={(node.x + node.w - 22.0).to_string()}
+                        y={(node.y + 4.0).to_string()}
+                        width="18"
+                        height="18"
+                        rx="3"
+                        fill="transparent"
+                        pointer-events="all"
+                    />
+                    <g
+                        transform={format!("translate({}, {}) scale(0.5)", node.x + node.w - 20.0, node.y + 6.0)}
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M15 3h6v6" />
+                        <path d="M10 14 21 3" />
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+                    </g>
+                </a>
+            } else if let Some(url) = node.external_url.clone() {
+                <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="uml-open"
+                    aria-label={format!("Open {} in the W3C ODRL vocabulary (opens in a new tab)", node.label)}
+                    onclick={open_onclick}
+                    onkeydown={open_onkeydown}
+                >
+                    <title>{ format!("Open {} in the W3C ODRL vocabulary (opens in a new tab)", node.label) }</title>
                     <rect
                         x={(node.x + node.w - 22.0).to_string()}
                         y={(node.y + 4.0).to_string()}
