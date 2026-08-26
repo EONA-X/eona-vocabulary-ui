@@ -1,0 +1,3 @@
+[submodule "crates/eona-crosswalk-transform"]
+	path = crates/eona-crosswalk-transform
+	url = ssh://git@gitlab.eona-x.org:29418/eona-x/semantic-hub/eona-crosswalk-transform.git
