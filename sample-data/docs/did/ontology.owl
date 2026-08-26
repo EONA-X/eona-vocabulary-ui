@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<rdf:Description rdf:about="https://www.w3.org/ns/did#serviceEndpoint">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#services"/>
+		<domain xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#Service"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://www.w3.org/ns/did#service">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#services"/>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#Service"/>
+		<domain xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#DIDSubject"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#publicKeyMultibase">
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#">A string that conforms to a multibase encoded public key</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#verification-methods"/>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<domain xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#publicKeyJwk">
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#">Public Key in JWK</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#verification-methods"/>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON"/>
+		<domain xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#capabilityInvocationMethod">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#capability-invocation"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">The capabilityInvocation property is used to express a verification relationship which an entity can use to invoke capabilities as the DID subject or on behalf of the DID subject.</comment>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#capabilityDelegationMethod">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#capability-delegation"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">The capabilityDelegation property is used to express a verification relationship which an entity can use to grant capabilities as the DID subject or on behalf of the DID subject to other capability invokers. </comment>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#keyAgreementMethod">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#key-agreement"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">The keyAgreement property is used to express a verification relationship which an entity can use to engage in key agreement protocols on behalf of the DID subject.</comment>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#assertionMethod">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#assertion"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">The assertionMethod property is used to express a verification relationship which indicates that a verification method can be used to verify a proof that a statement was asserted on behalf of the DID subject.</comment>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#authenticationMethod">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#authentication"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">Authentication is a verification relationship which an entity can use to prove it is the DID subject or acting on behalf of the DID Subject as a DID Controller.</comment>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#verificationMethod">
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#verification-methods"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">A generic method to refer to a Verification Method</comment>
+		<range xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/ns/did#VerificationMethod"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/security#controller">
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">An entity that is authorized to make changes to a DID Document</comment>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#control"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://www.w3.org/ns/activitystreams#alsoKnownAs">
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">This relationship is a statement that the subject of this identifier is also identified by one or more other identifiers.</comment>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#also-known-as"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://www.w3.org/ns/did#Service">
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#">Service Endpoint</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#services"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">Service endpoints are used in DID documents to express ways of communicating with the DID subject or associated entities</comment>
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://www.w3.org/ns/did#VerificationMethod">
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#">Verification Method</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#verification-methods"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">Superclass for all specific verification Methods. It is an &apos;abstract&apos; class, never used by itself.</comment>
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://www.w3.org/ns/did#DIDSubject">
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#">DID Document</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://www.w3.org/TR/did-core/#core-properties"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">Top level class for resources identified via a DID subject</comment>
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://www.w3.org/ns/did#">
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#">For historical reasons, most of the terms are in the &apos;sec:&apos; namespace rather than the &apos;did:&apos; namespace. These terms do not describe/define any cryptographic primitives and are formally defined in the DID Core specification. Future Working Group may define a formal specification for the complete &apos;sec:&apos; vocabulary.</comment>
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+	</rdf:Description>
+</rdf:RDF>

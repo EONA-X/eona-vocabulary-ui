@@ -1,0 +1,330 @@
+[
+  {
+    "@id": "https://vocab.eona-x.eu/catalog",
+    "http://www.w3.org/ns/dcat#dataset": [
+      {
+        "@id": "https://vocab.eona-x.eu/catalog/did"
+      },
+      {
+        "@id": "https://vocab.eona-x.eu/catalog/eonax-odrl-profile"
+      }
+    ],
+    "http://purl.org/dc/terms/modified": [
+      {
+        "@value": "2026-08-25 13:47 UTC"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Static catalog of the vocabularies and ontologies published by the Eona Vocabulary Hub."
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "Eona-X Vocabulary Documentation"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Catalog"
+    ]
+  },
+  {
+    "@id": "https://vocab.eona-x.eu/catalog/did",
+    "http://www.w3.org/ns/dcat#distribution": [
+      {
+        "@id": "_:b51adfeb7d68115f5f463dc976a6d556"
+      },
+      {
+        "@id": "_:c19faa4eca9f268190725298bfb09065"
+      },
+      {
+        "@id": "_:cffa17098b1f00d5da2c4ffe06552834"
+      },
+      {
+        "@id": "_:ba0867d22a1b9ded4c68f8693a0dc047"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "_:f27aa47a98772193b7ab3b3eca3a3299"
+      }
+    ],
+    "http://xmlns.com/foaf/0.1/thumbnail": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/assets/w3c-hero.png"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#landingPage": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/ontologies?ontology=did"
+      }
+    ],
+    "http://purl.org/dc/terms/conformsTo": [
+      {
+        "@id": "https://www.w3.org/ns/did#"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "RDF vocabulary for describing DID documents and services, from the W3C Decentralized Identifiers (DIDs) v1.0 Recommendation. Used by the Gaia-X ICAM (Identity, Credential & Access Management) semantic model for participant identity."
+      }
+    ],
+    "http://purl.org/dc/terms/type": [
+      {
+        "@value": "OWL Ontology"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "W3C Decentralized Identifiers (DID) v1.0 Vocabulary"
+      }
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@value": "did"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Dataset"
+    ]
+  },
+  {
+    "@id": "_:b51adfeb7d68115f5f463dc976a6d556",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/n-triples"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/did/ontology.nt"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "W3C Decentralized Identifiers (DID) v1.0 Vocabulary (N-Triples)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:c19faa4eca9f268190725298bfb09065",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/rdf+xml"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/did/ontology.owl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "W3C Decentralized Identifiers (DID) v1.0 Vocabulary (RDF/XML)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:cffa17098b1f00d5da2c4ffe06552834",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/ld+json"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/did/ontology.jsonld"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "W3C Decentralized Identifiers (DID) v1.0 Vocabulary (JSON-LD)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:ba0867d22a1b9ded4c68f8693a0dc047",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "text/turtle"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/did/ontology.ttl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "W3C Decentralized Identifiers (DID) v1.0 Vocabulary (Turtle)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:f27aa47a98772193b7ab3b3eca3a3299",
+    "http://xmlns.com/foaf/0.1/name": [
+      {
+        "@value": "W3C"
+      }
+    ],
+    "@type": [
+      "http://xmlns.com/foaf/0.1/Agent"
+    ]
+  },
+  {
+    "@id": "https://vocab.eona-x.eu/catalog/eonax-odrl-profile",
+    "http://www.w3.org/ns/dcat#distribution": [
+      {
+        "@id": "_:ef75bbd5dc9dd8ffc4312293b825df3d"
+      },
+      {
+        "@id": "_:a18defa36eb1d09fa70fd51afbd8a1f2"
+      },
+      {
+        "@id": "_:cbb3861164ea01b1260d9de0b28f9b41"
+      },
+      {
+        "@id": "_:ad8c153af4ea081ffdfc53747f3a2353"
+      }
+    ],
+    "http://xmlns.com/foaf/0.1/thumbnail": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/assets/owl-illustration.svg"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#landingPage": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/ontologies?ontology=eonax-odrl-profile"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#version": [
+      {
+        "@value": "0.0.1"
+      }
+    ],
+    "http://purl.org/dc/terms/conformsTo": [
+      {
+        "@id": "https://w3id.org/eonax/policy/"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "The supported subset of W3C ODRL 2.2 the Eona-X dataspace connectors bind and enforce, extended with three credential-claim constraint leftOperands."
+      }
+    ],
+    "http://purl.org/dc/terms/type": [
+      {
+        "@value": "OWL Ontology"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "Eona-X ODRL Profile"
+      }
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@value": "eonax-odrl-profile"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Dataset"
+    ]
+  },
+  {
+    "@id": "_:ef75bbd5dc9dd8ffc4312293b825df3d",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/n-triples"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/eonax-odrl-profile/ontology.nt"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "Eona-X ODRL Profile (N-Triples)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:a18defa36eb1d09fa70fd51afbd8a1f2",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/rdf+xml"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/eonax-odrl-profile/ontology.owl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "Eona-X ODRL Profile (RDF/XML)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:cbb3861164ea01b1260d9de0b28f9b41",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/ld+json"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/eonax-odrl-profile/ontology.jsonld"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "Eona-X ODRL Profile (JSON-LD)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:ad8c153af4ea081ffdfc53747f3a2353",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "text/turtle"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/eonax-odrl-profile/ontology.ttl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "Eona-X ODRL Profile (Turtle)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  }
+]

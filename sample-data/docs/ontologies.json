@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-08-25 13:47 UTC",
+  "ontologies": [
+    {
+      "slug": "did",
+      "title": "W3C Decentralized Identifiers (DID) v1.0 Vocabulary",
+      "description": "RDF vocabulary for describing DID documents and services, from the W3C Decentralized Identifiers (DIDs) v1.0 Recommendation. Used by the Gaia-X ICAM (Identity, Credential & Access Management) semantic model for participant identity.",
+      "jsonld": "did/ontology.jsonld",
+      "namespace": "https://www.w3.org/ns/did#",
+      "prefix": "did",
+      "version": null,
+      "upstream": {
+        "name": "W3C",
+        "logo": "w3c-hero.png"
+      },
+      "kind": "owl",
+      "downloads": {
+        "ttl": "did/ontology.ttl",
+        "jsonld": "did/ontology.jsonld",
+        "owl": "did/ontology.owl",
+        "nt": "did/ontology.nt"
+      }
+    },
+    {
+      "slug": "eonax-odrl-profile",
+      "title": "Eona-X ODRL Profile",
+      "description": "The supported subset of W3C ODRL 2.2 the Eona-X dataspace connectors bind and enforce, extended with three credential-claim constraint leftOperands.",
+      "jsonld": "eonax-odrl-profile/ontology.jsonld",
+      "namespace": "https://w3id.org/eonax/policy/",
+      "prefix": "eox-policy",
+      "version": "0.0.1",
+      "upstream": null,
+      "kind": "owl",
+      "downloads": {
+        "ttl": "eonax-odrl-profile/ontology.ttl",
+        "jsonld": "eonax-odrl-profile/ontology.jsonld",
+        "owl": "eonax-odrl-profile/ontology.owl",
+        "nt": "eonax-odrl-profile/ontology.nt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/leftOperands">
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://w3id.org/eonax/policy/RestrictedDiscoveryClaim"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://w3id.org/eonax/policy/GenericClaim"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://w3id.org/eonax/policy/Membership"/>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">The custom credential-claim left operands defined by this profile.</scopeNote>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Eona-X constraint left operands</prefLabel>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Collection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/supportedConstraintTerms">
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/rightOperand"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/operator"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/leftOperand"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/or"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/LogicalConstraint"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/Constraint"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/constraint"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/action"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/assignee"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/assigner"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/target"/>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">ODRL relation and constraint properties used when authoring policies in this profile. Note: odrl:assigner (and odrl:assignee where present) MUST be a Decentralized Identifier (did:...), validated by OdrlPolicyDidValidator.</scopeNote>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Supported constraint &amp; relation terms</prefLabel>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Collection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/supportedOperators">
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/hasPart"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/isAnyOf"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/neq"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/eq"/>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Relational/set operators the constraint functions accept. odrl:eq and odrl:neq are scalar equality; odrl:isAnyOf is the EDC IN operator (scalar value is one of a right-operand set). odrl:hasPart is the TARGET set-containment operator (a set-valued claim contains the right-operand value) — see Eona-X/backlog#587.</scopeNote>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Supported operators</prefLabel>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Collection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/supportedActions">
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/distribute"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/share"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/transfer"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/use"/>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Actions bound into every rule scope by PolicyEvaluationExtension: the base odrl:use plus transfer, share and distribute. NOTE: odrl:share is deprecated in ODRL 2.2 but is still bound by the connector.</scopeNote>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Supported actions</prefLabel>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Collection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/supportedRules">
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/permission"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/Permission"/>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Only odrl:Permission is enforced: the credential constraint functions are registered for the Permission rule type. odrl:Prohibition / odrl:Duty may appear in a policy but carry no custom enforcement in this profile.</scopeNote>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Supported rules</prefLabel>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Collection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/supportedPolicyTypes">
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/Agreement"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/Offer"/>
+		<member xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://www.w3.org/ns/odrl/2/Set"/>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">ODRL policy subclasses the connector processes.</scopeNote>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Supported policy types</prefLabel>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Collection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/RestrictedDiscoveryClaim">
+		<example xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">eox-policy:RestrictedDiscoveryClaim.$.MembershipCredential.groups hasPart &quot;EMDS&quot;</example>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Supported operators today: odrl:eq, odrl:neq, set-membership (EDC IN / odrl:isAnyOf). TARGET (Eona-X/backlog#587): odrl:hasPart for set-valued claims.</scopeNote>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Addressing form: eox-policy:RestrictedDiscoveryClaim.$.&lt;CredentialType&gt;.&lt;jsonPath&gt;. Bound to the catalog.discovery, contract.negotiation and transfer rule scopes; it is the discovery-time counterpart of eox-policy:GenericClaim.</note>
+		<definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Constraint left operand equivalent to GenericClaim but evaluated in the catalog-discovery path, so that a dataset&apos;s visibility in the federated catalog is gated on a credential claim.</definition>
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#" xml:lang="en">Restricted Discovery Claim</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://w3id.org/eonax/policy/"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/odrl/2/LeftOperand"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/GenericClaim">
+		<example xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">eox-policy:GenericClaim.$.MembershipCredential.groups hasPart &quot;EMDS&quot;</example>
+		<scopeNote xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Supported operators today: odrl:eq, odrl:neq, and set-membership (EDC operator IN, i.e. odrl:isAnyOf) where a scalar claim value must be one of a right-operand list. TARGET (Eona-X/backlog#587): odrl:hasPart, where a SET-valued claim (e.g. groups) must CONTAIN the right-operand value — the direction eq/neq/isAnyOf cannot express.</scopeNote>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Addressing form: eox-policy:GenericClaim.$.&lt;CredentialType&gt;.&lt;jsonPath&gt; — e.g. eox-policy:GenericClaim.$.MembershipCredential.groups. After the $ the first segment selects the credential type; the remaining dotted path selects a field in credentialSubject[0] claims. Bound to the contract.negotiation and transfer rule scopes.</note>
+		<definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Constraint left operand that addresses an arbitrary claim inside a presented credential&apos;s credentialSubject and compares it against the right operand.</definition>
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#" xml:lang="en">Generic Claim</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://w3id.org/eonax/policy/"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/odrl/2/LeftOperand"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/Membership">
+		<example xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">eox-policy:Membership eq &quot;active&quot;</example>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Usage: leftOperand eox-policy:Membership, operator odrl:eq, rightOperand &quot;active&quot;. Satisfied when the presented credentials contain at least one credential whose type is MembershipCredential (presence == active; the right operand MUST be the literal &quot;active&quot;). Bound to the transfer, catalog, contract.negotiation and catalog.discovery rule scopes.</note>
+		<definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Constraint left operand asserting that the presenting participant holds a valid MembershipCredential in the dataspace.</definition>
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#" xml:lang="en">Membership</label>
+		<isDefinedBy xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://w3id.org/eonax/policy/"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/odrl/2/LeftOperand"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/eonax/policy/">
+		<source xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/eonax/policy/</source>
+		<seeAlso xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/ns/odrl/2/"/>
+		<comment xmlns="http://www.w3.org/2000/01/rdf-schema#" xml:lang="en">Descriptive, enforcement-scoped profile: it lists precisely the ODRL terms the connector binds and evaluates. Rules are enforced for odrl:Permission only (the constraint functions are registered for the Permission rule type). Evaluation always runs as a side effect of a Dataspace-Protocol interaction (catalog, contract negotiation, transfer) or catalog discovery — never as a standalone call.</comment>
+		<description xmlns="http://purl.org/dc/terms/" xml:lang="en">An ODRL 2.2 profile describing the exact subset of ODRL the Eona-X connector supports to express and enforce access &amp; usage policies, extended with three credential-claim leftOperands evaluated by the connector&apos;s policy engine against presented Verifiable Credentials.</description>
+		<conformsTo xmlns="http://purl.org/dc/terms/" rdf:resource="http://www.w3.org/ns/odrl/2/"/>
+		<versionInfo xmlns="http://www.w3.org/2002/07/owl#">0.0.1</versionInfo>
+		<title xmlns="http://purl.org/dc/terms/" xml:lang="en">Eona-X ODRL Profile</title>
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#" xml:lang="en">Eona-X ODRL Profile</label>
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+	</rdf:Description>
+</rdf:RDF>

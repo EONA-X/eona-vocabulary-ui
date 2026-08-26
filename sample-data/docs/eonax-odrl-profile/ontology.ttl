@@ -1,0 +1,53 @@
+<https://w3id.org/eonax/policy/leftOperands> <http://www.w3.org/2004/02/skos/core#member> <https://w3id.org/eonax/policy/RestrictedDiscoveryClaim> , <https://w3id.org/eonax/policy/GenericClaim> , <https://w3id.org/eonax/policy/Membership> ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "The custom credential-claim left operands defined by this profile."@en ;
+	<http://www.w3.org/2004/02/skos/core#prefLabel> "Eona-X constraint left operands"@en ;
+	a <http://www.w3.org/2004/02/skos/core#Collection> .
+<https://w3id.org/eonax/policy/supportedConstraintTerms> <http://www.w3.org/2004/02/skos/core#member> <http://www.w3.org/ns/odrl/2/rightOperand> , <http://www.w3.org/ns/odrl/2/operator> , <http://www.w3.org/ns/odrl/2/leftOperand> , <http://www.w3.org/ns/odrl/2/or> , <http://www.w3.org/ns/odrl/2/LogicalConstraint> , <http://www.w3.org/ns/odrl/2/Constraint> , <http://www.w3.org/ns/odrl/2/constraint> , <http://www.w3.org/ns/odrl/2/action> , <http://www.w3.org/ns/odrl/2/assignee> , <http://www.w3.org/ns/odrl/2/assigner> , <http://www.w3.org/ns/odrl/2/target> ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "ODRL relation and constraint properties used when authoring policies in this profile. Note: odrl:assigner (and odrl:assignee where present) MUST be a Decentralized Identifier (did:...), validated by OdrlPolicyDidValidator."@en ;
+	<http://www.w3.org/2004/02/skos/core#prefLabel> "Supported constraint & relation terms"@en ;
+	a <http://www.w3.org/2004/02/skos/core#Collection> .
+<https://w3id.org/eonax/policy/supportedOperators> <http://www.w3.org/2004/02/skos/core#member> <http://www.w3.org/ns/odrl/2/hasPart> , <http://www.w3.org/ns/odrl/2/isAnyOf> , <http://www.w3.org/ns/odrl/2/neq> , <http://www.w3.org/ns/odrl/2/eq> ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "Relational/set operators the constraint functions accept. odrl:eq and odrl:neq are scalar equality; odrl:isAnyOf is the EDC IN operator (scalar value is one of a right-operand set). odrl:hasPart is the TARGET set-containment operator (a set-valued claim contains the right-operand value) — see Eona-X/backlog#587."@en ;
+	<http://www.w3.org/2004/02/skos/core#prefLabel> "Supported operators"@en ;
+	a <http://www.w3.org/2004/02/skos/core#Collection> .
+<https://w3id.org/eonax/policy/supportedActions> <http://www.w3.org/2004/02/skos/core#member> <http://www.w3.org/ns/odrl/2/distribute> , <http://www.w3.org/ns/odrl/2/share> , <http://www.w3.org/ns/odrl/2/transfer> , <http://www.w3.org/ns/odrl/2/use> ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "Actions bound into every rule scope by PolicyEvaluationExtension: the base odrl:use plus transfer, share and distribute. NOTE: odrl:share is deprecated in ODRL 2.2 but is still bound by the connector."@en ;
+	<http://www.w3.org/2004/02/skos/core#prefLabel> "Supported actions"@en ;
+	a <http://www.w3.org/2004/02/skos/core#Collection> .
+<https://w3id.org/eonax/policy/supportedRules> <http://www.w3.org/2004/02/skos/core#member> <http://www.w3.org/ns/odrl/2/permission> , <http://www.w3.org/ns/odrl/2/Permission> ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "Only odrl:Permission is enforced: the credential constraint functions are registered for the Permission rule type. odrl:Prohibition / odrl:Duty may appear in a policy but carry no custom enforcement in this profile."@en ;
+	<http://www.w3.org/2004/02/skos/core#prefLabel> "Supported rules"@en ;
+	a <http://www.w3.org/2004/02/skos/core#Collection> .
+<https://w3id.org/eonax/policy/supportedPolicyTypes> <http://www.w3.org/2004/02/skos/core#member> <http://www.w3.org/ns/odrl/2/Agreement> , <http://www.w3.org/ns/odrl/2/Offer> , <http://www.w3.org/ns/odrl/2/Set> ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "ODRL policy subclasses the connector processes."@en ;
+	<http://www.w3.org/2004/02/skos/core#prefLabel> "Supported policy types"@en ;
+	a <http://www.w3.org/2004/02/skos/core#Collection> .
+<https://w3id.org/eonax/policy/RestrictedDiscoveryClaim> <http://www.w3.org/2004/02/skos/core#example> "eox-policy:RestrictedDiscoveryClaim.$.MembershipCredential.groups hasPart \"EMDS\""@en ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "Supported operators today: odrl:eq, odrl:neq, set-membership (EDC IN / odrl:isAnyOf). TARGET (Eona-X/backlog#587): odrl:hasPart for set-valued claims."@en ;
+	<http://www.w3.org/2004/02/skos/core#note> "Addressing form: eox-policy:RestrictedDiscoveryClaim.$.<CredentialType>.<jsonPath>. Bound to the catalog.discovery, contract.negotiation and transfer rule scopes; it is the discovery-time counterpart of eox-policy:GenericClaim."@en ;
+	<http://www.w3.org/2004/02/skos/core#definition> "Constraint left operand equivalent to GenericClaim but evaluated in the catalog-discovery path, so that a dataset's visibility in the federated catalog is gated on a credential claim."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Restricted Discovery Claim"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eonax/policy/> ;
+	a <http://www.w3.org/2004/02/skos/core#Concept> , <http://www.w3.org/ns/odrl/2/LeftOperand> .
+<https://w3id.org/eonax/policy/GenericClaim> <http://www.w3.org/2004/02/skos/core#example> "eox-policy:GenericClaim.$.MembershipCredential.groups hasPart \"EMDS\""@en ;
+	<http://www.w3.org/2004/02/skos/core#scopeNote> "Supported operators today: odrl:eq, odrl:neq, and set-membership (EDC operator IN, i.e. odrl:isAnyOf) where a scalar claim value must be one of a right-operand list. TARGET (Eona-X/backlog#587): odrl:hasPart, where a SET-valued claim (e.g. groups) must CONTAIN the right-operand value — the direction eq/neq/isAnyOf cannot express."@en ;
+	<http://www.w3.org/2004/02/skos/core#note> "Addressing form: eox-policy:GenericClaim.$.<CredentialType>.<jsonPath> — e.g. eox-policy:GenericClaim.$.MembershipCredential.groups. After the $ the first segment selects the credential type; the remaining dotted path selects a field in credentialSubject[0] claims. Bound to the contract.negotiation and transfer rule scopes."@en ;
+	<http://www.w3.org/2004/02/skos/core#definition> "Constraint left operand that addresses an arbitrary claim inside a presented credential's credentialSubject and compares it against the right operand."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Generic Claim"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eonax/policy/> ;
+	a <http://www.w3.org/2004/02/skos/core#Concept> , <http://www.w3.org/ns/odrl/2/LeftOperand> .
+<https://w3id.org/eonax/policy/Membership> <http://www.w3.org/2004/02/skos/core#example> "eox-policy:Membership eq \"active\""@en ;
+	<http://www.w3.org/2004/02/skos/core#note> "Usage: leftOperand eox-policy:Membership, operator odrl:eq, rightOperand \"active\". Satisfied when the presented credentials contain at least one credential whose type is MembershipCredential (presence == active; the right operand MUST be the literal \"active\"). Bound to the transfer, catalog, contract.negotiation and catalog.discovery rule scopes."@en ;
+	<http://www.w3.org/2004/02/skos/core#definition> "Constraint left operand asserting that the presenting participant holds a valid MembershipCredential in the dataspace."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Membership"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eonax/policy/> ;
+	a <http://www.w3.org/2004/02/skos/core#Concept> , <http://www.w3.org/ns/odrl/2/LeftOperand> .
+<https://w3id.org/eonax/policy/> <http://purl.org/dc/terms/source> "https://w3id.org/eonax/policy/"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+	<http://www.w3.org/2000/01/rdf-schema#seeAlso> <http://www.w3.org/ns/odrl/2/> ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "Descriptive, enforcement-scoped profile: it lists precisely the ODRL terms the connector binds and evaluates. Rules are enforced for odrl:Permission only (the constraint functions are registered for the Permission rule type). Evaluation always runs as a side effect of a Dataspace-Protocol interaction (catalog, contract negotiation, transfer) or catalog discovery — never as a standalone call."@en ;
+	<http://purl.org/dc/terms/description> "An ODRL 2.2 profile describing the exact subset of ODRL the Eona-X connector supports to express and enforce access & usage policies, extended with three credential-claim leftOperands evaluated by the connector's policy engine against presented Verifiable Credentials."@en ;
+	<http://purl.org/dc/terms/conformsTo> <http://www.w3.org/ns/odrl/2/> ;
+	<http://www.w3.org/2002/07/owl#versionInfo> "0.0.1" ;
+	<http://purl.org/dc/terms/title> "Eona-X ODRL Profile"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Eona-X ODRL Profile"@en ;
+	a <http://www.w3.org/2002/07/owl#Ontology> .
