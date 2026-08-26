@@ -1,0 +1,84 @@
+name: Publish to GitHub Pages
+
+# Build the standalone Trunk/WASM bundle (see build.sh) and deploy it to
+# GitHub Pages. Uses the bundled sample-data/docs fixture as the /docs tree —
+# swap in a `workflow_dispatch` input or a repository_dispatch trigger from a
+# real data source once one exists (see build.sh's usage comment).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege + the tokens the Pages deploy needs.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One Pages deployment at a time; newer pushes supersede in-flight runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  RUST_VERSION: 1.97.1
+  # Pinned to match Cargo.lock / Trunk.toml — see Dockerfile for why.
+  TRUNK_VERSION: 0.22.0-beta.2
+  WASM_BINDGEN_VERSION: 0.2.127
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # crates/eona-crosswalk-transform is a submodule of a private GitLab
+      # instance (see .gitmodules) — armed here, before submodule init, via a
+      # deploy-key secret configured on this repo (Settings > Secrets and
+      # variables > Actions > EONA_CROSSWALK_TRANSFORM_DEPLOY_KEY), rather than
+      # left to actions/checkout's own submodule handling, which has no way to
+      # authenticate against it.
+      - name: Set up SSH access to the eona-crosswalk-transform submodule
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.EONA_CROSSWALK_TRANSFORM_DEPLOY_KEY }}
+
+      - name: Trust the GitLab host key
+        run: ssh-keyscan -p 29418 gitlab.eona-x.org >> ~/.ssh/known_hosts
+
+      - name: Init submodules
+        run: git submodule update --init --recursive
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          targets: wasm32-unknown-unknown
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install trunk
+        run: cargo install trunk@${{ env.TRUNK_VERSION }} --locked
+
+      - name: Install wasm-bindgen-cli
+        run: cargo install wasm-bindgen-cli@${{ env.WASM_BINDGEN_VERSION }} --locked
+
+      - name: Build
+        run: ./build.sh
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
