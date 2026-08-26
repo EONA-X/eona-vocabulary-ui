@@ -5,7 +5,7 @@ edition = "2024"
 
 [dependencies]
 edc-web-components = "0.4.4"
-eona-crosswalk-transform = { version = "0.1.0", path = "../../crates/eona-crosswalk-transform" }
+eona-crosswalk-transform = { version = "0.1.0", path = "crates/eona-crosswalk-transform" }
 futures = "0.3.34"
 glam = "0.33.5"
 gloo-net = { version = "0.7.0", default-features = false, features = ["http"] }
