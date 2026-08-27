@@ -20,7 +20,8 @@ use crate::components::organisms::{NavRoute, Navbar};
 use crate::dcat::{parse_catalog, site_relative, CatalogModel, DatasetKind};
 use crate::net::fetch_json;
 
-const DOCS_BASE: &str = "/docs";
+/// Relative to `<base data-trunk-public-url>` — see pages::ontologies.
+const DOCS_BASE: &str = "docs";
 
 /// Best-effort parse of an ontology's free-text `owl:versionInfo` as a
 /// `semver::Version` — DatasetCard's version badge needs one, but not every
@@ -147,8 +148,11 @@ pub fn catalog_page() -> Html {
                             dcterm_types: Vec::new(),
                         };
                         let is_crosswalk = dataset.kind == Some(DatasetKind::Crosswalk);
-                        let href = dataset.landing_page.as_deref().map(site_relative)
-                            .unwrap_or_else(|| format!("/ontologies?ontology={}", dataset.slug));
+                        // site_relative's leading "/" is the separator asset_url needs
+                        // (DOCS_BASE + site_relative(iri)); trimmed here since this href
+                        // is used standalone and must resolve against <base>, not root.
+                        let href = dataset.landing_page.as_deref().map(|iri| site_relative(iri).trim_start_matches('/').to_string())
+                            .unwrap_or_else(|| format!("ontologies?ontology={}", dataset.slug));
                         let on_offer_click = on_navigate.reform(move |()| href.clone());
                         let type_badge = dataset.kind.as_ref().and_then(|kind| {
                             let label = kind_badge_label(kind)?;

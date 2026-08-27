@@ -3,7 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EOVoc UI</title>
+    <title>Eona Vocabulary Browser</title>
+    <!-- Filled in by Trunk from the --public-url build.sh passes it (see
+         build.sh and .github/workflows/publish.yml) — the path this site is
+         actually mounted under. Defaults to "/" for a root-mounted deploy
+         (e.g. this repo's own Dockerfile); GitHub Pages project sites need
+         it set to "/<repo-name>/" instead, since every asset link, internal
+         <a href>, and DOCS_BASE fetch below is written relative rather than
+         root-absolute specifically so this one build-time value is enough to
+         retarget all of them at once. -->
+    <base data-trunk-public-url />
     <!-- Applies the persisted theme (components::atoms::theme_toggle,
          localStorage key "eovoc-theme") before Yew mounts, so a returning
          visitor who picked light mode doesn't see a dark flash first. Dark

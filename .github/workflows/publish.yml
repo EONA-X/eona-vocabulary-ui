@@ -51,8 +51,17 @@ jobs:
       - name: Install wasm-bindgen-cli
         run: cargo install wasm-bindgen-cli@${{ env.WASM_BINDGEN_VERSION }} --locked
 
+      # Resolves the actual path this deploy will be served under (e.g.
+      # "/eona-vocabulary-ui/" for a project site, "/" behind a custom
+      # domain) — build.sh's second argument, so every internal link and
+      # /docs fetch (see index.html's <base data-trunk-public-url>) still
+      # resolves correctly however Pages is configured for this repo.
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build
-        run: ./build.sh
+        run: ./build.sh sample-data/docs "${{ steps.pages.outputs.base_path }}"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

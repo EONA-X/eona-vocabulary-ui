@@ -26,7 +26,8 @@ use crate::crosswalk3d::layout_crosswalk_3d;
 use crate::net::{fetch_json, fetch_text, query_param, sync_url_slug};
 use crate::ontology::{namespace_prefixes, parse_ontology, OntologyEntry};
 
-const DOCS_BASE: &str = "/docs";
+/// Relative to `<base data-trunk-public-url>` — see pages::ontologies.
+const DOCS_BASE: &str = "docs";
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Default)]
 struct AlignmentsManifest {

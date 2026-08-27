@@ -14,6 +14,12 @@
 //! single-ontology term browser that used to live at "/" is now at
 //! "/ontologies" (`pages::ontologies`) — its own JSON-LD manifest fetch and
 //! `?ontology=<slug>` deep-linking are unchanged, only the path moved.
+//!
+//! Matched on the pathname's last segment, not the full pathname: this site
+//! isn't always mounted at the domain root (a GitHub Pages project site
+//! serves it under `/<repo-name>/`, e.g. `/eona-vocabulary-ui/crosswalk`) —
+//! see index.html's `<base data-trunk-public-url>` for the same concern on
+//! the asset/fetch side.
 mod components;
 mod crosswalk;
 mod crosswalk3d;
@@ -33,9 +39,10 @@ use pages::ontologies::OntologiesPage;
 #[function_component(App)]
 fn app() -> Html {
     let path = window().and_then(|w| w.location().pathname().ok()).unwrap_or_default();
-    if path == "/crosswalk" || path.starts_with("/crosswalk/") {
+    let route = path.trim_end_matches('/').rsplit('/').next().unwrap_or("");
+    if route == "crosswalk" {
         html! { <CrosswalkPage /> }
-    } else if path == "/ontologies" || path.starts_with("/ontologies/") {
+    } else if route == "ontologies" {
         html! { <OntologiesPage /> }
     } else {
         html! { <CatalogPage /> }

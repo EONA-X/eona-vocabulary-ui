@@ -796,7 +796,7 @@ pub fn onto_uml_diagram(props: &OntoUmlDiagramProps) -> Html {
                                         aria-hidden="true"
                                     />
                                     if let Some(slug) = &p.slug {
-                                        <a href={format!("/?ontology={slug}")} class="onto-uml-diagram__prefix-link">
+                                        <a href={format!("?ontology={slug}")} class="onto-uml-diagram__prefix-link">
                                             { p.prefix.clone() }
                                         </a>
                                     } else if let Some(external) = p.external {

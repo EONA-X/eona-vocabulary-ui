@@ -6,6 +6,9 @@
 //! Every link is a plain `<a href>` full navigation, matching this SPA's
 //! no-router design (each page fetches everything it needs on mount
 //! regardless of how it was reached).
+//!
+//! hrefs are relative to index.html's `<base data-trunk-public-url>`, not
+//! root-absolute — see main.rs.
 
 use yew::prelude::*;
 
@@ -34,11 +37,11 @@ pub fn navbar(props: &NavbarProps) -> Html {
 
     html! {
         <header class="eovoc-navbar">
-            <a class="eovoc-navbar__brand" href="/">{ "EONA-X Vocabularies" }</a>
+            <a class="eovoc-navbar__brand" href=".">{ "EONA-X Vocabularies" }</a>
             <nav class="eovoc-navbar__links">
-                { link(NavRoute::Catalog, "/", "Catalog") }
-                { link(NavRoute::Ontologies, "/ontologies", "Ontology Browser") }
-                { link(NavRoute::Crosswalk, "/crosswalk", "Crosswalk 3D") }
+                { link(NavRoute::Catalog, ".", "Catalog") }
+                { link(NavRoute::Ontologies, "ontologies", "Ontology Browser") }
+                { link(NavRoute::Crosswalk, "crosswalk", "Crosswalk 3D") }
             </nav>
             <ThemeToggle />
         </header>

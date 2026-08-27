@@ -21,10 +21,10 @@ use crate::components::organisms::{NavRoute, Navbar, OntologyBrowser, OntologySe
 use crate::net::{fetch_json, query_param, sync_url_slug};
 use crate::ontology::{namespace_prefixes, parse_ontology, OntologyEntry, OntologyModel};
 
-/// Site-absolute path where the ontology-docs pipeline output is served —
-/// mirrors the Vue source's `DOCS_BASE` constant. Independent of wherever
-/// this SPA itself is hosted.
-const DOCS_BASE: &str = "/docs";
+/// Path where the ontology-docs pipeline output is served, relative to
+/// index.html's `<base data-trunk-public-url>` rather than root-absolute —
+/// this SPA isn't always hosted at the domain root (see main.rs).
+const DOCS_BASE: &str = "docs";
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Default)]
 struct Manifest {
