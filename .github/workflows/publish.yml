@@ -43,7 +43,14 @@ jobs:
           toolchain: ${{ env.RUST_VERSION }}
           targets: wasm32-unknown-unknown
 
+      # cache-targets: false — caching target/ conflicts with Trunk's own
+      # [[node_packages]] resolver, which stores its npm downloads under
+      # target/node_modules/: a restored cache missing that directory (or
+      # holding a stale copy) makes Trunk fail outright instead of just
+      # re-fetching it. Still caches ~/.cargo/registry, the slower part.
       - uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: false
 
       - name: Install trunk
         run: cargo install trunk@${{ env.TRUNK_VERSION }} --locked
