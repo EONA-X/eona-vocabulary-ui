@@ -31,24 +31,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # crates/eona-crosswalk-transform (see .gitmodules) is public on GitHub,
+      # so plain submodule checkout needs no credentials.
       - uses: actions/checkout@v4
-
-      # crates/eona-crosswalk-transform is a submodule of a private GitLab
-      # instance (see .gitmodules) — armed here, before submodule init, via a
-      # deploy-key secret configured on this repo (Settings > Secrets and
-      # variables > Actions > EONA_CROSSWALK_TRANSFORM_DEPLOY_KEY), rather than
-      # left to actions/checkout's own submodule handling, which has no way to
-      # authenticate against it.
-      - name: Set up SSH access to the eona-crosswalk-transform submodule
-        uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.EONA_CROSSWALK_TRANSFORM_DEPLOY_KEY }}
-
-      - name: Trust the GitLab host key
-        run: ssh-keyscan -p 29418 gitlab.eona-x.org >> ~/.ssh/known_hosts
-
-      - name: Init submodules
-        run: git submodule update --init --recursive
+          submodules: true
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@master
