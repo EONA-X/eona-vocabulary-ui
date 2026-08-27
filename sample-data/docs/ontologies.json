@@ -2,6 +2,26 @@
   "generatedAt": "2026-08-25 13:47 UTC",
   "ontologies": [
     {
+      "slug": "datex-ii",
+      "title": "DATEX II EnergyInfrastructure (EV-charging)",
+      "description": "Hub-curated OWL/SKOS ontology for DATEX II's EnergyInfrastructure EV-charging (IRVE) model: entities, attributes and enumeration code values.",
+      "jsonld": "datex-ii/ontology.jsonld",
+      "namespace": "https://vocab.eona-x.eu/datex-ii",
+      "prefix": "datex-ii",
+      "version": "0.3.0",
+      "upstream": {
+        "name": "DATEX II",
+        "logo": "datex-ii-hero.png"
+      },
+      "kind": "owl",
+      "downloads": {
+        "ttl": "datex-ii/ontology.ttl",
+        "jsonld": "datex-ii/ontology.jsonld",
+        "owl": "datex-ii/ontology.owl",
+        "nt": "datex-ii/ontology.nt"
+      }
+    },
+    {
       "slug": "did",
       "title": "W3C Decentralized Identifiers (DID) v1.0 Vocabulary",
       "description": "RDF vocabulary for describing DID documents and services, from the W3C Decentralized Identifiers (DIDs) v1.0 Recommendation. Used by the Gaia-X ICAM (Identity, Credential & Access Management) semantic model for participant identity.",
@@ -36,6 +56,45 @@
         "jsonld": "eonax-odrl-profile/ontology.jsonld",
         "owl": "eonax-odrl-profile/ontology.owl",
         "nt": "eonax-odrl-profile/ontology.nt"
+      }
+    },
+    {
+      "slug": "mobilitydcat-ap-shacl-ranges",
+      "title": "mobilityDCAT-AP SHACL range shapes",
+      "description": "Range/type SHACL shapes for mobilityDCAT-AP properties. Published under CC BY 4.0.",
+      "jsonld": "mobilitydcat-ap-shacl-ranges/ontology.jsonld",
+      "namespace": "https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#",
+      "prefix": "mobilitydcat-ap-shacl-ranges",
+      "version": "3.0.0",
+      "upstream": {
+        "name": "NAPCORE"
+      },
+      "kind": "shacl",
+      "downloads": {
+        "ttl": "mobilitydcat-ap-shacl-ranges/ontology.ttl",
+        "jsonld": "mobilitydcat-ap-shacl-ranges/ontology.jsonld",
+        "owl": "mobilitydcat-ap-shacl-ranges/ontology.owl",
+        "nt": "mobilitydcat-ap-shacl-ranges/ontology.nt"
+      }
+    },
+    {
+      "slug": "netex",
+      "title": "NeTEx/Transmodel \u2014 EV Charging & Alternative-Fuel",
+      "description": "Hub-curated OWL/SKOS rendering of the NeTEx (CEN/TS 16614, Transmodel-based) vehicle-charging and alternative-fuel subset: charging/refuelling/battery equipment, recharging stations and points, and vehicle charging profiles.",
+      "jsonld": "netex/ontology.jsonld",
+      "namespace": "https://vocab.eona-x.eu/netex",
+      "prefix": "netex",
+      "version": "0.2.0",
+      "upstream": {
+        "name": "CEN",
+        "logo": "cen-hero.png"
+      },
+      "kind": "owl",
+      "downloads": {
+        "ttl": "netex/ontology.ttl",
+        "jsonld": "netex/ontology.jsonld",
+        "owl": "netex/ontology.owl",
+        "nt": "netex/ontology.nt"
       }
     }
   ]

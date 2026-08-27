@@ -1,0 +1,268 @@
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_address_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_address_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2006/vcard/ns#Address> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_address_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/2006/vcard/ns#hasAddress> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_address_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/2006/vcard/ns#Kind> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_temporal_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_temporal_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/PeriodOfTime> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_temporal_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/temporal> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_spatial_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_spatial_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/Location> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_spatial_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/spatial> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_publisher_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_publisher_range> <http://www.w3.org/ns/shacl#class> <http://xmlns.com/foaf/0.1/Agent> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_publisher_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/publisher> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_temporal_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_spatial_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_publisher_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/ns/dcat#DatasetSeries> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range> <http://www.w3.org/ns/shacl#message> "Temporal coverage must be a dct:PeriodOfTime instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range> <http://www.w3.org/ns/shacl#description> "Temporal coverage must be of type dct:PeriodOfTime"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range> <http://www.w3.org/ns/shacl#name> "temporal coverage (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/PeriodOfTime> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/temporal> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range> <http://www.w3.org/ns/shacl#message> "Grammar must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range> <http://www.w3.org/ns/shacl#description> "Grammar must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range> <http://www.w3.org/ns/shacl#name> "grammar (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#grammar> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range> <http://www.w3.org/ns/shacl#message> "Communication method must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range> <http://www.w3.org/ns/shacl#description> "Communication method must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range> <http://www.w3.org/ns/shacl#name> "communication method (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#communicationMethod> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range> <http://www.w3.org/ns/shacl#message> "Licence must be a dct:LicenseDocument instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range> <http://www.w3.org/ns/shacl#description> "Licence must be of type dct:LicenseDocument"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range> <http://www.w3.org/ns/shacl#name> "licence (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/LicenseDocument> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/license> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range> <http://www.w3.org/ns/shacl#message> "Application layer protocol must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range> <http://www.w3.org/ns/shacl#description> "Application layer protocol must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range> <http://www.w3.org/ns/shacl#name> "application layer protocol (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#applicationLayerProtocol> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range> <http://www.w3.org/ns/shacl#message> "Rights must be a dct:RightsStatement instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range> <http://www.w3.org/ns/shacl#description> "Rights must be of type dct:RightsStatement"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range> <http://www.w3.org/ns/shacl#name> "rights (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/RightsStatement> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/rights> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range> <http://www.w3.org/ns/shacl#message> "Format must be a dct:MediaTypeOrExtent instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range> <http://www.w3.org/ns/shacl#description> "Format must be of type dct:MediaTypeOrExtent (§5.2)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range> <http://www.w3.org/ns/shacl#name> "format (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/MediaTypeOrExtent> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/format> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#description> "Enforces sh:class constraints for Distribution properties to ensure strict type checking."@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#name> "Distribution (mobilityDCAT-AP) - Range Constraints"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/ns/dcat#Distribution> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range> <http://www.w3.org/ns/shacl#message> "Quality annotation must be a dqv:QualityAnnotation instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range> <http://www.w3.org/ns/shacl#description> "Quality annotation must be of type dqv:QualityAnnotation"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range> <http://www.w3.org/ns/shacl#name> "quality description (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/dqv#QualityAnnotation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/dqv#hasQualityAnnotation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#message> "Other identifier must be an adms:Identifier instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#description> "Other identifier must be of type adms:Identifier"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#name> "other identifier (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/adms#Identifier> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/adms#identifier> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range> <http://www.w3.org/ns/shacl#message> "Intended information service must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range> <http://www.w3.org/ns/shacl#description> "Intended information service must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range> <http://www.w3.org/ns/shacl#name> "intended information service (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#intendedInformationService> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range> <http://www.w3.org/ns/shacl#message> "Has version must be a dcat:Dataset instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range> <http://www.w3.org/ns/shacl#description> "Has version must be of type dcat:Dataset"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range> <http://www.w3.org/ns/shacl#name> "has version (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/dcat#Dataset> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/dcat#hasVersion> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range> <http://www.w3.org/ns/shacl#message> "Assessment result must be a mobilitydcatap:Assessment instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range> <http://www.w3.org/ns/shacl#description> "Assessment result must be of type mobilitydcatap:Assessment"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range> <http://www.w3.org/ns/shacl#name> "assessment result (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range> <http://www.w3.org/ns/shacl#class> <https://w3id.org/mobilitydcat-ap#Assessment> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#assessmentResult> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range> <http://www.w3.org/ns/shacl#message> "Applicable legislation must be an eli:LegalResource instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range> <http://www.w3.org/ns/shacl#description> "Applicable legislation must be of type eli:LegalResource"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range> <http://www.w3.org/ns/shacl#name> "applicable legislation (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range> <http://www.w3.org/ns/shacl#class> <http://data.europa.eu/eli/ontology#LegalResource> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range> <http://www.w3.org/ns/shacl#path> <http://data.europa.eu/r5r/applicableLegislation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range> <http://www.w3.org/ns/shacl#message> "Transport mode must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range> <http://www.w3.org/ns/shacl#description> "Transport mode must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range> <http://www.w3.org/ns/shacl#name> "transport mode (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#transportMode> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range> <http://www.w3.org/ns/shacl#message> "Temporal coverage must be a dct:PeriodOfTime instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range> <http://www.w3.org/ns/shacl#description> "Temporal coverage must be of type dct:PeriodOfTime"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range> <http://www.w3.org/ns/shacl#name> "temporal coverage (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/PeriodOfTime> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/temporal> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range> <http://www.w3.org/ns/shacl#message> "Theme must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range> <http://www.w3.org/ns/shacl#description> "Theme must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range> <http://www.w3.org/ns/shacl#name> "theme / category (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/dcat#theme> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range> <http://www.w3.org/ns/shacl#message> "Rights holder must be a foaf:Agent instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range> <http://www.w3.org/ns/shacl#description> "Rights holder must be of type foaf:Agent"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range> <http://www.w3.org/ns/shacl#name> "rights holder (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range> <http://www.w3.org/ns/shacl#class> <http://xmlns.com/foaf/0.1/Agent> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/rightsHolder> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range> <http://www.w3.org/ns/shacl#message> "Reference system must be a dct:Standard instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range> <http://www.w3.org/ns/shacl#description> "Reference system must be of type dct:Standard"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range> <http://www.w3.org/ns/shacl#name> "reference system (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/Standard> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/geodcat#referenceSystem> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range> <http://www.w3.org/ns/shacl#message> "Network coverage must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range> <http://www.w3.org/ns/shacl#description> "Network coverage must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range> <http://www.w3.org/ns/shacl#name> "network coverage (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#networkCoverage> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range> <http://www.w3.org/ns/shacl#message> "Contact point must be a vcard:Kind instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range> <http://www.w3.org/ns/shacl#description> "Contact point must be of type vcard:Kind"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range> <http://www.w3.org/ns/shacl#name> "contact point (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2006/vcard/ns#Kind> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/dcat#contactPoint> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Warning> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range> <http://www.w3.org/ns/shacl#message> "Georeferencing method must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range> <http://www.w3.org/ns/shacl#description> "Georeferencing method must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range> <http://www.w3.org/ns/shacl#name> "georeferencing method (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#georeferencingMethod> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range> <http://www.w3.org/ns/shacl#message> "Publisher must be a foaf:Agent instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range> <http://www.w3.org/ns/shacl#description> "Publisher must be of type foaf:Agent"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range> <http://www.w3.org/ns/shacl#name> "publisher (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range> <http://www.w3.org/ns/shacl#class> <http://xmlns.com/foaf/0.1/Agent> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/publisher> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range> <http://www.w3.org/ns/shacl#message> "Spatial coverage must be a dct:Location instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range> <http://www.w3.org/ns/shacl#description> "Spatial coverage must be of type dct:Location"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range> <http://www.w3.org/ns/shacl#name> "spatial / geographic coverage (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/Location> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/spatial> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range> <http://www.w3.org/ns/shacl#message> "Mobility theme must be a skos:Concept instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range> <http://www.w3.org/ns/shacl#description> "Mobility theme must be of type skos:Concept"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range> <http://www.w3.org/ns/shacl#name> "mobility theme (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range> <http://www.w3.org/ns/shacl#path> <https://w3id.org/mobilitydcat-ap#mobilityTheme> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range> <http://www.w3.org/ns/shacl#message> "Frequency must be a dct:Frequency instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range> <http://www.w3.org/ns/shacl#description> "Frequency must be of type dct:Frequency"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range> <http://www.w3.org/ns/shacl#name> "frequency (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range> <http://www.w3.org/ns/shacl#class> <http://purl.org/dc/terms/Frequency> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/accrualPeriodicity> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Violation> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range> <http://www.w3.org/ns/shacl#message> "Distribution must be a dcat:Distribution instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range> <http://www.w3.org/ns/shacl#description> "Distribution must be of type dcat:Distribution"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range> <http://www.w3.org/ns/shacl#name> "distribution (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/dcat#Distribution> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/dcat#distribution> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#description> "Range constraints (sh:class) for Dataset properties. Enforces strict class membership for all properties that reference other resources."@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#name> "Dataset (mobilityDCAT-AP) - Range Constraints"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/ns/dcat#Dataset> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range> <http://www.w3.org/ns/shacl#message> "Category scheme must be a skos:ConceptScheme instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range> <http://www.w3.org/ns/shacl#description> "Category scheme must be of type skos:ConceptScheme"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range> <http://www.w3.org/ns/shacl#name> "category scheme (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/2004/02/skos/core#inScheme> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_ranges> <http://www.w3.org/ns/shacl#description> "Range constraints for Category. Enforces that category scheme is a skos:ConceptScheme."@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_ranges> <http://www.w3.org/ns/shacl#name> "Category (mobilityDCAT-AP) - Range Constraints"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range> <http://www.w3.org/ns/shacl#message> "Publisher must be a foaf:Agent instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range> <http://www.w3.org/ns/shacl#description> "Publisher must be of type foaf:Agent"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range> <http://www.w3.org/ns/shacl#name> "publisher (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range> <http://www.w3.org/ns/shacl#class> <http://xmlns.com/foaf/0.1/Agent> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range> <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/terms/publisher> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_ranges> <http://www.w3.org/ns/shacl#description> "Range constraints for Catalogue Record mobility extensions. Other range constraints (language, primary topic, source metadata) are inherited from DCAT-AP 3.0.1 ranges."@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_ranges> <http://www.w3.org/ns/shacl#name> "Catalogue Record (mobilityDCAT-AP) - Range Constraints"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/ns/dcat#CatalogRecord> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#message> "Other identifier must be an adms:Identifier instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#description> "Other identifier must be of type adms:Identifier"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#name> "other identifier (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/adms#Identifier> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/adms#identifier> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_ranges> <http://www.w3.org/ns/shacl#description> "Range constraints for Catalogue mobility extensions. Other range constraints (dataset, publisher, record, spatial, etc.) are inherited from DCAT-AP 3.0.1 ranges."@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_ranges> <http://www.w3.org/ns/shacl#name> "Catalogue (mobilityDCAT-AP) - Range Constraints"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/ns/dcat#Catalog> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range> <http://www.w3.org/ns/shacl#message> "Affiliation must be an org:Organization instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range> <http://www.w3.org/ns/shacl#description> "The affiliation must be of type org:Organization"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range> <http://www.w3.org/ns/shacl#name> "affiliation (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/org#Organization> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/org#memberOf> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range> <http://www.w3.org/ns/shacl#severity> <http://www.w3.org/ns/shacl#Info> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range> <http://www.w3.org/ns/shacl#message> "Address must be a locn:Address instance"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range> <http://www.w3.org/ns/shacl#description> "The postal address must be of type locn:Address"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range> <http://www.w3.org/ns/shacl#name> "address (range)"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range> <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/locn#Address> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range> <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/locn#address> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_ranges> <http://www.w3.org/ns/shacl#property> <https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_ranges> <http://www.w3.org/ns/shacl#description> "Range constraints for Agent mobility extensions. Enforces sh:class for address and affiliation properties."@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_ranges> <http://www.w3.org/ns/shacl#name> "Agent (mobilityDCAT-AP) - Range Constraints"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_ranges> <http://www.w3.org/ns/shacl#targetClass> <http://xmlns.com/foaf/0.1/Agent> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_ranges> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#NodeShape> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> <http://purl.org/dc/terms/description> "Adds sh:class constraints to mobilityDCAT-AP properties."@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> <http://purl.org/dc/terms/title> "mobilityDCAT-AP 3.0.0 SHACL - Range Constraints"@en .
+<https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> <http://www.w3.org/2002/07/owl#versionInfo> "3.0.0" .
+<https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> <http://www.w3.org/2002/07/owl#imports> <https://semiceu.github.io/DCAT-AP/releases/3.0.1/shacl/dcat-ap-SHACL-ranges.ttl> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Asset> .
+<https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .

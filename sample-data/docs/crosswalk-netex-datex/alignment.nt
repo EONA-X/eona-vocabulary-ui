@@ -1,0 +1,140 @@
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://purl.org/dc/terms/created> "2026-06-26"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/2004/02/skos/core#note> "relatedMatch (associative, not equivalence): DATEX II chargingMode (IEC 61851 modes 1-4, encoding AC/DC plus control) and NeTEx currentType (AC/DC) both characterise how charging is delivered, but at different granularity, so related rather than close or exact." .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#relatedMatch> .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/chargingMode> .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/2004/02/skos/core#prefLabel> "Charging mode ↔ current type"@en .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-charging-mode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://purl.org/dc/terms/created> "2026-06-26"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/2004/02/skos/core#note> "closeMatch: DATEX II 'voltage' and NeTEx 'nominal voltage' both denote the operating voltage of the charging equipment in volts (V); near-equivalent, framing differs slightly." .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/nominalVoltage> .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/voltage> .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/2004/02/skos/core#prefLabel> "Voltage ↔ nominal voltage"@en .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-voltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://purl.org/dc/terms/created> "2026-06-26"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/2004/02/skos/core#note> "closeMatch: both denote the maximum power the equipment can deliver, but DATEX II expresses it in kilowatts (kW) and NeTEx in watts (W); same quantity, different unit framing, so close rather than exact." .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/maximumChargingPower> .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/maxPowerAtSocket> .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/2004/02/skos/core#prefLabel> "Maximum power at socket ↔ maximum charging power"@en .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-max-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-station> <http://purl.org/dc/terms/created> "2026-06-26"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-station> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/2004/02/skos/core#note> "closeMatch: DATEX II EnergyInfrastructureStation and NeTEx RechargingStation both denote the place that groups the charging points/equipment of a site; near-equivalent groupings, not asserted strictly identical." .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/RechargingStation> .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/EnergyInfrastructureStation> .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/2004/02/skos/core#prefLabel> "Station ↔ recharging station"@en .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-station> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-location> <http://purl.org/dc/terms/created> "2026-06-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-location> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/2004/02/skos/core#note> "exactMatch: both denote the geographic location of the charging facility (latitude/longitude resp. Transmodel Point/Location); the same real-world concept, interchangeable." .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/location> .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#exactMatch> .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/location> .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/2004/02/skos/core#prefLabel> "Location ↔ location"@en .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://purl.org/dc/terms/created> "2026-06-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/2004/02/skos/core#note> "closeMatch: DATEX II frames the connector as a 'type' and NeTEx as a 'standard'; the underlying enumerations (Type 2, CCS, CHAdeMO, ...) overlap heavily but the framings/value sets are not asserted identical, so close rather than exact. The individual code values are aligned one-by-one in the connector code-value block (exact/closeMatch); Tesla and generic domestic plugs have no 1:1 NeTEx counterpart and are left unmapped." .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/connectorType> .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/2004/02/skos/core#prefLabel> "Connector type ↔ connector standard"@en .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-connector> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-power> <http://purl.org/dc/terms/created> "2026-06-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-power> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/2004/02/skos/core#note> "exactMatch: both denote the rated electrical power of the charging facility in kilowatts (kW); same quantity and units, interchangeable." .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/powerRating> .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#exactMatch> .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/power> .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/2004/02/skos/core#prefLabel> "Rated power ↔ power rating"@en .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-power> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-status> <http://purl.org/dc/terms/created> "2026-06-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-status> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/2004/02/skos/core#note> "closeMatch: both denote the operational availability status of the charging facility; DATEX II's status enumeration and NeTEx's availabilityStatus are not guaranteed value-for-value identical, so close rather than exact." .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/status> .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/2004/02/skos/core#prefLabel> "Status ↔ availability status"@en .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://purl.org/dc/terms/created> "2026-06-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://purl.org/dc/terms/source> "EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)" .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/2004/02/skos/core#note> "closeMatch, not exactMatch: DATEX II models the single charging *point* whereas NeTEx models the charging *equipment* (the physical unit, which may expose several points); the concepts overlap closely but are not strictly equivalent." .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <https://vocab.eona-x.eu/datex-ii/ElectricVehicleChargingPoint> .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/2004/02/skos/core#prefLabel> "Charging point ↔ charging equipment"@en .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/alignments/netex-datex-ii> .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/alignments/map-charging-point> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-yazaki> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-yazaki> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/connectorStandard-type1> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3A> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3A> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/connectorStandard-type3> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3C> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3C> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/connectorStandard-type3> .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-chademo> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-chademo> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2COMBO> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2COMBO> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1COMBO> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1COMBO> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/netex/connectorStandard-type2> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1> .
+<https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/netex/connectorStandard-type1> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#relatedMatch> <https://vocab.eona-x.eu/datex-ii/chargingMode> .
+<https://vocab.eona-x.eu/datex-ii/chargingMode> <http://www.w3.org/2004/02/skos/core#relatedMatch> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/voltage> .
+<https://vocab.eona-x.eu/datex-ii/voltage> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/nominalVoltage> .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/maxPowerAtSocket> .
+<https://vocab.eona-x.eu/datex-ii/maxPowerAtSocket> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/maximumChargingPower> .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/EnergyInfrastructureStation> .
+<https://vocab.eona-x.eu/datex-ii/EnergyInfrastructureStation> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/RechargingStation> .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/datex-ii/location> .
+<https://vocab.eona-x.eu/datex-ii/location> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/netex/location> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/connectorType> .
+<https://vocab.eona-x.eu/datex-ii/connectorType> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/datex-ii/power> .
+<https://vocab.eona-x.eu/datex-ii/power> <http://www.w3.org/2004/02/skos/core#exactMatch> <https://vocab.eona-x.eu/netex/powerRating> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/status> .
+<https://vocab.eona-x.eu/datex-ii/status> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/datex-ii/ElectricVehicleChargingPoint> .
+<https://vocab.eona-x.eu/datex-ii/ElectricVehicleChargingPoint> <http://www.w3.org/2004/02/skos/core#closeMatch> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <https://vocab.eona-x.eu/datex-ii/energy-infrastructure> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://rdfs.org/ns/void#linkPredicate> <http://www.w3.org/2004/02/skos/core#relatedMatch> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://rdfs.org/ns/void#linkPredicate> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://rdfs.org/ns/void#linkPredicate> <http://www.w3.org/2004/02/skos/core#exactMatch> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://purl.org/dc/terms/source> "Hub-curated EV-charging crosswalk for the EMDS demo (demo point C); not derived from an upstream NeTEx/DATEX II distribution — DATEX II and NeTEx are published natively as XSD and carry no canonical cross-standard SKOS mapping." .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://purl.org/dc/terms/creator> "EONA-X Vocabulary Hub" .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://purl.org/dc/terms/modified> "2026-06-26"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://purl.org/dc/terms/created> "2026-06-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://purl.org/dc/terms/description> "Hub-curated EV-charging (IRVE) crosswalk for the EMDS demo: SKOS alignment between the DATEX II EnergyInfrastructure subset (#433) and the NeTEx/Transmodel-style subset (#445), so a term in one vocabulary resolves to its counterpart in the other." .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://www.w3.org/2000/01/rdf-schema#label> "NeTEx ↔ DATEX II crosswalk (EV-charging)" .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://purl.org/dc/terms/title> "NeTEx ↔ DATEX II crosswalk (EV-charging)" .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://purl.org/dc/terms/identifier> "netex-datex-ii" .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Resource> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rdfs.org/ns/void#Linkset> .
+<https://vocab.eona-x.eu/alignments/netex-datex-ii> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .

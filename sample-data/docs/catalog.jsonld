@@ -7,6 +7,18 @@
       },
       {
         "@id": "https://vocab.eona-x.eu/catalog/eonax-odrl-profile"
+      },
+      {
+        "@id": "https://vocab.eona-x.eu/catalog/netex"
+      },
+      {
+        "@id": "https://vocab.eona-x.eu/catalog/datex-ii"
+      },
+      {
+        "@id": "https://vocab.eona-x.eu/catalog/crosswalk-netex-datex"
+      },
+      {
+        "@id": "https://vocab.eona-x.eu/catalog/mobilitydcat-ap-shacl-ranges"
       }
     ],
     "http://purl.org/dc/terms/modified": [
@@ -325,6 +337,620 @@
     ],
     "@type": [
       "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "https://vocab.eona-x.eu/catalog/netex",
+    "http://www.w3.org/ns/dcat#distribution": [
+      {
+        "@id": "_:ecc6a76ed5b879410cb7a1718e05d2aa"
+      },
+      {
+        "@id": "_:a95e8182b7699b3cc2b6a5fb5da42e86"
+      },
+      {
+        "@id": "_:bef7a33a1be170d52543c42ecf69a0df"
+      },
+      {
+        "@id": "_:a388305d4a84304853783c421f590d5a"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "_:c4a86ba7fd819649c8c602a7a40b25eb"
+      }
+    ],
+    "http://xmlns.com/foaf/0.1/thumbnail": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/assets/cen-hero.png"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#landingPage": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/ontologies?ontology=netex"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#version": [
+      {
+        "@value": "0.2.0"
+      }
+    ],
+    "http://purl.org/dc/terms/conformsTo": [
+      {
+        "@id": "https://vocab.eona-x.eu/netex"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Hub-curated OWL/SKOS rendering of the NeTEx (CEN/TS 16614, Transmodel-based) vehicle-charging and alternative-fuel subset: charging/refuelling/battery equipment, recharging stations and points, and vehicle charging profiles."
+      }
+    ],
+    "http://purl.org/dc/terms/type": [
+      {
+        "@value": "OWL Ontology"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx/Transmodel \u2014 EV Charging & Alternative-Fuel"
+      }
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@value": "netex"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Dataset"
+    ]
+  },
+  {
+    "@id": "_:ecc6a76ed5b879410cb7a1718e05d2aa",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/n-triples"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/netex/ontology.nt"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx/Transmodel \u2014 EV Charging & Alternative-Fuel (N-Triples)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:a95e8182b7699b3cc2b6a5fb5da42e86",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/rdf+xml"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/netex/ontology.owl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx/Transmodel \u2014 EV Charging & Alternative-Fuel (RDF/XML)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:bef7a33a1be170d52543c42ecf69a0df",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/ld+json"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/netex/ontology.jsonld"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx/Transmodel \u2014 EV Charging & Alternative-Fuel (JSON-LD)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:a388305d4a84304853783c421f590d5a",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "text/turtle"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/netex/ontology.ttl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx/Transmodel \u2014 EV Charging & Alternative-Fuel (Turtle)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:c4a86ba7fd819649c8c602a7a40b25eb",
+    "http://xmlns.com/foaf/0.1/name": [
+      {
+        "@value": "CEN"
+      }
+    ],
+    "@type": [
+      "http://xmlns.com/foaf/0.1/Agent"
+    ]
+  },
+  {
+    "@id": "https://vocab.eona-x.eu/catalog/datex-ii",
+    "http://www.w3.org/ns/dcat#distribution": [
+      {
+        "@id": "_:dcedb6e0a041073f649bf681df8bbe68"
+      },
+      {
+        "@id": "_:e669c309e0217bf29713d0451118bd33"
+      },
+      {
+        "@id": "_:ff1e0b5c4a104706cd9858f9c82741f1"
+      },
+      {
+        "@id": "_:b0fe1b1c7127cf4cc2cc418b28969499"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "_:d5c2af51cf25f226cc5db48bc7dbdcf4"
+      }
+    ],
+    "http://xmlns.com/foaf/0.1/thumbnail": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/assets/datex-ii-hero.png"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#landingPage": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/ontologies?ontology=datex-ii"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#version": [
+      {
+        "@value": "0.3.0"
+      }
+    ],
+    "http://purl.org/dc/terms/conformsTo": [
+      {
+        "@id": "https://vocab.eona-x.eu/datex-ii"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Hub-curated OWL/SKOS ontology for DATEX II's EnergyInfrastructure EV-charging (IRVE) model: entities, attributes and enumeration code values."
+      }
+    ],
+    "http://purl.org/dc/terms/type": [
+      {
+        "@value": "OWL Ontology"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "DATEX II EnergyInfrastructure (EV-charging)"
+      }
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@value": "datex-ii"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Dataset"
+    ]
+  },
+  {
+    "@id": "_:dcedb6e0a041073f649bf681df8bbe68",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/n-triples"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/datex-ii/ontology.nt"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "DATEX II EnergyInfrastructure (EV-charging) (N-Triples)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:e669c309e0217bf29713d0451118bd33",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/rdf+xml"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/datex-ii/ontology.owl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "DATEX II EnergyInfrastructure (EV-charging) (RDF/XML)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:ff1e0b5c4a104706cd9858f9c82741f1",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/ld+json"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/datex-ii/ontology.jsonld"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "DATEX II EnergyInfrastructure (EV-charging) (JSON-LD)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:b0fe1b1c7127cf4cc2cc418b28969499",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "text/turtle"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/datex-ii/ontology.ttl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "DATEX II EnergyInfrastructure (EV-charging) (Turtle)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:d5c2af51cf25f226cc5db48bc7dbdcf4",
+    "http://xmlns.com/foaf/0.1/name": [
+      {
+        "@value": "DATEX II"
+      }
+    ],
+    "@type": [
+      "http://xmlns.com/foaf/0.1/Agent"
+    ]
+  },
+  {
+    "@id": "https://vocab.eona-x.eu/catalog/crosswalk-netex-datex",
+    "http://www.w3.org/ns/dcat#distribution": [
+      {
+        "@id": "_:e126fe57eaa953f73851ccd37847286b"
+      },
+      {
+        "@id": "_:d4d494b9b3a958355f411d4ac41a3b91"
+      },
+      {
+        "@id": "_:e94196d6da95847e47903b36407309b5"
+      },
+      {
+        "@id": "_:b82a890caccf832e557ea4f3dac1f0f4"
+      }
+    ],
+    "http://xmlns.com/foaf/0.1/thumbnail": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/assets/owl-illustration.svg"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#landingPage": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/crosswalk?crosswalk=crosswalk-netex-datex"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Hub-curated SKOS alignment between the NeTEx/Transmodel and DATEX II EnergyInfrastructure EV-charging (IRVE) subsets \u2014 entity, attribute and connector code-value correspondences."
+      }
+    ],
+    "http://purl.org/dc/terms/type": [
+      {
+        "@value": "Crosswalk"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx \u2194 DATEX II crosswalk (EV-charging)"
+      }
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@value": "crosswalk-netex-datex"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Dataset"
+    ]
+  },
+  {
+    "@id": "_:e126fe57eaa953f73851ccd37847286b",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/n-triples"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/crosswalk-netex-datex/alignment.nt"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx \u2194 DATEX II crosswalk (EV-charging) (N-Triples)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:d4d494b9b3a958355f411d4ac41a3b91",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/rdf+xml"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/crosswalk-netex-datex/alignment.owl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx \u2194 DATEX II crosswalk (EV-charging) (RDF/XML)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:e94196d6da95847e47903b36407309b5",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/ld+json"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/crosswalk-netex-datex/alignment.jsonld"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx \u2194 DATEX II crosswalk (EV-charging) (JSON-LD)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:b82a890caccf832e557ea4f3dac1f0f4",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "text/turtle"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/crosswalk-netex-datex/alignment.ttl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NeTEx \u2194 DATEX II crosswalk (EV-charging) (Turtle)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "https://vocab.eona-x.eu/catalog/mobilitydcat-ap-shacl-ranges",
+    "http://www.w3.org/ns/dcat#distribution": [
+      {
+        "@id": "_:fbd06080f096c435cdde1ee73046d60d"
+      },
+      {
+        "@id": "_:fcfddb00f3de4b3c9c58b52d0bf79356"
+      },
+      {
+        "@id": "_:be8054eea5c6937f9bc7234fd611c6e2"
+      },
+      {
+        "@id": "_:f59c3856249e20b48da201a6d4235505"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "_:f80b4d562897d920ea2833f4aac9c13a"
+      }
+    ],
+    "http://xmlns.com/foaf/0.1/thumbnail": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/assets/owl-illustration.svg"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#landingPage": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/ontologies?ontology=mobilitydcat-ap-shacl-ranges"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#version": [
+      {
+        "@value": "3.0.0"
+      }
+    ],
+    "http://purl.org/dc/terms/conformsTo": [
+      {
+        "@id": "https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Range/type SHACL shapes for mobilityDCAT-AP properties. Published under CC BY 4.0."
+      }
+    ],
+    "http://purl.org/dc/terms/type": [
+      {
+        "@value": "SHACL Shapes Graph"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "mobilityDCAT-AP SHACL range shapes"
+      }
+    ],
+    "http://purl.org/dc/terms/identifier": [
+      {
+        "@value": "mobilitydcat-ap-shacl-ranges"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Dataset"
+    ]
+  },
+  {
+    "@id": "_:fbd06080f096c435cdde1ee73046d60d",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/n-triples"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/mobilitydcat-ap-shacl-ranges/ontology.nt"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "mobilityDCAT-AP SHACL range shapes (N-Triples)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:fcfddb00f3de4b3c9c58b52d0bf79356",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/rdf+xml"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/mobilitydcat-ap-shacl-ranges/ontology.owl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "mobilityDCAT-AP SHACL range shapes (RDF/XML)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:be8054eea5c6937f9bc7234fd611c6e2",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/ld+json"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/mobilitydcat-ap-shacl-ranges/ontology.jsonld"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "mobilityDCAT-AP SHACL range shapes (JSON-LD)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:f59c3856249e20b48da201a6d4235505",
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "text/turtle"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#downloadURL": [
+      {
+        "@id": "https://vocab.eona-x.eu/docs/mobilitydcat-ap-shacl-ranges/ontology.ttl"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "mobilityDCAT-AP SHACL range shapes (Turtle)"
+      }
+    ],
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ]
+  },
+  {
+    "@id": "_:f80b4d562897d920ea2833f4aac9c13a",
+    "http://xmlns.com/foaf/0.1/name": [
+      {
+        "@value": "NAPCORE"
+      }
+    ],
+    "@type": [
+      "http://xmlns.com/foaf/0.1/Agent"
     ]
   }
 ]

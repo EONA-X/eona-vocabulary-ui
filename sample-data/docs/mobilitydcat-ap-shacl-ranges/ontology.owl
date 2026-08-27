@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_address_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2006/vcard/ns#hasAddress"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Kind_Shape_address_range"/>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_temporal_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/temporal"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_spatial_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/Location"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/spatial"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_publisher_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/publisher"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_temporal_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_spatial_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#DatasetSeries_Shape_publisher_range"/>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#DatasetSeries"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Temporal coverage must be a dct:PeriodOfTime instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Temporal coverage must be of type dct:PeriodOfTime</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">temporal coverage (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/temporal"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Grammar must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Grammar must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">grammar (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#grammar"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Communication method must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Communication method must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">communication method (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#communicationMethod"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Licence must be a dct:LicenseDocument instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Licence must be of type dct:LicenseDocument</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">licence (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/license"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Application layer protocol must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Application layer protocol must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">application layer protocol (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#applicationLayerProtocol"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Rights must be a dct:RightsStatement instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Rights must be of type dct:RightsStatement</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">rights (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/rights"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Format must be a dct:MediaTypeOrExtent instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Format must be of type dct:MediaTypeOrExtent (§5.2)</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">format (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/format"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_temporal_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_grammar_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_communicationMethod_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_licence_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_applicationLayerProtocol_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_rights_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Distribution_Shape_format_range"/>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Enforces sh:class constraints for Distribution properties to ensure strict type checking.</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Distribution (mobilityDCAT-AP) - Range Constraints</name>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Quality annotation must be a dqv:QualityAnnotation instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Quality annotation must be of type dqv:QualityAnnotation</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">quality description (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dqv#QualityAnnotation"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dqv#hasQualityAnnotation"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Other identifier must be an adms:Identifier instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Other identifier must be of type adms:Identifier</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">other identifier (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/adms#identifier"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Intended information service must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Intended information service must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">intended information service (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#intendedInformationService"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Has version must be a dcat:Dataset instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Has version must be of type dcat:Dataset</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">has version (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#hasVersion"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Assessment result must be a mobilitydcatap:Assessment instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Assessment result must be of type mobilitydcatap:Assessment</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">assessment result (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#Assessment"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#assessmentResult"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Applicable legislation must be an eli:LegalResource instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Applicable legislation must be of type eli:LegalResource</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">applicable legislation (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://data.europa.eu/r5r/applicableLegislation"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Transport mode must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Transport mode must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">transport mode (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#transportMode"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Temporal coverage must be a dct:PeriodOfTime instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Temporal coverage must be of type dct:PeriodOfTime</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">temporal coverage (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/temporal"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Theme must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Theme must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">theme / category (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#theme"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Rights holder must be a foaf:Agent instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Rights holder must be of type foaf:Agent</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">rights holder (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/rightsHolder"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Reference system must be a dct:Standard instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Reference system must be of type dct:Standard</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">reference system (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/Standard"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/geodcat#referenceSystem"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Network coverage must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Network coverage must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">network coverage (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#networkCoverage"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Contact point must be a vcard:Kind instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Contact point must be of type vcard:Kind</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">contact point (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#contactPoint"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Georeferencing method must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Georeferencing method must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">georeferencing method (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#georeferencingMethod"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Publisher must be a foaf:Agent instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Publisher must be of type foaf:Agent</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">publisher (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/publisher"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Spatial coverage must be a dct:Location instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Spatial coverage must be of type dct:Location</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">spatial / geographic coverage (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/Location"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/spatial"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Mobility theme must be a skos:Concept instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Mobility theme must be of type skos:Concept</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">mobility theme (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap#mobilityTheme"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Frequency must be a dct:Frequency instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Frequency must be of type dct:Frequency</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">frequency (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/Frequency"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/accrualPeriodicity"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Violation"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Distribution must be a dcat:Distribution instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Distribution must be of type dcat:Distribution</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">distribution (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#distribution"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasQualityAnnotation_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_otherIdentifier_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_intendedInformationService_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_hasVersion_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_assessmentResult_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_applicableLegislation_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_transportMode_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_temporal_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_theme_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_rightsHolder_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_referenceSystem_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_networkCoverage_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_contactPoint_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_georeferencingMethod_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_publisher_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_spatial_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_mobilityTheme_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_accrualPeriodicity_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Dataset_Shape_distribution_range"/>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Range constraints (sh:class) for Dataset properties. Enforces strict class membership for all properties that reference other resources.</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Dataset (mobilityDCAT-AP) - Range Constraints</name>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Category scheme must be a skos:ConceptScheme instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Category scheme must be of type skos:ConceptScheme</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">category scheme (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Category_Shape_inScheme_range"/>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Range constraints for Category. Enforces that category scheme is a skos:ConceptScheme.</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Category (mobilityDCAT-AP) - Range Constraints</name>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Publisher must be a foaf:Agent instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Publisher must be of type foaf:Agent</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">publisher (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://purl.org/dc/terms/publisher"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#CatalogueRecord_Shape_publisher_range"/>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Range constraints for Catalogue Record mobility extensions. Other range constraints (language, primary topic, source metadata) are inherited from DCAT-AP 3.0.1 ranges.</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Catalogue Record (mobilityDCAT-AP) - Range Constraints</name>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Other identifier must be an adms:Identifier instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Other identifier must be of type adms:Identifier</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">other identifier (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/adms#identifier"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Catalogue_Shape_otherIdentifier_range"/>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Range constraints for Catalogue mobility extensions. Other range constraints (dataset, publisher, record, spatial, etc.) are inherited from DCAT-AP 3.0.1 ranges.</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Catalogue (mobilityDCAT-AP) - Range Constraints</name>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Affiliation must be an org:Organization instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">The affiliation must be of type org:Organization</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">affiliation (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/org#Organization"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/org#memberOf"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range">
+		<severity xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+		<message xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Address must be a locn:Address instance</message>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">The postal address must be of type locn:Address</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">address (range)</name>
+		<class xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/locn#Address"/>
+		<path xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://www.w3.org/ns/locn#address"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_ranges">
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_affiliation_range"/>
+		<property xmlns="http://www.w3.org/ns/shacl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest#Agent_Shape_address_range"/>
+		<description xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Range constraints for Agent mobility extensions. Enforces sh:class for address and affiliation properties.</description>
+		<name xmlns="http://www.w3.org/ns/shacl#" xml:lang="en">Agent (mobilityDCAT-AP) - Range Constraints</name>
+		<targetClass xmlns="http://www.w3.org/ns/shacl#" rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#">
+		<description xmlns="http://purl.org/dc/terms/" xml:lang="en">Adds sh:class constraints to mobilityDCAT-AP properties.</description>
+		<title xmlns="http://purl.org/dc/terms/" xml:lang="en">mobilityDCAT-AP 3.0.0 SHACL - Range Constraints</title>
+		<versionInfo xmlns="http://www.w3.org/2002/07/owl#">3.0.0</versionInfo>
+		<versionIRI xmlns="http://www.w3.org/2002/07/owl#" rdf:resource="https://w3id.org/mobilitydcat-ap/drafts/latest/ranges#"/>
+		<imports xmlns="http://www.w3.org/2002/07/owl#" rdf:resource="https://semiceu.github.io/DCAT-AP/releases/3.0.1/shacl/dcat-ap-SHACL-ranges.ttl"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/adms#Asset"/>
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+	</rdf:Description>
+</rdf:RDF>

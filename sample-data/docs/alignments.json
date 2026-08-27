@@ -1,4 +1,22 @@
 {
   "generatedAt": "2026-08-25 13:47 UTC",
-  "alignments": []
+  "alignments": [
+    {
+      "slug": "crosswalk-netex-datex",
+      "title": "NeTEx \u2194 DATEX II crosswalk (EV-charging)",
+      "description": "Hub-curated SKOS alignment between the NeTEx/Transmodel and DATEX II EnergyInfrastructure EV-charging (IRVE) subsets \u2014 entity, attribute and connector code-value correspondences.",
+      "kind": "crosswalk",
+      "jsonld": "crosswalk-netex-datex/alignment.jsonld",
+      "sides": [
+        "netex",
+        "datex-ii"
+      ],
+      "downloads": {
+        "ttl": "crosswalk-netex-datex/alignment.ttl",
+        "jsonld": "crosswalk-netex-datex/alignment.jsonld",
+        "owl": "crosswalk-netex-datex/alignment.owl",
+        "nt": "crosswalk-netex-datex/alignment.nt"
+      }
+    }
+  ]
 }

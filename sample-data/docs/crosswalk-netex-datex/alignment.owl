@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-charging-mode">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-26</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">relatedMatch (associative, not equivalence): DATEX II chargingMode (IEC 61851 modes 1-4, encoding AC/DC plus control) and NeTEx currentType (AC/DC) both characterise how charging is delivered, but at different granularity, so related rather than close or exact.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/currentType"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#relatedMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/chargingMode"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Charging mode ↔ current type</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-voltage">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-26</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">closeMatch: DATEX II &apos;voltage&apos; and NeTEx &apos;nominal voltage&apos; both denote the operating voltage of the charging equipment in volts (V); near-equivalent, framing differs slightly.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/nominalVoltage"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/voltage"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Voltage ↔ nominal voltage</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-max-power">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-26</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">closeMatch: both denote the maximum power the equipment can deliver, but DATEX II expresses it in kilowatts (kW) and NeTEx in watts (W); same quantity, different unit framing, so close rather than exact.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/maximumChargingPower"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/maxPowerAtSocket"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Maximum power at socket ↔ maximum charging power</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-station">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-26</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">closeMatch: DATEX II EnergyInfrastructureStation and NeTEx RechargingStation both denote the place that groups the charging points/equipment of a site; near-equivalent groupings, not asserted strictly identical.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/RechargingStation"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/EnergyInfrastructureStation"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Station ↔ recharging station</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-location">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-22</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">exactMatch: both denote the geographic location of the charging facility (latitude/longitude resp. Transmodel Point/Location); the same real-world concept, interchangeable.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/location"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#exactMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/location"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Location ↔ location</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-connector">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-22</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">closeMatch: DATEX II frames the connector as a &apos;type&apos; and NeTEx as a &apos;standard&apos;; the underlying enumerations (Type 2, CCS, CHAdeMO, ...) overlap heavily but the framings/value sets are not asserted identical, so close rather than exact. The individual code values are aligned one-by-one in the connector code-value block (exact/closeMatch); Tesla and generic domestic plugs have no 1:1 NeTEx counterpart and are left unmapped.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Connector type ↔ connector standard</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-power">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-22</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">exactMatch: both denote the rated electrical power of the charging facility in kilowatts (kW); same quantity and units, interchangeable.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/powerRating"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#exactMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/power"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Rated power ↔ power rating</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-status">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-22</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">closeMatch: both denote the operational availability status of the charging facility; DATEX II&apos;s status enumeration and NeTEx&apos;s availabilityStatus are not guaranteed value-for-value identical, so close rather than exact.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/availabilityStatus"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/status"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Status ↔ availability status</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/map-charging-point">
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-22</created>
+		<source xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub — EV-charging crosswalk (EMDS demo, #446)</source>
+		<note xmlns="http://www.w3.org/2004/02/skos/core#">closeMatch, not exactMatch: DATEX II models the single charging *point* whereas NeTEx models the charging *equipment* (the physical unit, which may expose several points); the concepts overlap closely but are not strictly equivalent.</note>
+		<rdf:object rdf:resource="https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment"/>
+		<rdf:predicate rdf:resource="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+		<rdf:subject rdf:resource="https://vocab.eona-x.eu/datex-ii/ElectricVehicleChargingPoint"/>
+		<prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Charging point ↔ charging equipment</prefLabel>
+		<inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/alignments/netex-datex-ii"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-type1">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-yazaki"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-yazaki">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-type1"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-type3">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3A"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3A">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-type3"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-type3">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3C"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T3C">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-type3"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-chademo"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-chademo">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2COMBO"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2COMBO">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1COMBO"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1COMBO">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-type2">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T2">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-type2"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard-type1">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType-iec62196T1">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard-type1"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/currentType">
+		<relatedMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/chargingMode"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/chargingMode">
+		<relatedMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/currentType"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/nominalVoltage">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/voltage"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/voltage">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/nominalVoltage"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/maximumChargingPower">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/maxPowerAtSocket"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/maxPowerAtSocket">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/maximumChargingPower"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/RechargingStation">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/EnergyInfrastructureStation"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/EnergyInfrastructureStation">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/RechargingStation"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/location">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/location"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/location">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/location"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/connectorStandard">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/connectorType"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/connectorType">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/connectorStandard"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/powerRating">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/power"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/power">
+		<exactMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/powerRating"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/availabilityStatus">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/status"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/status">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/availabilityStatus"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/datex-ii/ElectricVehicleChargingPoint"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/datex-ii/ElectricVehicleChargingPoint">
+		<closeMatch xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://vocab.eona-x.eu/alignments/netex-datex-ii">
+		<seeAlso xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://vocab.eona-x.eu/netex/ev-charging"/>
+		<seeAlso xmlns="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="https://vocab.eona-x.eu/datex-ii/energy-infrastructure"/>
+		<linkPredicate xmlns="http://rdfs.org/ns/void#" rdf:resource="http://www.w3.org/2004/02/skos/core#relatedMatch"/>
+		<linkPredicate xmlns="http://rdfs.org/ns/void#" rdf:resource="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+		<linkPredicate xmlns="http://rdfs.org/ns/void#" rdf:resource="http://www.w3.org/2004/02/skos/core#exactMatch"/>
+		<source xmlns="http://purl.org/dc/terms/">Hub-curated EV-charging crosswalk for the EMDS demo (demo point C); not derived from an upstream NeTEx/DATEX II distribution — DATEX II and NeTEx are published natively as XSD and carry no canonical cross-standard SKOS mapping.</source>
+		<creator xmlns="http://purl.org/dc/terms/">EONA-X Vocabulary Hub</creator>
+		<modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-26</modified>
+		<created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-22</created>
+		<description xmlns="http://purl.org/dc/terms/">Hub-curated EV-charging (IRVE) crosswalk for the EMDS demo: SKOS alignment between the DATEX II EnergyInfrastructure subset (#433) and the NeTEx/Transmodel-style subset (#445), so a term in one vocabulary resolves to its counterpart in the other.</description>
+		<label xmlns="http://www.w3.org/2000/01/rdf-schema#">NeTEx ↔ DATEX II crosswalk (EV-charging)</label>
+		<title xmlns="http://purl.org/dc/terms/">NeTEx ↔ DATEX II crosswalk (EV-charging)</title>
+		<identifier xmlns="http://purl.org/dc/terms/">netex-datex-ii</identifier>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+		<rdf:type rdf:resource="http://rdfs.org/ns/void#Linkset"/>
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+	</rdf:Description>
+</rdf:RDF>

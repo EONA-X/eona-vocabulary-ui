@@ -1,0 +1,874 @@
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/RechargingBay> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/TypeOfPlug> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/vehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/equipmentPlace> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/siteComponent> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/compatibleWith> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/profileTypeOfPlug> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/typeOfPlug> .
+<https://vocab.eona-x.eu/netex/fuelType-other> <http://www.w3.org/2004/02/skos/core#definition> "Other fuel type."@en .
+<https://vocab.eona-x.eu/netex/fuelType-other> <http://www.w3.org/2004/02/skos/core#prefLabel> "Other fuel"@en .
+<https://vocab.eona-x.eu/netex/fuelType-other> <http://www.w3.org/2004/02/skos/core#notation> "other" .
+<https://vocab.eona-x.eu/netex/fuelType-other> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-other> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-other> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-other> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-none> <http://www.w3.org/2004/02/skos/core#definition> "No fuel / not applicable."@en .
+<https://vocab.eona-x.eu/netex/fuelType-none> <http://www.w3.org/2004/02/skos/core#prefLabel> "None"@en .
+<https://vocab.eona-x.eu/netex/fuelType-none> <http://www.w3.org/2004/02/skos/core#notation> "none" .
+<https://vocab.eona-x.eu/netex/fuelType-none> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-none> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-none> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-none> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> <http://www.w3.org/2004/02/skos/core#definition> "Unleaded petrol."@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> <http://www.w3.org/2004/02/skos/core#prefLabel> "Petrol (unleaded)"@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> <http://www.w3.org/2004/02/skos/core#notation> "petrolUnleaded" .
+<https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> <http://www.w3.org/2004/02/skos/core#definition> "Leaded petrol."@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> <http://www.w3.org/2004/02/skos/core#prefLabel> "Petrol (leaded)"@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> <http://www.w3.org/2004/02/skos/core#notation> "petrolLeaded" .
+<https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> <http://www.w3.org/2004/02/skos/core#definition> "Hybrid petrol and battery-electric drive."@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> <http://www.w3.org/2004/02/skos/core#prefLabel> "Petrol-battery hybrid"@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> <http://www.w3.org/2004/02/skos/core#notation> "petrolBatteryHybrid" .
+<https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-petrol> <http://www.w3.org/2004/02/skos/core#definition> "Petrol / gasoline fuel."@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrol> <http://www.w3.org/2004/02/skos/core#prefLabel> "Petrol"@en .
+<https://vocab.eona-x.eu/netex/fuelType-petrol> <http://www.w3.org/2004/02/skos/core#notation> "petrol" .
+<https://vocab.eona-x.eu/netex/fuelType-petrol> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-petrol> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-petrol> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-petrol> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-naturalGas> <http://www.w3.org/2004/02/skos/core#definition> "Compressed natural gas."@en .
+<https://vocab.eona-x.eu/netex/fuelType-naturalGas> <http://www.w3.org/2004/02/skos/core#prefLabel> "Natural gas (CNG)"@en .
+<https://vocab.eona-x.eu/netex/fuelType-naturalGas> <http://www.w3.org/2004/02/skos/core#notation> "naturalGas" .
+<https://vocab.eona-x.eu/netex/fuelType-naturalGas> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-naturalGas> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-naturalGas> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-naturalGas> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-methane> <http://www.w3.org/2004/02/skos/core#definition> "Methane fuel."@en .
+<https://vocab.eona-x.eu/netex/fuelType-methane> <http://www.w3.org/2004/02/skos/core#prefLabel> "Methane"@en .
+<https://vocab.eona-x.eu/netex/fuelType-methane> <http://www.w3.org/2004/02/skos/core#notation> "methane" .
+<https://vocab.eona-x.eu/netex/fuelType-methane> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-methane> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-methane> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-methane> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-tpg> <http://www.w3.org/2004/02/skos/core#definition> "Compressed/town gas supply (TPG)."@en .
+<https://vocab.eona-x.eu/netex/fuelType-tpg> <http://www.w3.org/2004/02/skos/core#prefLabel> "TPG"@en .
+<https://vocab.eona-x.eu/netex/fuelType-tpg> <http://www.w3.org/2004/02/skos/core#notation> "tpg" .
+<https://vocab.eona-x.eu/netex/fuelType-tpg> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-tpg> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-tpg> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-tpg> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-liquidGas> <http://www.w3.org/2004/02/skos/core#definition> "Liquefied petroleum gas."@en .
+<https://vocab.eona-x.eu/netex/fuelType-liquidGas> <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid gas (LPG)"@en .
+<https://vocab.eona-x.eu/netex/fuelType-liquidGas> <http://www.w3.org/2004/02/skos/core#notation> "liquidGas" .
+<https://vocab.eona-x.eu/netex/fuelType-liquidGas> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-liquidGas> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-liquidGas> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-liquidGas> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-hydrogen> <http://www.w3.org/2004/02/skos/core#definition> "Hydrogen fuel (fuel cell)."@en .
+<https://vocab.eona-x.eu/netex/fuelType-hydrogen> <http://www.w3.org/2004/02/skos/core#prefLabel> "Hydrogen"@en .
+<https://vocab.eona-x.eu/netex/fuelType-hydrogen> <http://www.w3.org/2004/02/skos/core#notation> "hydrogen" .
+<https://vocab.eona-x.eu/netex/fuelType-hydrogen> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-hydrogen> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-hydrogen> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-hydrogen> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-ethanol> <http://www.w3.org/2004/02/skos/core#definition> "Ethanol fuel."@en .
+<https://vocab.eona-x.eu/netex/fuelType-ethanol> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ethanol"@en .
+<https://vocab.eona-x.eu/netex/fuelType-ethanol> <http://www.w3.org/2004/02/skos/core#notation> "ethanol" .
+<https://vocab.eona-x.eu/netex/fuelType-ethanol> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-ethanol> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-ethanol> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-ethanol> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-electricity> <http://www.w3.org/2004/02/skos/core#definition> "Electrical energy supply."@en .
+<https://vocab.eona-x.eu/netex/fuelType-electricity> <http://www.w3.org/2004/02/skos/core#prefLabel> "Electricity"@en .
+<https://vocab.eona-x.eu/netex/fuelType-electricity> <http://www.w3.org/2004/02/skos/core#notation> "electricity" .
+<https://vocab.eona-x.eu/netex/fuelType-electricity> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-electricity> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-electricity> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-electricity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-electricContact> <http://www.w3.org/2004/02/skos/core#definition> "Electric supply via contact line / conductor."@en .
+<https://vocab.eona-x.eu/netex/fuelType-electricContact> <http://www.w3.org/2004/02/skos/core#prefLabel> "Electric contact"@en .
+<https://vocab.eona-x.eu/netex/fuelType-electricContact> <http://www.w3.org/2004/02/skos/core#notation> "electricContact" .
+<https://vocab.eona-x.eu/netex/fuelType-electricContact> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-electricContact> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-electricContact> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-electricContact> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> <http://www.w3.org/2004/02/skos/core#definition> "Hybrid diesel and battery-electric drive."@en .
+<https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> <http://www.w3.org/2004/02/skos/core#prefLabel> "Diesel-battery hybrid"@en .
+<https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> <http://www.w3.org/2004/02/skos/core#notation> "dieselBatteryHybrid" .
+<https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-diesel> <http://www.w3.org/2004/02/skos/core#definition> "Diesel fuel."@en .
+<https://vocab.eona-x.eu/netex/fuelType-diesel> <http://www.w3.org/2004/02/skos/core#prefLabel> "Diesel"@en .
+<https://vocab.eona-x.eu/netex/fuelType-diesel> <http://www.w3.org/2004/02/skos/core#notation> "diesel" .
+<https://vocab.eona-x.eu/netex/fuelType-diesel> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-diesel> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-diesel> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-diesel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-biodiesel> <http://www.w3.org/2004/02/skos/core#definition> "Biodiesel fuel."@en .
+<https://vocab.eona-x.eu/netex/fuelType-biodiesel> <http://www.w3.org/2004/02/skos/core#prefLabel> "Biodiesel"@en .
+<https://vocab.eona-x.eu/netex/fuelType-biodiesel> <http://www.w3.org/2004/02/skos/core#notation> "biodiesel" .
+<https://vocab.eona-x.eu/netex/fuelType-biodiesel> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-biodiesel> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-biodiesel> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-biodiesel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType-battery> <http://www.w3.org/2004/02/skos/core#definition> "Battery-electric energy store."@en .
+<https://vocab.eona-x.eu/netex/fuelType-battery> <http://www.w3.org/2004/02/skos/core#prefLabel> "Battery"@en .
+<https://vocab.eona-x.eu/netex/fuelType-battery> <http://www.w3.org/2004/02/skos/core#notation> "battery" .
+<https://vocab.eona-x.eu/netex/fuelType-battery> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/fuelType-battery> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType-battery> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType-battery> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-other> <http://www.w3.org/2004/02/skos/core#definition> "Other power coupling mechanism."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-other> <http://www.w3.org/2004/02/skos/core#prefLabel> "Other coupling"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-other> <http://www.w3.org/2004/02/skos/core#notation> "other" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-other> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-other> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-other> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-other> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-induction> <http://www.w3.org/2004/02/skos/core#definition> "Wireless inductive power transfer."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-induction> <http://www.w3.org/2004/02/skos/core#prefLabel> "Inductive"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-induction> <http://www.w3.org/2004/02/skos/core#notation> "induction" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-induction> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-induction> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-induction> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-induction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> <http://www.w3.org/2004/02/skos/core#definition> "Pantograph raised from the vehicle to an overhead conductor."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> <http://www.w3.org/2004/02/skos/core#prefLabel> "Pantograph (vehicle)"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> <http://www.w3.org/2004/02/skos/core#notation> "pantograph" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> <http://www.w3.org/2004/02/skos/core#definition> "Inverted pantograph lowered from above onto the vehicle."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> <http://www.w3.org/2004/02/skos/core#prefLabel> "Pantograph (roof, inverted)"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> <http://www.w3.org/2004/02/skos/core#notation> "pantographAbove" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-plug> <http://www.w3.org/2004/02/skos/core#definition> "Conductive coupling via a plug and cable."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-plug> <http://www.w3.org/2004/02/skos/core#prefLabel> "Plug / conductive"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-plug> <http://www.w3.org/2004/02/skos/core#notation> "plug" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-plug> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-plug> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-plug> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-plug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-undefined> <http://www.w3.org/2004/02/skos/core#definition> "Power coupling type not specified."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-undefined> <http://www.w3.org/2004/02/skos/core#prefLabel> "Undefined coupling"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType-undefined> <http://www.w3.org/2004/02/skos/core#notation> "undefined" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-undefined> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/powerCouplingType-undefined> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-undefined> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerCouplingType-undefined> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/currentType-DC> <http://www.w3.org/2004/02/skos/core#definition> "Direct current (fast charging)."@en .
+<https://vocab.eona-x.eu/netex/currentType-DC> <http://www.w3.org/2004/02/skos/core#prefLabel> "Direct current (DC)"@en .
+<https://vocab.eona-x.eu/netex/currentType-DC> <http://www.w3.org/2004/02/skos/core#notation> "DC" .
+<https://vocab.eona-x.eu/netex/currentType-DC> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/currentType-DC> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/currentType-DC> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/currentType-DC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/currentType-3PhaseAC> <http://www.w3.org/2004/02/skos/core#definition> "Three-phase alternating current."@en .
+<https://vocab.eona-x.eu/netex/currentType-3PhaseAC> <http://www.w3.org/2004/02/skos/core#prefLabel> "Three-phase AC"@en .
+<https://vocab.eona-x.eu/netex/currentType-3PhaseAC> <http://www.w3.org/2004/02/skos/core#notation> "3-PhaseAC" .
+<https://vocab.eona-x.eu/netex/currentType-3PhaseAC> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/currentType-3PhaseAC> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/currentType-3PhaseAC> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/currentType-3PhaseAC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/currentType-1PhaseAC> <http://www.w3.org/2004/02/skos/core#definition> "Single-phase alternating current."@en .
+<https://vocab.eona-x.eu/netex/currentType-1PhaseAC> <http://www.w3.org/2004/02/skos/core#prefLabel> "Single-phase AC"@en .
+<https://vocab.eona-x.eu/netex/currentType-1PhaseAC> <http://www.w3.org/2004/02/skos/core#notation> "1-PhaseAC" .
+<https://vocab.eona-x.eu/netex/currentType-1PhaseAC> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/currentType-1PhaseAC> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/currentType-1PhaseAC> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/currentType-1PhaseAC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/currentType-undefined> <http://www.w3.org/2004/02/skos/core#definition> "Current type not specified."@en .
+<https://vocab.eona-x.eu/netex/currentType-undefined> <http://www.w3.org/2004/02/skos/core#prefLabel> "Undefined current"@en .
+<https://vocab.eona-x.eu/netex/currentType-undefined> <http://www.w3.org/2004/02/skos/core#notation> "undefined" .
+<https://vocab.eona-x.eu/netex/currentType-undefined> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/currentType-undefined> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/currentType-undefined> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/currentType-undefined> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-shockproof> <http://www.w3.org/2004/02/skos/core#definition> "Industrial shockproof (CEE) connector."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-shockproof> <http://www.w3.org/2004/02/skos/core#prefLabel> "Shockproof (industrial)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-shockproof> <http://www.w3.org/2004/02/skos/core#notation> "shockproof" .
+<https://vocab.eona-x.eu/netex/connectorStandard-shockproof> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-shockproof> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-shockproof> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-shockproof> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://www.w3.org/2004/02/skos/core#definition> "DC fast-charging CHAdeMO connector."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://www.w3.org/2004/02/skos/core#prefLabel> "CHAdeMO"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://www.w3.org/2004/02/skos/core#notation> "CHAdeMO" .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-avcon> <http://www.w3.org/2004/02/skos/core#definition> "Legacy AVCON conductive connector."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-avcon> <http://www.w3.org/2004/02/skos/core#prefLabel> "AVCON"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-avcon> <http://www.w3.org/2004/02/skos/core#notation> "avcon" .
+<https://vocab.eona-x.eu/netex/connectorStandard-avcon> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-avcon> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-avcon> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-avcon> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-nema520> <http://www.w3.org/2004/02/skos/core#definition> "North American NEMA 5-20 domestic plug."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-nema520> <http://www.w3.org/2004/02/skos/core#prefLabel> "NEMA 5-20"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-nema520> <http://www.w3.org/2004/02/skos/core#notation> "nema5-20" .
+<https://vocab.eona-x.eu/netex/connectorStandard-nema520> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-nema520> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-nema520> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-nema520> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-tesla> <http://www.w3.org/2004/02/skos/core#definition> "Tesla proprietary connector."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-tesla> <http://www.w3.org/2004/02/skos/core#prefLabel> "Tesla connector"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-tesla> <http://www.w3.org/2004/02/skos/core#notation> "tesla" .
+<https://vocab.eona-x.eu/netex/connectorStandard-tesla> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-tesla> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-tesla> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-tesla> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://www.w3.org/2004/02/skos/core#definition> "CCS Combo 2 connector (Type 2 based, Europe)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://www.w3.org/2004/02/skos/core#prefLabel> "CCS Combo 2"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://www.w3.org/2004/02/skos/core#notation> "ccsCombo2Plug" .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://www.w3.org/2004/02/skos/core#definition> "CCS Combo 1 connector (Type 1 based, North America)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://www.w3.org/2004/02/skos/core#prefLabel> "CCS Combo 1"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://www.w3.org/2004/02/skos/core#notation> "ccsCombo1Plug" .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> <http://www.w3.org/2004/02/skos/core#definition> "DC fast-charging Combined Charging System connector."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> <http://www.w3.org/2004/02/skos/core#prefLabel> "Combined Charging System (CCS)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> <http://www.w3.org/2004/02/skos/core#notation> "combinedChargingSystem" .
+<https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeJ> <http://www.w3.org/2004/02/skos/core#definition> "Swiss domestic socket Type J (SEV 1011)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeJ> <http://www.w3.org/2004/02/skos/core#prefLabel> "Domestic Type J (SEV 1011)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeJ> <http://www.w3.org/2004/02/skos/core#notation> "typeJ" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeJ> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeJ> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeJ> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeJ> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeG> <http://www.w3.org/2004/02/skos/core#definition> "British domestic socket Type G (BS 1363)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeG> <http://www.w3.org/2004/02/skos/core#prefLabel> "Domestic Type G (BS 1363)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeG> <http://www.w3.org/2004/02/skos/core#notation> "typeG" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeG> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeG> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeG> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeG> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeF> <http://www.w3.org/2004/02/skos/core#definition> "German domestic socket Type F (CEE 7/4, Schuko)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeF> <http://www.w3.org/2004/02/skos/core#prefLabel> "Domestic Type F (Schuko)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeF> <http://www.w3.org/2004/02/skos/core#notation> "typeF" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeF> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeF> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeF> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeF> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeE> <http://www.w3.org/2004/02/skos/core#definition> "French domestic socket Type E (CEE 7/5)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeE> <http://www.w3.org/2004/02/skos/core#prefLabel> "Domestic Type E (CEE 7/5)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeE> <http://www.w3.org/2004/02/skos/core#notation> "typeE" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeE> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeE> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeE> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-typeE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/2004/02/skos/core#definition> "AC Type 3 plug (Scame) with protective shutters."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/2004/02/skos/core#prefLabel> "Type 3 (Scame)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/2004/02/skos/core#notation> "type3" .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://www.w3.org/2004/02/skos/core#definition> "Single- or three-phase AC Type 2 plug (IEC 62196-2, Mennekes)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://www.w3.org/2004/02/skos/core#prefLabel> "Type 2 (IEC 62196 / Mennekes)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://www.w3.org/2004/02/skos/core#notation> "type2" .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/2004/02/skos/core#definition> "Single-phase AC Type 1 plug (SAE J1772 / Yazaki)."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/2004/02/skos/core#prefLabel> "Type 1 (SAE J1772)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/2004/02/skos/core#notation> "type1" .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-type1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard-undefined> <http://www.w3.org/2004/02/skos/core#definition> "Plug type not specified."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-undefined> <http://www.w3.org/2004/02/skos/core#prefLabel> "Undefined plug"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard-undefined> <http://www.w3.org/2004/02/skos/core#notation> "undefined" .
+<https://vocab.eona-x.eu/netex/connectorStandard-undefined> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/connectorStandard-undefined> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard-undefined> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard-undefined> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-unknown> <http://www.w3.org/2004/02/skos/core#definition> "Availability is unknown."@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-unknown> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unknown"@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-unknown> <http://www.w3.org/2004/02/skos/core#notation> "unknown" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-unknown> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-unknown> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-unknown> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-unknown> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> <http://www.w3.org/2004/02/skos/core#definition> "Charging equipment is out of service / not operational."@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> <http://www.w3.org/2004/02/skos/core#prefLabel> "Out of service"@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> <http://www.w3.org/2004/02/skos/core#notation> "outOfService" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-reserved> <http://www.w3.org/2004/02/skos/core#definition> "Charging equipment is reserved."@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-reserved> <http://www.w3.org/2004/02/skos/core#prefLabel> "Reserved"@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-reserved> <http://www.w3.org/2004/02/skos/core#notation> "reserved" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-reserved> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-reserved> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-reserved> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-reserved> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-occupied> <http://www.w3.org/2004/02/skos/core#definition> "Charging equipment is currently in use."@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-occupied> <http://www.w3.org/2004/02/skos/core#prefLabel> "Occupied"@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-occupied> <http://www.w3.org/2004/02/skos/core#notation> "occupied" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-occupied> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-occupied> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-occupied> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-occupied> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-available> <http://www.w3.org/2004/02/skos/core#definition> "Charging equipment is available for use."@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-available> <http://www.w3.org/2004/02/skos/core#prefLabel> "Available"@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus-available> <http://www.w3.org/2004/02/skos/core#notation> "available" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-available> <http://purl.org/dc/terms/type> "Code value" .
+<https://vocab.eona-x.eu/netex/availabilityStatus-available> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-available> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/availabilityStatus-available> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx attribute nameOfClassifiedEntityClass, type NameOfClass, on element TypeOfBatteryChemistry, xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd."@en .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:string (NeTEx NameOfClass — a common framework simple type external to this subset's 5 scoped XSDs)"@en .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#definition> "Name of the class of ENTITY that the TYPE OF BATTERY CHEMISTRY classifies. Allows reflection; fixed for each ENTITY type."@en .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#prefLabel> "Name of classified entity class (Type Of Battery Chemistry)"@en .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx attribute nameOfClassifiedEntityClass, type NameOfClass, on element TypeOfPlug, xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd."@en .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:string (NeTEx NameOfClass — a common framework simple type external to this subset's 5 scoped XSDs)"@en .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#definition> "Name of the class of ENTITY that the TYPE OF PLUG classifies. Allows reflection; fixed for each ENTITY type."@en .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#prefLabel> "Name of classified entity class (Type Of Plug)"@en .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/TypeOfPlug> .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/TypeOfPlug> .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element VehicleChargingEquipmentRef (ref, minOccurs=0), RechargingPointAssignmentGroup, xsd/netex_part_1/part1_ifopt/netex_rechargingPointAssignment_version.xsd."@en .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: reference to netex:ElectricVehicleChargingEquipment"@en .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#definition> "The VEHICLE CHARGING EQUIPMENT located at the site component/equipment place to which the recharging point is assigned."@en .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#prefLabel> "Vehicle charging equipment"@en .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://vocab.eona-x.eu/netex/vehicleChargingEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element EquipmentPlaceRef (ref, minOccurs=0), RechargingPointAssignmentGroup, xsd/netex_part_1/part1_ifopt/netex_rechargingPointAssignment_version.xsd."@en .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: reference (NeTEx EquipmentPlaceRef); EQUIPMENT PLACE is out of scope for this EV-charging subset"@en .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/2004/02/skos/core#definition> "The EQUIPMENT PLACE to which the recharging point is assigned."@en .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/2004/02/skos/core#prefLabel> "Equipment place"@en .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/equipmentPlace> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element SiteComponentRef (ref, minOccurs=0), RechargingPointAssignmentGroup, xsd/netex_part_1/part1_ifopt/netex_rechargingPointAssignment_version.xsd."@en .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: reference (NeTEx SiteComponentRef); SITE COMPONENT is out of scope for this EV-charging subset"@en .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/2004/02/skos/core#definition> "The SITE COMPONENT (such as a PARKING BAY) to which the recharging point is assigned."@en .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/2004/02/skos/core#prefLabel> "Site component"@en .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/siteComponent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element compatibleWith, type compatibleEquipmentRefs_RelStructure (+v2.0), RechargingEquipmentProfileGroup, xsd/netex_framework/netex_reusableComponents/netex_nm_chargingEquipmentProfile_version.xsd; the RelStructure wrapper is a list container, not modelled as its own Entity (see TERMS.md judgement calls)."@en .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: reference list, a choice of VehicleChargingEquipmentRef | RefuellingEquipmentRef | BatteryEquipmentRef (NeTEx compatibleEquipmentRefs_RelStructure)"@en .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/2004/02/skos/core#definition> "The VEHICLE CHARGING EQUIPMENT, REFUELLING EQUIPMENT and/or BATTERY EQUIPMENT that this recharging equipment profile is compatible with."@en .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/2004/02/skos/core#prefLabel> "Compatible with"@en .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/compatibleWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element TypeOfPlugRef (ref, minOccurs=0), RechargingEquipmentProfileGroup, xsd/netex_framework/netex_reusableComponents/netex_nm_chargingEquipmentProfile_version.xsd."@en .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/TypeOfPlug> .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: reference to netex:TypeOfPlug"@en .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2004/02/skos/core#definition> "An extensible classification reference for the plug required/supported by the recharging equipment profile, in addition to the closed PlugType enumeration (netex:profilePlugType)."@en .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2004/02/skos/core#prefLabel> "Profile type of plug"@en .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://vocab.eona-x.eu/netex/profileTypeOfPlug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element TypeOfPlugRef (ref, minOccurs=0), VehicleChargingEquipmentGroup, xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd."@en .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/TypeOfPlug> .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: reference to netex:TypeOfPlug"@en .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2004/02/skos/core#definition> "An extensible classification reference for the plug supported by the charging equipment, in addition to the closed PlugType enumeration (netex:connectorStandard)."@en .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2004/02/skos/core#prefLabel> "Type of plug"@en .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://vocab.eona-x.eu/netex/typeOfPlug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: PowerCouplingTypeEnumeration (code values listed under netex:powerCouplingType)."@en .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (NeTEx PowerCouplingTypeEnumeration; values listed under powerCouplingType)"@en .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2004/02/skos/core#definition> "The power coupling type required/supported by the recharging equipment profile. Shares the NeTEx PowerCouplingTypeEnumeration value set with the equipment's power coupling type."@en .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2004/02/skos/core#prefLabel> "Profile power coupling type"@en .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/profilePowerCouplingType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: CurrentTypeEnumeration (code values listed under netex:currentType)."@en .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (NeTEx CurrentTypeEnumeration; values listed under currentType)"@en .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2004/02/skos/core#definition> "The current type required/supported by the recharging equipment profile. Shares the NeTEx CurrentTypeEnumeration value set with the equipment's current type."@en .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2004/02/skos/core#prefLabel> "Profile current type"@en .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/profileCurrentType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: PlugTypeEnumeration (code values listed under netex:connectorStandard)."@en .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (NeTEx PlugTypeEnumeration; values listed under connectorStandard)"@en .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2004/02/skos/core#definition> "The plug type required/supported by the recharging equipment profile. Shares the NeTEx PlugTypeEnumeration value set with the equipment's connector standard."@en .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2004/02/skos/core#prefLabel> "Profile plug type"@en .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/profilePlugType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#duration> .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element FinalisationDuration (xsd:duration)."@en .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:duration"@en .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2004/02/skos/core#definition> "Normal time to decouple after charging. Renders the NeTEx FinalisationDuration."@en .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2004/02/skos/core#prefLabel> "Finalisation duration"@en .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/finalisationDuration> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#duration> .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element PreparationDuration (xsd:duration)."@en .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:duration"@en .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2004/02/skos/core#definition> "Typical time period needed to set up the charging process. Renders the NeTEx PreparationDuration."@en .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2004/02/skos/core#prefLabel> "Preparation duration"@en .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/preparationDuration> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element MaximumChargingPower (RechargingEquipmentProfile), type WattageType (xsd:decimal, SI watts)."@en .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (W)"@en .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2004/02/skos/core#definition> "Maximum charging power for the profile, in watts, determining how long charging takes. Renders the NeTEx RechargingEquipmentProfile/MaximumChargingPower."@en .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2004/02/skos/core#prefLabel> "Profile maximum charging power (W)"@en .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/profileMaximumChargingPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element ChargingVoltage, type VoltageType (xsd:decimal, SI volts)."@en .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (V)"@en .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2004/02/skos/core#definition> "The charging voltage required/supported by the profile, in volts. Renders the NeTEx ChargingVoltage."@en .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2004/02/skos/core#prefLabel> "Charging voltage (V)"@en .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/chargingVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: reference list (NeTEx ScheduledStopPoint)"@en .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/2004/02/skos/core#definition> "The public-transport SCHEDULED STOP POINTs served by the recharging point. Renders the NeTEx servedScheduledStopPoints."@en .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/2004/02/skos/core#prefLabel> "Served scheduled stop points"@en .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/servedScheduledStopPoints> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element TotalPower, type WattageType (xsd:decimal, SI watts)."@en .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (W)"@en .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2004/02/skos/core#definition> "Total electrical power available to all bays in the recharging station, in watts. Renders the NeTEx TotalPower."@en .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2004/02/skos/core#prefLabel> "Total power (W)"@en .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RechargingStation> .
+<https://vocab.eona-x.eu/netex/totalPower> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RechargingStation> .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/totalPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: classification reference (NeTEx TypeOfBatteryChemistry)"@en .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#definition> "A classification of the battery chemistry (a NeTEx TYPE OF ENTITY classification reference)."@en .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#prefLabel> "Type of battery chemistry"@en .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element MaximumChargingPower, type WattageType (xsd:decimal, SI watts)."@en .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (W)"@en .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2004/02/skos/core#definition> "Maximum charging power the battery accepts, in watts. Renders the NeTEx MaximumChargingPower."@en .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2004/02/skos/core#prefLabel> "Maximum charging power (W)"@en .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/maximumChargingPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element NominalVoltage, type VoltageType (xsd:decimal, SI volts)."@en .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (V)"@en .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2004/02/skos/core#definition> "Nominal voltage of the battery, in volts. Renders the NeTEx NominalVoltage."@en .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2004/02/skos/core#prefLabel> "Nominal voltage (V)"@en .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/nominalVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element BatteryUsableCapacity, type WattHoursType (xsd:decimal, SI watt-hours)."@en .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (Wh)"@en .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2004/02/skos/core#definition> "Usable battery capacity, in watt-hours. Renders the NeTEx BatteryUsableCapacity."@en .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2004/02/skos/core#prefLabel> "Battery usable capacity (Wh)"@en .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/batteryUsableCapacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element BatteryCapacity, type WattHoursType (xsd:decimal, SI watt-hours)."@en .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (Wh)"@en .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2004/02/skos/core#definition> "Battery capacity stated by the manufacturer, in watt-hours. Renders the NeTEx BatteryCapacity."@en .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2004/02/skos/core#prefLabel> "Battery capacity (Wh)"@en .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/batteryCapacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-other> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-none> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-petrolUnleaded> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-petrolLeaded> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-petrolBatteryHybrid> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-petrol> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-naturalGas> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-methane> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-tpg> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-liquidGas> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-hydrogen> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-ethanol> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-electricity> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-electricContact> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-dieselBatteryHybrid> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-diesel> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-biodiesel> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType-battery> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: FuelTypeEnumeration."@en .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (NeTEx FuelTypeEnumeration)"@en .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#definition> "The type(s) of fuel or energy delivered by the refuelling equipment. Renders the NeTEx FuelType / FuelTypes."@en .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#prefLabel> "Fuel type"@en .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/RefuellingEquipment> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/RefuellingEquipment> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/fuelType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerCouplingType-other> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerCouplingType-induction> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerCouplingType-pantograph> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerCouplingType-pantographAbove> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerCouplingType-plug> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerCouplingType-undefined> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: PowerCouplingTypeEnumeration."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (NeTEx PowerCouplingTypeEnumeration)"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#definition> "Classification of how power is coupled to the vehicle (plug, pantograph, induction, etc.). Renders the NeTEx PowerCouplingType."@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#prefLabel> "Power coupling type"@en .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/powerCouplingType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/currentType-DC> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/currentType-3PhaseAC> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/currentType-1PhaseAC> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/currentType-undefined> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: CurrentTypeEnumeration."@en .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (NeTEx CurrentTypeEnumeration)"@en .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#definition> "Classification of the supplied current as AC or DC. Renders the NeTEx CurrentType."@en .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#prefLabel> "Current type"@en .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/currentType> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/currentType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element GridVoltage, type VoltageType (xsd:decimal, SI volts)."@en .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (V)"@en .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2004/02/skos/core#definition> "The grid supply voltage delivered to the charging equipment."@en .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2004/02/skos/core#prefLabel> "Grid voltage (V)"@en .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/gridVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element ReservationUrl (xsd:anyURI)."@en .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:anyURI"@en .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2004/02/skos/core#definition> "A URL at which the charging equipment can be reserved."@en .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2004/02/skos/core#prefLabel> "Reservation URL"@en .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/reservationUrl> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element ReservationRequired (xsd:boolean)."@en .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:boolean"@en .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2004/02/skos/core#definition> "Whether a reservation is required to use the charging equipment."@en .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2004/02/skos/core#prefLabel> "Reservation required"@en .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/reservationRequired> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element FreeRecharging (xsd:boolean)."@en .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:boolean"@en .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2004/02/skos/core#definition> "Whether the charging equipment can be used without a fee."@en .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2004/02/skos/core#prefLabel> "Free recharging"@en .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/freeRecharging> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: structured (Transmodel POINT / LOCATION; WGS84 latitude/longitude)"@en .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/2004/02/skos/core#definition> "The geographic location of the charging equipment, expressed via a Transmodel POINT / LOCATION (WGS84 latitude/longitude). In NeTEx the equipment is placed through an EQUIPMENT PLACE / SITE COMPONENT."@en .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/2004/02/skos/core#prefLabel> "Location (Transmodel Point/Location)"@en .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/location> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-shockproof> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-CHAdeMO> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-avcon> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-nema520> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-tesla> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo2Plug> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-ccsCombo1Plug> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-combinedChargingSystem> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-typeJ> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-typeG> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-typeF> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-typeE> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-type3> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-type2> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-type1> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard-undefined> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: PlugTypeEnumeration."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (NeTEx PlugTypeEnumeration). Each value may also be classified by a NeTEx TypeOfPlug."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#definition> "The physical connector / plug standard offered by the charging equipment (e.g. Type 2, CCS, CHAdeMO). Renders the NeTEx PlugType."@en .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#prefLabel> "Connector standard (plug type)"@en .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/connectorStandard> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx element MaximumPower, type WattageType (xsd:decimal, SI watts). Exposed here in kW for alignment with datex:power."@en .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: xsd:decimal (kW; NeTEx native WattageType MaximumPower is expressed in watts [W])"@en .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2004/02/skos/core#definition> "The rated electrical power of the charging equipment. Renders the NeTEx MaximumPower of VEHICLE CHARGING EQUIPMENT."@en .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2004/02/skos/core#prefLabel> "Power rating (kW)"@en .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/powerRating> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/powerRating> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/availabilityStatus-unknown> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/availabilityStatus-outOfService> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/availabilityStatus-reserved> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/availabilityStatus-occupied> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/availabilityStatus-available> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#editorialNote> "NeTEx enumeration: AvailabilityStatusEnumeration (hub-curated; NeTEx static schema carries no equipment-level availability — real-time status is conveyed via SIRI)."@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2000/01/rdf-schema#range> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#scopeNote> "Value type: enumeration (hub-curated availability status; NeTEx native real-time availability is a SIRI concern)"@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#definition> "Operational availability status of the charging equipment (e.g. available, occupied, out of service)."@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#prefLabel> "Availability status"@en .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2000/01/rdf-schema#domain> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://purl.org/dc/terms/type> "Attribute" .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#broader> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://vocab.eona-x.eu/netex/availabilityStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://purl.org/dc/terms/source> "NeTEx v2.0 element RechargingBay (substitutionGroup ParkingBay_Dummy, complexType RechargingBay_VersionStructure, +v2.0), xsd/netex_part_1/part1_ifopt/netex_rechargingPointAssignment_version.xsd." .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://www.w3.org/2004/02/skos/core#definition> "A PARKING BAY specifically equipped for recharging VEHICLEs; the individual bay within a RECHARGING STATION."@en .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://www.w3.org/2004/02/skos/core#prefLabel> "Recharging Bay"@en .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/RechargingBay> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/batteryChemistryNameOfClassifiedEntityClass> .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://purl.org/dc/terms/source> "NeTEx v2.0 element TypeOfBatteryChemistry (substitutionGroup TypeOfEntity, complexType TypeOfBatteryChemistry_ValueStructure, +v1.2.2), xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd." .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#definition> "A classification of a BATTERY CHEMISTRY (e.g. lithium-ion, lead-acid). Gives the chemistry referenced by a BATTERY EQUIPMENT's typeOfBatteryChemistry an extensible, referenceable TYPE OF ENTITY classification."@en .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#prefLabel> "Type Of Battery Chemistry"@en .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/TypeOfBatteryChemistry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/plugNameOfClassifiedEntityClass> .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://purl.org/dc/terms/source> "NeTEx v2.0 element TypeOfPlug (substitutionGroup TypeOfEntity, complexType TypeOfPlug_ValueStructure, +v1.2.2), xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd." .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://www.w3.org/2004/02/skos/core#definition> "A classification of a PLUG. Gives the plug supported by a VEHICLE CHARGING EQUIPMENT or required by a RECHARGING EQUIPMENT PROFILE an extensible, referenceable TYPE OF ENTITY classification, in addition to the closed PlugTypeEnumeration code list."@en .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://www.w3.org/2004/02/skos/core#prefLabel> "Type Of Plug"@en .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/TypeOfPlug> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/profilePowerCouplingType> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/profileCurrentType> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/profilePlugType> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/finalisationDuration> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/preparationDuration> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/profileMaximumChargingPower> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/chargingVoltage> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://purl.org/dc/terms/source> "NeTEx v2.0 element RechargingEquipmentProfile (specialisation of VehicleEquipmentProfile), xsd/netex_framework/netex_reusableComponents/netex_nm_chargingEquipmentProfile_version.xsd." .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#definition> "A VEHICLE EQUIPMENT PROFILE describing the charging features a vehicle requires or supports (plug, current, coupling, charging voltage, maximum charging power and timing). Used to match vehicles to compatible charging equipment."@en .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#prefLabel> "Recharging Equipment Profile"@en .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/servedScheduledStopPoints> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://purl.org/dc/terms/source> "NeTEx v2.0 element RechargingPointAssignment (+v2.0), xsd/netex_part_1/part1_ifopt/netex_rechargingPointAssignment_version.xsd." .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#definition> "The allocation of a public-transport timing point to a site component (such as a PARKING BAY) that holds VEHICLE CHARGING EQUIPMENT; the link that integrates charging infrastructure into the NeTEx public-transport network."@en .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#prefLabel> "Recharging Point Assignment"@en .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/RechargingPointAssignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/totalPower> .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://purl.org/dc/terms/source> "NeTEx v2.0 element RechargingStation (specialisation of Parking, +v2.0), xsd/netex_part_1/part1_ifopt/netex_rechargingPointAssignment_version.xsd; contains RechargingBay (a PARKING BAY equipped for recharging)." .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/2004/02/skos/core#definition> "A PARKING whose bays (RECHARGING BAYs) are specifically equipped for recharging vehicles. Aggregates the total power available to all of its recharging bays."@en .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/2004/02/skos/core#prefLabel> "Recharging Station"@en .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/RechargingStation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/typeOfBatteryChemistry> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/maximumChargingPower> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/nominalVoltage> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/batteryUsableCapacity> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/batteryCapacity> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://purl.org/dc/terms/source> "NeTEx v2.0 element BatteryEquipment (specialisation of InstalledEquipment, +v1.2.2), xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd." .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#definition> "Installed battery equipment characterising the energy store that is charged (a specialisation of INSTALLED EQUIPMENT). Describes capacity, voltage and maximum charging power."@en .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#prefLabel> "Battery Equipment"@en .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/BatteryEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/fuelType> .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://purl.org/dc/terms/source> "NeTEx v2.0 element RefuellingEquipment (specialisation of PlaceEquipment, +v1.2.2), xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd." .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://www.w3.org/2004/02/skos/core#definition> "Equipment for refuelling a vehicle with an alternative or conventional fuel (a specialisation of PLACE EQUIPMENT). Covers non-electric and electric energy supply via its fuel-type classification."@en .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://www.w3.org/2004/02/skos/core#prefLabel> "Refuelling Equipment"@en .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/RefuellingEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerCouplingType> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/currentType> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/gridVoltage> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/reservationUrl> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/reservationRequired> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/freeRecharging> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/location> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/connectorStandard> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/powerRating> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#narrower> <https://vocab.eona-x.eu/netex/availabilityStatus> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://purl.org/dc/terms/source> "NeTEx v2.0 element VehicleChargingEquipment (specialisation of PlaceEquipment), xsd/netex_framework/netex_reusableComponents/netex_nm_equipmentEnergy_version.xsd." .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#definition> "Equipment at which an electric vehicle can be connected to charge its battery. Renders the NeTEx VEHICLE CHARGING EQUIPMENT (a specialisation of PLACE EQUIPMENT) in a Transmodel/NeTEx style."@en .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#prefLabel> "Electric Vehicle Charging Equipment"@en .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://purl.org/dc/terms/type> "Entity" .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/2004/02/skos/core#inScheme> <https://vocab.eona-x.eu/netex/ev-charging> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/RechargingEquipmentProfile> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/RechargingPointAssignment> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/RechargingStation> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/BatteryEquipment> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/RefuellingEquipment> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://vocab.eona-x.eu/netex/ElectricVehicleChargingEquipment> .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://purl.org/dc/terms/source> "Hub-curated SKOS rendering of the NeTEx v2.0 (CEN/TS 16614, Transmodel-based) charging/alternative-fuel subset; NeTEx is natively XSD and PT-scoped." .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://purl.org/dc/terms/description> "Vehicle-charging and alternative-fuel terms rendered in a Transmodel/NeTEx style (entities, attributes and code values) as an adjacent subset for the EMDS demo." .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/2000/01/rdf-schema#label> "NeTEx/Transmodel — EV charging & alternative-fuel (subset)" .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://purl.org/dc/terms/title> "NeTEx/Transmodel — EV charging & alternative-fuel (subset)" .
+<https://vocab.eona-x.eu/netex/ev-charging> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<https://vocab.eona-x.eu/netex> <http://www.w3.org/2000/01/rdf-schema#label> "NeTEx/Transmodel — EV charging & alternative-fuel subset" .
+<https://vocab.eona-x.eu/netex> <http://www.w3.org/2002/07/owl#versionInfo> "0.2.0" .
+<https://vocab.eona-x.eu/netex> <http://purl.org/dc/terms/modified> "2026-06-26"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/netex> <http://purl.org/dc/terms/created> "2026-06-22"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://vocab.eona-x.eu/netex> <http://purl.org/dc/terms/creator> "EONA-X Vocabulary Hub" .
+<https://vocab.eona-x.eu/netex> <http://purl.org/dc/terms/source> "NeTEx v2.0 XSDs (github.com/TransmodelEcosystem/NeTEx, branch v2.0): netex_nm_equipmentEnergy_version.xsd, netex_nm_chargingEquipmentProfile_version.xsd, netex_rechargingPointAssignment_version.xsd, netex_units.xsd. NeTEx site https://netex-cen.eu/ ; Transmodel http://www.transmodel-cen.eu/ . NeTEx is natively XSD and PT-scoped; this is a curated SKOS rendering of an adjacent EV-charging/alternative-fuel subset." .
+<https://vocab.eona-x.eu/netex> <http://purl.org/dc/terms/description> "Hub-curated SKOS rendering of the NeTEx (CEN/TS 16614, Transmodel-based) vehicle-charging and alternative-fuel subset: VEHICLE CHARGING EQUIPMENT, REFUELLING EQUIPMENT, BATTERY EQUIPMENT, RECHARGING STATION and RECHARGING POINT ASSIGNMENT plus the RECHARGING EQUIPMENT PROFILE, with their attributes and PlugType/CurrentType/PowerCouplingType/FuelType enumerations. NeTEx proper is natively XSD and PT-scoped; this is an adjacent, browsable subset for the EMDS demo." .
+<https://vocab.eona-x.eu/netex> <http://purl.org/dc/terms/title> "NeTEx/Transmodel — EV charging & alternative-fuel subset (EONA-X hub-curated)" .
+<https://vocab.eona-x.eu/netex> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
