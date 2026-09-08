@@ -9,7 +9,15 @@
 //! working whether the toolkit is a sibling checkout or a git dependency
 //! unpacked under `~/.cargo`.
 //!
-//! `styles/vendor/` is generated and gitignored. Edit the toolkit, not these.
+//! `styles/vendor/` is generated but **committed**, which is deliberate: Trunk
+//! resolves `index.html`'s `rel="css"` links before it invokes cargo, so a file
+//! this script has not written yet does not exist when Trunk looks for it, and
+//! a fresh checkout fails to build. Committing the output makes `trunk serve`
+//! work on a clean clone; this script then keeps it in step on every build, so
+//! a stale copy self-heals rather than persisting.
+//!
+//! Edit the toolkit, not these files — an edit here is overwritten by the next
+//! `cargo build`, and `cargo test` fails if the two have diverged.
 
 use std::fs;
 use std::path::Path;
@@ -22,7 +30,6 @@ fn main() {
         ("tokens.css", eona_ui_toolkit::TOKENS_CSS),
         ("components.css", eona_ui_toolkit::COMPONENTS_CSS),
         ("ontology.css", eona_ui_toolkit::ONTOLOGY_CSS),
-        ("patternfly-skin.css", eona_ui_toolkit::PATTERNFLY_SKIN_CSS),
     ] {
         let path = out.join(name);
         // Only rewrite on change: Trunk watches styles/, and an unconditional

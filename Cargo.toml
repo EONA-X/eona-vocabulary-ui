@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-edc-web-components = "0.4.4"
 # The ontology tier, the charter tokens and the PatternFly skin all live here
 # now. A path dependency for local iteration; the toolkit's own guidance is that
 # an app which only needs components takes an ordinary git dependency rather
@@ -17,8 +16,6 @@ gloo-net = { version = "0.7.0", default-features = false, features = ["http"] }
 gloo-timers = { version = "0.4.0", features = ["futures"] }
 js-sys = "0.3.104"
 log = "0.4.33"
-patternfly-yew = { version = "0.8", features = ["experimental"] }
-semver = "1.0.28"
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = { version = "1.0.151", features = ["preserve_order"] }
 wasm-bindgen = "0.2.127"

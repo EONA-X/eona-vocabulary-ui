@@ -1,5 +1,3 @@
 /target
 /dist
 /dist.trunk-lock
-# Written by build.rs from eona-ui-toolkit's stylesheet constants.
-/styles/vendor
