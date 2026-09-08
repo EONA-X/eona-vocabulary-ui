@@ -1,26 +1,23 @@
-//! Molecule-level components for the ontology browser UI — small composites
-//! built from the leaf `atoms`, each a self-contained fragment (a resource
-//! reference, a labelled annotation row, a term card's heading block).
+//! Molecule-level components for the ontology browser UI.
 //!
-//! Mirrors `containers/prez-ui/theme/app/components/ontology/molecules/` from
-//! the Vue source. Organisms added in a later stage assemble these.
-//!
-//! Not yet wired into the app (later stage composes these in) — allow
-//! dead_code and unused_imports until then so the build stays warning-clean,
-//! same convention as `components::atoms`.
+//! The ontology-generic ones (annotation rows, term headers, term references)
+//! moved to `eona-ui-toolkit`'s `interactive` tier and are re-exported here.
+//! The UML molecules stay: they belong to this app's diagram renderer, which
+//! is a layout engine rather than a design-system component.
 #![allow(dead_code, unused_imports)]
 
-mod annotation;
-mod term_header;
-mod term_ref;
 mod uml_card;
 mod uml_class;
 mod uml_edge;
 mod uml_tree_node;
 
-pub use annotation::{OntoAnnotation, OntoAnnotationProps};
-pub use term_header::{OntoTermHeader, OntoTermHeaderProps};
-pub use term_ref::{OntoTermRef, OntoTermRefProps};
+// OntoAnnotation holds no state, so the toolkit keeps it with the presentational
+// components rather than in `interactive`; the term molecules embed OntoIri's
+// copy button and stay behind `csr`.
+pub use eona_ui_toolkit::interactive::molecules::{
+    OntoTermHeader, OntoTermHeaderProps, OntoTermRef, OntoTermRefProps,
+};
+pub use eona_ui_toolkit::molecules::{OntoAnnotation, OntoAnnotationProps};
 pub use uml_card::{OntoUmlCard, OntoUmlCardProps};
 pub use uml_class::{OntoUmlClass, OntoUmlClassProps, UmlClassState};
 pub use uml_edge::{OntoUmlEdge, OntoUmlEdgeProps, UmlEdgeState};

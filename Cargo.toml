@@ -5,6 +5,11 @@ edition = "2024"
 
 [dependencies]
 edc-web-components = "0.4.4"
+# The ontology tier, the charter tokens and the PatternFly skin all live here
+# now. A path dependency for local iteration; the toolkit's own guidance is that
+# an app which only needs components takes an ordinary git dependency rather
+# than a submodule — the submodule exists for hosts that publish its demo page.
+eona-ui-toolkit = { path = "../eona-ui-toolkit", features = ["csr"] }
 eona-crosswalk-transform = { version = "0.1.0", path = "crates/eona-crosswalk-transform" }
 futures = "0.3.34"
 glam = "0.33.5"
@@ -21,3 +26,9 @@ wasm-bindgen-futures = "0.4.77"
 wasm-logger = "0.2.0"
 web-sys = { version = "0.3.104", features = ["Navigator", "Clipboard", "Window", "HtmlSelectElement", "Document", "Element", "Location", "EventTarget", "HtmlInputElement", "ScrollIntoViewOptions", "ScrollBehavior", "ScrollLogicalPosition", "History", "UrlSearchParams", "KeyboardEvent", "PointerEvent", "HtmlElement", "CssStyleDeclaration", "HtmlCanvasElement", "WebGl2RenderingContext", "WebGlProgram", "WebGlShader", "WebGlBuffer", "WebGlUniformLocation", "WebGlVertexArrayObject", "ResizeObserver", "ResizeObserverEntry", "ResizeObserverBoxOptions", "WheelEvent", "DomRect", "MouseEvent", "Storage"] }
 yew = { version = "0.23.0", features = ["csr"] }
+
+[build-dependencies]
+# Same crate again, with no features: build scripts run on the host, and all
+# build.rs wants is the stylesheet constants, which ship unconditionally. Adding
+# `csr` here would try to compile web-sys for the host and fail.
+eona-ui-toolkit = { path = "../eona-ui-toolkit" }

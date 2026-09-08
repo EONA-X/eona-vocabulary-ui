@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="pf-v6-theme-dark">
+<html lang="en" data-theme="dark" class="pf-v6-theme-dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,19 +13,29 @@
          root-absolute specifically so this one build-time value is enough to
          retarget all of them at once. -->
     <base data-trunk-public-url />
-    <!-- Applies the persisted theme (components::atoms::theme_toggle,
+    <!-- Applies the persisted theme (eona_ui_toolkit::interactive::ThemeToggle,
          localStorage key "eovoc-theme") before Yew mounts, so a returning
-         visitor who picked light mode doesn't see a dark flash first. Dark
-         is the default (class="pf-v6-theme-dark" above already covers it),
-         so this only ever needs to *remove* that class + set data-theme for
-         a "light" preference — kept in sync with apply_theme() in
-         theme_toggle.rs, which is the only other place that touches these. -->
+         visitor who picked light mode doesn't see a dark flash first.
+
+         Two attributes, because two systems are being switched at once:
+         data-theme is the design system's own switch (tokens.css defines its
+         dark values under [data-theme="dark"]), and pf-v6-theme-dark is
+         PatternFly's. This app is dark-first, so <html> above carries both and
+         a "light" preference removes both. Kept in sync with apply_theme() in
+         the toolkit, the only other place that touches them. -->
     <script>
       if (localStorage.getItem("eovoc-theme") === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
+        document.documentElement.removeAttribute("data-theme");
         document.documentElement.className = "";
       }
     </script>
+
+    <!-- Poppins is the charter's typeface; tokens.css names it in
+         --eona-font-family. This app previously shipped Manrope through a
+         colliding --eona-* variable of its own. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- patternfly-yew (pages::catalog's DatasetCard/Gallery) needs the actual
          PatternFly CSS — it's a class-based design system, not something
          patternfly-yew generates styles for on its own. Pulled via Trunk's
@@ -39,6 +49,15 @@
          Awesome webfont glyphs, not inline SVG — so the webfont files must be
          served too. -->
     <link data-trunk rel="copy-dir" href="target/node_modules/@fortawesome/fontawesome-free/7.1.0/webfonts">
+    <!-- The design system, written out of eona-ui-toolkit's constants by
+         build.rs (see that file). Order matters: tokens.css defines the custom
+         properties the other three consume, and patternfly-skin.css must follow
+         PatternFly's own stylesheet above, whose --pf-t--global--* values it
+         overrides so PatternFly renders in charter colours and type.
+         styles/vendor/ is generated and gitignored — edit the toolkit. -->
+    <link data-trunk rel="css" href="styles/vendor/tokens.css" />
+    <link data-trunk rel="css" href="styles/vendor/patternfly-skin.css" />
+    <link data-trunk rel="css" href="styles/vendor/ontology.css" />
     <link data-trunk rel="css" href="styles/main.css" />
   </head>
   <body></body>

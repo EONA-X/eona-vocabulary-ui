@@ -2,7 +2,8 @@
 //!
 //! Shared top bar for all three routes (see `main.rs`) — brand, cross-page
 //! links (previously duplicated per-page as a bare `<nav
-//! class="crosswalk-page__nav">`), and the [`ThemeToggle`](crate::components::atoms::ThemeToggle).
+//! class="crosswalk-page__nav">`), and the toolkit's `ThemeToggle` — passed
+//! this app's own storage key so visitors' saved preference survives the move.
 //! Every link is a plain `<a href>` full navigation, matching this SPA's
 //! no-router design (each page fetches everything it needs on mount
 //! regardless of how it was reached).
@@ -43,7 +44,7 @@ pub fn navbar(props: &NavbarProps) -> Html {
                 { link(NavRoute::Ontologies, "ontologies", "Ontology Browser") }
                 { link(NavRoute::Crosswalk, "crosswalk", "Crosswalk 3D") }
             </nav>
-            <ThemeToggle />
+            <ThemeToggle storage_key="eovoc-theme" default_dark=true />
         </header>
     }
 }

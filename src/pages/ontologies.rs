@@ -17,7 +17,9 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
 
-use crate::components::organisms::{NavRoute, Navbar, OntologyBrowser, OntologySelector};
+use crate::components::organisms::{
+    NavRoute, Navbar, OntoUmlDiagram, OntologyBrowser, OntologySelector,
+};
 use crate::net::{fetch_json, query_param, sync_url_slug};
 use crate::ontology::{namespace_prefixes, parse_ontology, OntologyEntry, OntologyModel};
 
@@ -178,7 +180,18 @@ pub fn ontologies_page() -> Html {
                             <p class="eovoc-state__message">{ msg }</p>
                         </div>
                     } else if let Some(m) = (*model).clone() {
-                        <OntologyBrowser model={m} prefix_links={Some(prefix_links(&ontologies))} />
+                        // The browser renders whatever diagram it is handed; this app owns
+                        // the UML renderer, so it builds one here. Same markup and props as
+                        // when OntologyBrowser hard-wired it.
+                        <OntologyBrowser
+                            model={m.clone()}
+                            diagram={Some(html! {
+                                <OntoUmlDiagram
+                                    model={m}
+                                    prefix_links={Some(prefix_links(&ontologies))}
+                                />
+                            })}
+                        />
                     }
                 </>
             }

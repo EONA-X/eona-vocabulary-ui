@@ -1,18 +1,12 @@
-//! Leaf presentational components ("atoms") for the ontology browser UI.
+//! Leaf components for the ontology browser UI.
 //!
-//! Mirrors `containers/prez-ui/theme/app/components/ontology/atoms/` from the
-//! Vue source — small, dependency-free building blocks with no children of
-//! their own, composed by molecules/organisms added in later stages.
+//! All three that lived here — a theme toggle, an IRI/CURIE display, a
+//! term-kind badge — were app-agnostic with no counterpart in
+//! `eona-ui-toolkit`, so they moved to its `interactive` tier.
 //!
-//! Not yet wired into the app (later stage composes these in) — allow
-//! dead_code and unused_imports until then so the build stays warning-clean,
-//! same convention as `src/ontology.rs`.
-#![allow(dead_code, unused_imports)]
+//! Only `ThemeToggle` is still reached through this path (by
+//! `organisms::navbar`); the other two are used by the ontology components,
+//! which moved with them. Import from
+//! `eona_ui_toolkit::interactive::atoms` directly if this app needs them again.
 
-mod badge;
-mod iri;
-mod theme_toggle;
-
-pub use badge::{BadgeVariant, OntoBadge, OntoBadgeProps};
-pub use iri::{OntoIri, OntoIriProps};
-pub use theme_toggle::ThemeToggle;
+pub use eona_ui_toolkit::interactive::atoms::ThemeToggle;
