@@ -1202,6 +1202,59 @@ section.block-alt { background: var(--eona-gray-bg); }
 .theme-demo__card a { color: var(--eona-accent); }
 .theme-demo__muted { font-size: 12.5px; color: var(--eona-text-muted); }
 
+/* ---------- Section 09: the same component in two stacks ---------------
+   One row per component: the Yew call and the React call side by side, or
+   the Yew call and a note saying why there is no React one. Both panes are
+   .code-block, so the only thing this adds is the two-up frame and the
+   pane label; the snippets themselves are generated (bridge/examples.rs).
+   Auto-fit rather than a fixed 1fr 1fr: at one column the panes stack in
+   source order, Yew first, which is the order the prose reads them in. */
+/* 42 rows is too many to scroll past looking for one name; this is the only
+   way into a single component's snippet, since the page has no search. */
+.snippet-jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0 8px; }
+.snippet-jump a {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px; text-decoration: none;
+  color: var(--eona-blue-royal); background: var(--eona-lavender-pale);
+  border-radius: var(--eona-radius-pill); padding: 3px 10px;
+}
+.snippet-jump a:hover { background: var(--eona-lavender); color: var(--eona-navy); }
+
+.snippet-index { margin-top: 8px; }
+.snippet-entry { padding: 26px 0; border-bottom: 1px solid rgba(4,5,83,.08); }
+.snippet-entry:last-child { border-bottom: none; }
+.snippet-name {
+  font-size: var(--eona-size-h3); font-weight: var(--eona-weight-semibold);
+  color: var(--eona-navy); margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.snippet-source { margin: 4px 0 0; font-size: 12.5px; color: #5a5d86; }
+.snippet-source code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.snippet-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 18px; align-items: start; }
+.snippet-pane-label {
+  display: block; margin-top: 14px;
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  font-weight: var(--eona-weight-semibold); color: var(--eona-blue-royal);
+}
+/* The label supplies the gap above each pane, so the block below it does not
+   add a second one. */
+.snippet-pane .code-block { margin-top: 6px; }
+.snippet-pane-absent .snippet-pane-label { color: #5a5d86; }
+/* Not a .code-block: an absent component has no code, and dressing prose as a
+   snippet would invite someone to copy it. Tinted rather than white, because
+   this section is a plain .block and a white panel on white would read as a
+   gap where the second snippet should be. */
+.snippet-absent {
+  margin-top: 6px; padding: 14px 16px;
+  border: 1px dashed rgba(4,5,83,.2); border-radius: var(--eona-radius-sm);
+  background: var(--eona-gray-bg);
+  font-size: 14px; color: #33355f;
+}
+.snippet-absent p { margin: 0 0 8px; line-height: var(--eona-line-body); }
+.snippet-absent p:last-child { margin-bottom: 0; }
+.snippet-absent b { color: var(--eona-navy); }
+.snippet-absent-track { font-size: 12.5px; color: #5a5d86; }
+
 @media (max-width: 720px) {
   .code-block-pre { font-size: 11.5px; }
   .usage-preview { padding: 16px; }
