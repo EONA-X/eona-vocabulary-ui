@@ -1,12 +1,23 @@
 //! Leaf components for the ontology browser UI.
 //!
-//! All three that lived here — a theme toggle, an IRI/CURIE display, a
-//! term-kind badge — were app-agnostic with no counterpart in
-//! `eona-ui-toolkit`, so they moved to its `interactive` tier.
+//! Both of these — an IRI/CURIE display with a copy button, and a theme
+//! toggle — came back from `eona-ui-toolkit`'s `interactive` tier, which was
+//! retired because this app was its only consumer. They hold state and touch
+//! `localStorage`/the clipboard, so they never suited a crate whose other
+//! components are SSR-renderable by contract.
 //!
-//! Only `ThemeToggle` is still reached through this path (by
-//! `organisms::navbar`); the other two are used by the ontology components,
-//! which moved with them. Import from
-//! `eona_ui_toolkit::interactive::atoms` directly if this app needs them again.
+//! The term-kind badge that used to sit here did *not* come back: it is
+//! presentational, so it stayed in the toolkit as `OntoBadge` and is one of the
+//! components that crate publishes to React.
+//!
+//! The `*Props` types and `apply_theme`/`STORAGE_KEY` are re-exported although
+//! nothing in this crate names them: they are part of each component's public
+//! surface, and `apply_theme` in particular is the one function index.html's
+//! pre-mount script duplicates in JS. Same `allow` as the sibling modules.
+#![allow(dead_code, unused_imports)]
 
-pub use eona_ui_toolkit::interactive::atoms::ThemeToggle;
+mod iri;
+mod theme_toggle;
+
+pub use iri::{OntoIri, OntoIriProps};
+pub use theme_toggle::{apply_theme, ThemeToggle, ThemeToggleProps, STORAGE_KEY};

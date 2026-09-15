@@ -13,15 +13,17 @@
          root-absolute specifically so this one build-time value is enough to
          retarget all of them at once. -->
     <base data-trunk-public-url />
-    <!-- Applies the persisted theme (eona_ui_toolkit::interactive::ThemeToggle,
-         localStorage key "eovoc-theme") before Yew mounts, so a returning
-         visitor who picked light mode doesn't see a dark flash first.
+    <!-- Applies the persisted theme (components::atoms::ThemeToggle,
+         localStorage key "eovoc-theme" — passed to the toggle at
+         src/components/organisms/navbar.rs:47) before Yew mounts, so a
+         returning visitor who picked light mode doesn't see a dark flash
+         first.
 
          data-theme is the design system's own switch: tokens.css defines its
          dark values under [data-theme="dark"], and this app is dark-first, so
          <html> above carries it and a "light" preference removes it. Kept in
-         sync with apply_theme() in the toolkit, the only other place that
-         touches it. -->
+         sync with apply_theme() in src/components/atoms/theme_toggle.rs, the
+         only other place that touches it. -->
     <script>
       if (localStorage.getItem("eovoc-theme") === "light") {
         document.documentElement.removeAttribute("data-theme");
@@ -36,13 +38,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- The design system, written out of eona-ui-toolkit's constants by
          build.rs (see that file). Order matters: tokens.css defines the custom
-         properties the other three consume. components.css carries DatasetCard,
-         the one presentational toolkit component this app renders; ontology.css
-         carries the ontology tier. styles/vendor/ is generated but committed —
-         see build.rs for why — so edit the toolkit, not these. -->
+         properties everything below it consumes. components.css carries
+         DatasetCard, the one presentational toolkit component this app renders;
+         ontology.css carries the two ontology components that stayed in the
+         toolkit, OntoBadge and OntoAnnotation. styles/vendor/ is generated but
+         committed — see build.rs for why — so edit the toolkit, not these.
+
+         ontology-browser.css is this app's own, not vendored: it styles the
+         ontology tier in src/components/, which came back out of the toolkit.
+         It is linked after the vendored sheet because it is the more specific
+         of the two and shares no selector with it. -->
     <link data-trunk rel="css" href="styles/vendor/tokens.css" />
     <link data-trunk rel="css" href="styles/vendor/components.css" />
     <link data-trunk rel="css" href="styles/vendor/ontology.css" />
+    <link data-trunk rel="css" href="styles/ontology-browser.css" />
     <link data-trunk rel="css" href="styles/main.css" />
   </head>
   <body></body>

@@ -737,6 +737,18 @@ html > body { padding-top: 156px; }
 .beenest-card { background: #fff; border-radius: var(--eona-radius-card); box-shadow: var(--eona-shadow-card); padding: 24px; display: flex; justify-content: center; }
 .beenest-card svg { max-width: 100%; height: auto; }
 
+/* ---------- Architecture diagrams showcase (diagrams.html, .diagram-grid) ---------- */
+/* Each diagram is a plain <img> (fetched from the eona-architecture-decision-records
+   repo's docs/diagrams/ at build time — see site's gitlab.rs), not an inline <svg>,
+   so it needs no viewBox override beyond the page-wide `img { max-width: 100% }` reset. */
+.diagram-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px,1fr)); gap: 28px; margin: 20px 0 48px; }
+.diagram-card { background: #fff; border-radius: var(--eona-radius-card); box-shadow: var(--eona-shadow-card); padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.diagram-card img { width: 100%; height: auto; }
+.diagram-card h3 { margin: 0; font-size: 16px; color: var(--eona-navy); font-weight: 600; }
+.diagram-card p { margin: 0; font-size: 13.5px; color: var(--eona-text-muted); line-height: 1.5; }
+.diagram-card a.diagram-source { align-self: flex-start; font-size: 12.5px; font-weight: 600; color: var(--eona-blue-action); text-decoration: none; }
+.diagram-card a.diagram-source:hover { text-decoration: underline; }
+
 /* ---------- Components gallery page layout ---------- */
 .gallery-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 20px 0 36px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 22px; margin: 20px 0 36px; }

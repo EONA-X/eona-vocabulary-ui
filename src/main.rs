@@ -25,15 +25,9 @@ mod crosswalk;
 mod crosswalk3d;
 mod dcat;
 mod net;
+mod ontology;
 mod pages;
 mod uml;
-
-/// The ontology model moved to `eona-ui-toolkit` with the components typed on
-/// it, where it sits ungated (not under `interactive`) because the
-/// presentational ontology components need it under SSR too. Re-exported under
-/// its old path so the rest of this crate — `uml`, `crosswalk`, `dcat`, both
-/// pages — is unaffected by where it lives.
-use eona_ui_toolkit::ontology;
 
 use web_sys::window;
 use yew::prelude::*;

@@ -7,6 +7,10 @@
 //! copy edited here instead of in the toolkit, and a copy left stale when the
 //! toolkit moved on. `cargo build` regenerates them, so a red test here is
 //! fixed by rebuilding and committing the result.
+//!
+//! styles/ontology-browser.css is deliberately absent from both checks: it is
+//! this app's own stylesheet for the ontology tier that came back out of the
+//! toolkit, not a vendored copy of anything.
 
 use std::fs;
 
@@ -45,4 +49,67 @@ fn index_html_links_every_vendored_stylesheet() {
         let other = index.find(&format!("styles/vendor/{name}")).unwrap();
         assert!(tokens < other, "tokens.css must be linked before {name}");
     }
+}
+
+/// The ontology tier's own stylesheet came back from the toolkit with the
+/// components; nothing generates it, so only this test notices if a link is
+/// dropped or ordered before the tokens it reads.
+#[test]
+fn index_html_links_the_app_owned_ontology_stylesheet() {
+    let index = fs::read_to_string("index.html").expect("read index.html");
+    let sheet = index
+        .find("styles/ontology-browser.css")
+        .expect("index.html does not link styles/ontology-browser.css, so the ontology \
+                 browser renders unstyled");
+    let tokens = index.find("styles/vendor/tokens.css").expect("tokens.css link");
+    assert!(tokens < sheet, "tokens.css must be linked before ontology-browser.css");
+}
+
+/// The ontology stylesheet was split along the same line as the Rust: the
+/// toolkit kept the rules for the two components it kept, this repo took the
+/// rest. Two copies of `.term-card` would render identically on the day they
+/// were created and drift silently afterwards, so assert the halves stay
+/// disjoint rather than trusting either side to remember.
+#[test]
+fn the_vendored_ontology_sheet_carries_no_browser_rules() {
+    let vendored =
+        fs::read_to_string("styles/vendor/ontology.css").expect("read styles/vendor/ontology.css");
+    // Rules only. The toolkit's file header names these same classes in prose,
+    // saying where they went — that sentence is the documentation this test
+    // exists to keep true, not a violation of it.
+    let rules = strip_css_comments(&vendored);
+    // One class per component that came back, taken from the selectors each of
+    // them emits: iri.rs:82, term_ref.rs:28, term_header.rs:29, term_card.rs,
+    // section.rs, selector.rs, browser.rs.
+    for class in [
+        ".onto-iri",
+        ".term-ref",
+        ".term-header",
+        ".term-card",
+        ".onto-section",
+        ".ontology-selector",
+        ".ontology-browser",
+    ] {
+        assert!(
+            !rules.contains(class),
+            "{class} is styled in both the toolkit's ONTOLOGY_CSS and this repo's \
+             styles/ontology-browser.css. It belongs to a component that lives here; \
+             delete the toolkit's copy."
+        );
+    }
+}
+
+/// Drops `/* ... */` blocks so a selector check reads rules, not prose.
+fn strip_css_comments(css: &str) -> String {
+    let mut out = String::with_capacity(css.len());
+    let mut rest = css;
+    while let Some(start) = rest.find("/*") {
+        out.push_str(&rest[..start]);
+        rest = match rest[start + 2..].find("*/") {
+            Some(end) => &rest[start + 2 + end + 2..],
+            None => "",
+        };
+    }
+    out.push_str(rest);
+    out
 }

@@ -2,8 +2,8 @@
 //! `styles/vendor/`, where `index.html` links them.
 //!
 //! They are crate constants, not files this repo owns — that is the whole point
-//! of `TOKENS_CSS`/`COMPONENTS_CSS`/`ONTOLOGY_CSS`/`PATTERNFLY_SKIN_CSS`, so no
-//! consumer has to know where the crate sits on disk. Trunk, though, links
+//! of `TOKENS_CSS`/`COMPONENTS_CSS`/`ONTOLOGY_CSS`, so no consumer has to know
+//! where the crate sits on disk. Trunk, though, links
 //! stylesheets by path from `index.html`. Materialising them here bridges the
 //! two: the constants stay the single source of truth, and the paths keep
 //! working whether the toolkit is a sibling checkout or a git dependency
@@ -18,6 +18,12 @@
 //!
 //! Edit the toolkit, not these files — an edit here is overwritten by the next
 //! `cargo build`, and `cargo test` fails if the two have diverged.
+//!
+//! `ONTOLOGY_CSS` is still vendored after the ontology tier came back to this
+//! repo, because the two ontology components that stayed in the toolkit
+//! (`OntoBadge`, `OntoAnnotation`) kept their `.badge*`/`.annotation*` rules
+//! there. The rules for the components that came back are this app's own, in
+//! styles/ontology-browser.css, and are not written by this script.
 
 use std::fs;
 use std::path::Path;
