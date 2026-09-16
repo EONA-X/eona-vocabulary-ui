@@ -1,3 +1,6 @@
 [submodule "crates/eona-crosswalk-transform"]
 	path = crates/eona-crosswalk-transform
 	url = https://github.com/Eona-X/eona-crosswalk-transform.git
+[submodule "crates/eona-ui-toolkit"]
+	path = crates/eona-ui-toolkit
+	url = https://github.com/EONA-X/eona-ui-toolkit.git

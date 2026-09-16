@@ -14,7 +14,7 @@ edition = "2024"
 # does not have to change. A path dependency for local iteration — and, until the
 # toolkit has a public mirror, the reason this branch cannot build in CI (see
 # .github/workflows/publish.yml, which fetches submodules but not siblings).
-eona-ui-toolkit = { path = "../eona-ui-toolkit", features = ["csr"] }
+eona-ui-toolkit = { path = "crates/eona-ui-toolkit", features = ["csr"] }
 eona-crosswalk-transform = { version = "0.1.0", path = "crates/eona-crosswalk-transform" }
 futures = "0.3.34"
 glam = "0.33.5"
@@ -33,4 +33,4 @@ yew = { version = "0.23.0", features = ["csr"] }
 [build-dependencies]
 # Same crate again, with no features: build scripts run on the host, and all
 # build.rs wants is the stylesheet constants, which ship unconditionally.
-eona-ui-toolkit = { path = "../eona-ui-toolkit" }
+eona-ui-toolkit = { path = "crates/eona-ui-toolkit" }
