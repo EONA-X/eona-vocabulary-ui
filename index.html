@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="pf-v6-theme-dark">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,32 +13,45 @@
          root-absolute specifically so this one build-time value is enough to
          retarget all of them at once. -->
     <base data-trunk-public-url />
-    <!-- Applies the persisted theme (components::atoms::theme_toggle,
-         localStorage key "eovoc-theme") before Yew mounts, so a returning
-         visitor who picked light mode doesn't see a dark flash first. Dark
-         is the default (class="pf-v6-theme-dark" above already covers it),
-         so this only ever needs to *remove* that class + set data-theme for
-         a "light" preference — kept in sync with apply_theme() in
-         theme_toggle.rs, which is the only other place that touches these. -->
+    <!-- Applies the persisted theme (components::atoms::ThemeToggle,
+         localStorage key "eovoc-theme" — passed to the toggle at
+         src/components/organisms/navbar.rs:47) before Yew mounts, so a
+         returning visitor who picked light mode doesn't see a dark flash
+         first.
+
+         data-theme is the design system's own switch: tokens.css defines its
+         dark values under [data-theme="dark"], and this app is dark-first, so
+         <html> above carries it and a "light" preference removes it. Kept in
+         sync with apply_theme() in src/components/atoms/theme_toggle.rs, the
+         only other place that touches it. -->
     <script>
       if (localStorage.getItem("eovoc-theme") === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
-        document.documentElement.className = "";
+        document.documentElement.removeAttribute("data-theme");
       }
     </script>
-    <!-- patternfly-yew (pages::catalog's DatasetCard/Gallery) needs the actual
-         PatternFly CSS — it's a class-based design system, not something
-         patternfly-yew generates styles for on its own. Pulled via Trunk's
-         node_packages resolver (see Trunk.toml), same package/version pin as
-         dataspace-rs/edc-web-ui, the project this pattern is ported from. -->
-    <link data-trunk rel="sass" href="target/node_modules/@patternfly/patternfly/6.4.0/patternfly.scss">
-    <link data-trunk rel="sass" href="target/node_modules/@patternfly/patternfly/6.4.0/patternfly-addons.scss">
-    <link data-trunk rel="copy-dir" href="target/node_modules/@patternfly/patternfly/6.4.0/assets" data-target-path="assets/">
-    <!-- patternfly_yew::Icon (used by pages::catalog's error EmptyState, and
-         internally by DatasetCard) renders `<i class="fas ...">` — Font
-         Awesome webfont glyphs, not inline SVG — so the webfont files must be
-         served too. -->
-    <link data-trunk rel="copy-dir" href="target/node_modules/@fortawesome/fontawesome-free/7.1.0/webfonts">
+
+    <!-- Poppins is the charter's typeface; tokens.css names it in
+         --eona-font-family. This app previously shipped Manrope through a
+         colliding --eona-* variable of its own. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- The design system, written out of eona-ui-toolkit's constants by
+         build.rs (see that file). Order matters: tokens.css defines the custom
+         properties everything below it consumes. components.css carries
+         DatasetCard, the one presentational toolkit component this app renders;
+         ontology.css carries the two ontology components that stayed in the
+         toolkit, OntoBadge and OntoAnnotation. styles/vendor/ is generated but
+         committed — see build.rs for why — so edit the toolkit, not these.
+
+         ontology-browser.css is this app's own, not vendored: it styles the
+         ontology tier in src/components/, which came back out of the toolkit.
+         It is linked after the vendored sheet because it is the more specific
+         of the two and shares no selector with it. -->
+    <link data-trunk rel="css" href="styles/vendor/tokens.css" />
+    <link data-trunk rel="css" href="styles/vendor/components.css" />
+    <link data-trunk rel="css" href="styles/vendor/ontology.css" />
+    <link data-trunk rel="css" href="styles/ontology-browser.css" />
     <link data-trunk rel="css" href="styles/main.css" />
   </head>
   <body></body>

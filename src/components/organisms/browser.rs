@@ -32,6 +32,8 @@ use std::cell::RefCell;
 use std::collections::HashMap;
 use std::rc::Rc;
 
+use eona_ui_toolkit::atoms::{BadgeVariant, OntoBadge};
+use eona_ui_toolkit::molecules::OntoAnnotation;
 use gloo_timers::future::TimeoutFuture;
 use wasm_bindgen::closure::Closure;
 use wasm_bindgen::JsCast;
@@ -39,10 +41,8 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::{window, HtmlInputElement, ScrollBehavior, ScrollIntoViewOptions, ScrollLogicalPosition};
 use yew::prelude::*;
 
-use crate::components::atoms::{BadgeVariant, OntoBadge};
-use crate::components::molecules::{OntoAnnotation, OntoTermRef};
+use crate::components::molecules::OntoTermRef;
 use crate::components::organisms::section::OntoSection;
-use crate::components::organisms::uml_diagram::OntoUmlDiagram;
 use crate::ontology::{OntologyModel, OntologySection, Term, TermKind};
 
 /// Expand modestly-sized sections by default; keep very large ones collapsed.
@@ -51,12 +51,22 @@ const DEFAULT_OPEN_MAX: usize = 40;
 #[derive(Properties, PartialEq, Clone)]
 pub struct OntologyBrowserProps {
     pub model: OntologyModel,
-    /// prefix -> slug, for ontologies published in this browser. Threaded
-    /// straight through to `OntoUmlDiagram`, same as the Vue source's
-    /// `OntologyBrowser.vue` passing its own `prefixLinks` prop down to
-    /// `OntoUmlDiagram.vue`.
+    /// Rendered between the header and the filter box, where the Vue source's
+    /// `OntologyBrowser.vue` hard-wires `OntoUmlDiagram.vue`.
+    ///
+    /// A slot rather than a diagram prop because the UML renderer is ~3,500
+    /// lines of layout engine plus its own model, and hard-wiring it here
+    /// would drag all of it into every page that renders a term list.
+    /// `pages::ontologies` passes `<OntoUmlDiagram model=... prefix_links=...
+    /// />` (src/pages/ontologies.rs:186-192); `pages::crosswalk`, which shows
+    /// no diagram, passes nothing and the slot collapses.
+    ///
+    /// The shape is kept from the toolkit's version of this component rather
+    /// than reverted to the `prefix_links` prop it replaced: the slot is what
+    /// let the diagram stay in this app while the browser was shared, and it
+    /// is still the right seam now that both are here again.
     #[prop_or_default]
-    pub prefix_links: Option<HashMap<String, String>>,
+    pub diagram: Option<Html>,
 }
 
 fn section_anchor_id(kind: TermKind) -> String {
@@ -252,7 +262,9 @@ pub fn ontology_browser(props: &OntologyBrowserProps) -> Html {
                 </header>
             }
 
-            <OntoUmlDiagram model={props.model.clone()} prefix_links={props.prefix_links.clone()} />
+            if let Some(diagram) = &props.diagram {
+                { diagram.clone() }
+            }
 
             <div class="onto-filter">
                 <div class="onto-filter__input-wrap">

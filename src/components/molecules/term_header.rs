@@ -6,9 +6,10 @@
 //!
 //! Ports `containers/prez-ui/theme/app/components/ontology/molecules/OntoTermHeader.vue`.
 
+use eona_ui_toolkit::atoms::{BadgeVariant, OntoBadge};
 use yew::prelude::*;
 
-use crate::components::atoms::{BadgeVariant, OntoBadge, OntoIri};
+use crate::components::atoms::OntoIri;
 use crate::ontology::Term;
 
 #[derive(Properties, PartialEq, Clone)]

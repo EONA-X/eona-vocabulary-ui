@@ -11,8 +11,11 @@
 //! over a JS object parsed from the same JSON text — this determines the
 //! display order of a term's annotations/notes/links blocks.
 //!
-//! Not yet wired into the UI (later stage) — allow dead_code until then so
-//! the build stays warning-clean.
+//! `dead_code` is allowed because the model is parsed whole from whatever the
+//! pipeline publishes, while each page reads only the slice it renders — the
+//! crosswalk page never touches `OntologyHeader`'s link rows, the browser never
+//! touches `OntologyDownloads`. Dropping the unread fields would make the parser
+//! lossy for the next page that needs them.
 #![allow(dead_code)]
 
 use std::collections::{HashMap, HashSet};
@@ -23,24 +26,17 @@ use serde_json::{Map, Value};
 
 // ---- entity kinds ----------------------------------------------------------
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
-pub enum TermKind {
-    Ontology,
-    Class,
-    ObjectProperty,
-    DatatypeProperty,
-    AnnotationProperty,
-    Property,
-    NamedIndividual,
-    Other,
-}
-
-#[derive(Clone, Debug, PartialEq)]
-pub struct LiteralValue {
-    pub value: String,
-    pub language: Option<String>,
-    pub datatype: Option<String>,
-}
+// `TermKind` and `LiteralValue` stayed in the toolkit when the rest of this
+// module came back, because two components that stayed there are typed on them:
+// `OntoBadgeProps::variant` is `BadgeVariant::Kind(TermKind)` and
+// `OntoAnnotationProps::values` is `Vec<LiteralValue>`. `term_header.rs:34`,
+// `term_ref.rs:36` and `browser.rs` construct those props from `Term::kind` and
+// `NamedValues::values`, so these must be the *same* types, not local copies —
+// redefining them here would make every one of those call sites a type mismatch.
+//
+// Re-exported under their original paths so `crate::ontology::TermKind` keeps
+// resolving for `uml.rs:28`, `crosswalk.rs:22` and `crosswalk_selector.rs:16`.
+pub use eona_ui_toolkit::ontology::{LiteralValue, TermKind};
 
 /// A reference to another resource (internal term or external IRI).
 #[derive(Clone, Debug, PartialEq)]
@@ -332,7 +328,7 @@ fn split_iri(iri: &str) -> (String, String) {
 fn to_curie(iri: &str, extra: Option<&HashMap<String, String>>) -> String {
     if let Some(extra) = extra {
         let mut entries: Vec<(&String, &String)> = extra.iter().collect();
-        entries.sort_by(|a, b| b.0.len().cmp(&a.0.len()));
+        entries.sort_by_key(|(ns, _)| std::cmp::Reverse(ns.len()));
         for (ns, p) in entries {
             if iri.starts_with(ns.as_str()) && iri.len() > ns.len() {
                 return format!("{p}:{}", &iri[ns.len()..]);
@@ -557,21 +553,24 @@ fn extract_nodes(doc: &Value) -> Vec<&Map<String, Value>> {
 
 // ---- main entry -----------------------------------------------------------
 
-/// # Arguments
-/// * `namespace_prefixes` — namespace IRI -> prefix, built from every
-///   published ontology's `namespace`/`prefix` manifest fields; lets CURIEs
-///   for terms from other ontologies in this browser resolve to their
-///   declared prefix instead of falling back to the static PREFIXES table or
-///   bare local names.
-/// namespace IRI -> prefix, built from every manifest entry that declares
-/// both — shared by both pages (`pages::ontologies` threads it into
-/// `parse_ontology` so cross-ontology term-refs resolve to their declared
-/// prefix; `pages::crosswalk` needs the exact same map for its own
-/// `parse_ontology` calls over each side + the alignment document).
+/// namespace IRI -> prefix, built from every manifest entry that declares both.
+///
+/// Feed the result to [`parse_ontology`] so CURIEs for terms belonging to other
+/// ontologies in the same browser resolve to their declared prefix instead of
+/// falling back to the static `PREFIXES` table or to bare local names.
 pub fn namespace_prefixes(ontologies: &[OntologyEntry]) -> HashMap<String, String> {
     ontologies.iter().filter_map(|o| Some((o.namespace.clone()?, o.prefix.clone()?))).collect()
 }
 
+/// Parses a JSON-LD ontology document into the model the browser renders.
+///
+/// # Arguments
+///
+/// * `namespace_prefixes` — namespace IRI -> prefix, built from every published
+///   ontology's `namespace`/`prefix` manifest fields (see
+///   [`namespace_prefixes`]); lets CURIEs for terms from other ontologies in
+///   this browser resolve to their declared prefix instead of falling back to
+///   the static `PREFIXES` table or bare local names.
 pub fn parse_ontology(doc: &Value, namespace_prefixes: Option<&HashMap<String, String>>) -> OntologyModel {
     let nodes = extract_nodes(doc);
 
@@ -821,7 +820,7 @@ fn build_term<F: Fn(&str) -> TermRef>(
         }
     }
 
-    relations.sort_by(|a, b| rel_order(&a.predicate).cmp(&rel_order(&b.predicate)));
+    relations.sort_by_key(|r| rel_order(&r.predicate));
     let clean_desc = prefer_en(descriptions);
     let mut haystack_parts: Vec<String> = vec![label.clone(), to_curie(iri, namespace_prefixes), iri.to_string()];
     haystack_parts.extend(clean_desc.iter().map(|d| d.value.clone()));

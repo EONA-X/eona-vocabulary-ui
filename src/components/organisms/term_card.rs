@@ -8,9 +8,10 @@
 //!
 //! Ports `containers/prez-ui/theme/app/components/ontology/organisms/OntoTermCard.vue`.
 
+use eona_ui_toolkit::molecules::OntoAnnotation;
 use yew::prelude::*;
 
-use crate::components::molecules::{OntoAnnotation, OntoTermHeader, OntoTermRef};
+use crate::components::molecules::{OntoTermHeader, OntoTermRef};
 use crate::ontology::Term;
 
 #[derive(Properties, PartialEq, Clone)]

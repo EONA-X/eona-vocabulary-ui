@@ -1,13 +1,14 @@
-//! Organism-level components for the ontology browser UI — larger composites
-//! built from `molecules`, each a self-contained page section (one term's
-//! full entry, a collapsible group of terms).
+//! Organism-level components for the ontology browser UI.
 //!
-//! Mirrors `containers/prez-ui/theme/app/components/ontology/organisms/` from
-//! the Vue source. A later stage assembles these into the page itself.
+//! The ontology-generic ones (term cards, sections, the ontology selector and
+//! the browser itself) came back from `eona-ui-toolkit`'s `interactive` tier:
+//! this app was that tier's only consumer, and a crate on private GitLab is a
+//! poor place for the core of a GitHub-hosted app. What was already here stays:
+//! the crosswalk screens, the UML diagram, and the navbar.
 //!
-//! Not yet wired into the app (later stage composes these in) — allow
-//! dead_code and unused_imports until then so the build stays warning-clean,
-//! same convention as `components::atoms` / `components::molecules`.
+//! `OntologyBrowser` keeps the `diagram` slot it grew while it lived in the
+//! toolkit rather than reverting to hard-wiring `OntoUmlDiagram` — see that
+//! prop's docs.
 #![allow(dead_code, unused_imports)]
 
 mod browser;

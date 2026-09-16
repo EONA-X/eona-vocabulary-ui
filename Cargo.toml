@@ -4,7 +4,17 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-edc-web-components = "0.4.4"
+# Down to four things after the ontology tier came back here: the charter tokens
+# and component stylesheets, `DatasetCard` (pages::catalog), `OntoBadge` and
+# `OntoAnnotation` (the two ontology components that hold no state, so they stay
+# with the presentational tier), and `ontology::{TermKind, LiteralValue}`, the
+# prop types those two are typed on — see src/ontology.rs:26.
+#
+# `csr` now gates only `yew/csr`; the toolkit keeps the feature name so this line
+# does not have to change. A path dependency for local iteration — and, until the
+# toolkit has a public mirror, the reason this branch cannot build in CI (see
+# .github/workflows/publish.yml, which fetches submodules but not siblings).
+eona-ui-toolkit = { path = "../eona-ui-toolkit", features = ["csr"] }
 eona-crosswalk-transform = { version = "0.1.0", path = "crates/eona-crosswalk-transform" }
 futures = "0.3.34"
 glam = "0.33.5"
@@ -12,8 +22,6 @@ gloo-net = { version = "0.7.0", default-features = false, features = ["http"] }
 gloo-timers = { version = "0.4.0", features = ["futures"] }
 js-sys = "0.3.104"
 log = "0.4.33"
-patternfly-yew = { version = "0.8", features = ["experimental"] }
-semver = "1.0.28"
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = { version = "1.0.151", features = ["preserve_order"] }
 wasm-bindgen = "0.2.127"
@@ -21,3 +29,8 @@ wasm-bindgen-futures = "0.4.77"
 wasm-logger = "0.2.0"
 web-sys = { version = "0.3.104", features = ["Navigator", "Clipboard", "Window", "HtmlSelectElement", "Document", "Element", "Location", "EventTarget", "HtmlInputElement", "ScrollIntoViewOptions", "ScrollBehavior", "ScrollLogicalPosition", "History", "UrlSearchParams", "KeyboardEvent", "PointerEvent", "HtmlElement", "CssStyleDeclaration", "HtmlCanvasElement", "WebGl2RenderingContext", "WebGlProgram", "WebGlShader", "WebGlBuffer", "WebGlUniformLocation", "WebGlVertexArrayObject", "ResizeObserver", "ResizeObserverEntry", "ResizeObserverBoxOptions", "WheelEvent", "DomRect", "MouseEvent", "Storage"] }
 yew = { version = "0.23.0", features = ["csr"] }
+
+[build-dependencies]
+# Same crate again, with no features: build scripts run on the host, and all
+# build.rs wants is the stylesheet constants, which ship unconditionally.
+eona-ui-toolkit = { path = "../eona-ui-toolkit" }
