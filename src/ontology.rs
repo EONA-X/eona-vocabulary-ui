@@ -370,7 +370,9 @@ fn parse_literal(v: &Value) -> Option<LiteralValue> {
     };
     let language = obj.get("@language").and_then(Value::as_str).map(String::from);
     let datatype = obj.get("@type").and_then(Value::as_str).map(String::from);
-    Some(LiteralValue { value, language, datatype })
+    // `::new` shortens the datatype IRI once, here, rather than on every
+    // render — see `LiteralValue::datatype_label`.
+    Some(LiteralValue::new(value, language, datatype))
 }
 
 fn is_ref(v: &Value) -> bool {

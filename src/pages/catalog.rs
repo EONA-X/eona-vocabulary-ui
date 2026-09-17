@@ -13,7 +13,7 @@
 //! component, so it rendered a second design system's brand inside an EONA-X
 //! page and dragged PatternFly's stylesheet, its Font Awesome webfonts and
 //! `patternfly-yew` itself into the bundle to do it.
-use eona_ui_toolkit::DatasetCard;
+use eona_ui_toolkit::{dataset_initial, DatasetCard};
 use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use yew::prelude::*;
@@ -146,6 +146,11 @@ pub fn catalog_page() -> Html {
                             <DatasetCard
                                 key={dataset.slug.clone()}
                                 title={dataset.title.clone()}
+                                // Derived at the call site: the component takes
+                                // the letter rather than computing it, so its
+                                // markup stays a pass-through of its props and
+                                // the React generator can emit it.
+                                initial={dataset_initial(&dataset.title)}
                                 {href}
                                 description={dataset.description.clone().map(AttrValue::from)}
                                 version={dataset.version.as_deref().and_then(version_badge)}
