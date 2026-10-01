@@ -53,3 +53,21 @@ fn main() {
     wasm_logger::init(wasm_logger::Config::default());
     yew::Renderer::<App>::new().render();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn the_crosswalk_page_is_at_crosswalks_and_still_at_crosswalk() {
+        // "crosswalk" is also an asset type of the published IRIs
+        // (https://<host>/crosswalk/<slug>/<version>), whose bare path the
+        // hosting answers itself: the page needs a name of its own.
+        assert_eq!(Page::from_path("/crosswalks"), Page::Crosswalk);
+        assert_eq!(Page::from_path("/eona-vocabulary-ui/crosswalks/"), Page::Crosswalk);
+        assert_eq!(Page::from_path("/crosswalk"), Page::Crosswalk);
+        assert_eq!(Page::from_path("/ontologies"), Page::Ontologies);
+        assert_eq!(Page::from_path("/"), Page::Catalog);
+        assert_eq!(Page::from_path("/anything"), Page::Catalog);
+    }
+}
