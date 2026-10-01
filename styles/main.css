@@ -1754,8 +1754,10 @@ a:hover {
    toolkit; only its per-kind colour is this app's business. Each kind keeps a
    distinct hue so the grid stays scannable by colour, not just by reading
    every label. */
-.dataset-card__badge--owl { background: var(--chart-1); color: var(--eona-navy); }
-.dataset-card__badge--shacl { background: var(--chart-4); color: var(--eona-white); }
+.dataset-card__badge--ontology { background: var(--chart-1); color: var(--eona-navy); }
+.dataset-card__badge--shape { background: var(--chart-4); color: var(--eona-white); }
 .dataset-card__badge--crosswalk { background: var(--chart-5); color: var(--eona-white); }
+.dataset-card__badge--vocabulary { background: var(--chart-2); color: var(--eona-white); }
+.dataset-card__badge--codelist { background: var(--chart-3); color: var(--eona-navy); }
 
 
