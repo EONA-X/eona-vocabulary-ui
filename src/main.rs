@@ -36,16 +36,34 @@ use pages::catalog::CatalogPage;
 use pages::crosswalk::CrosswalkPage;
 use pages::ontologies::OntologiesPage;
 
+#[derive(Debug, PartialEq, Eq)]
+enum Page {
+    Catalog,
+    Ontologies,
+    Crosswalk,
+}
+
+impl Page {
+    /// The page for a location's pathname, read from its last segment only so
+    /// the app works under any public URL. `crosswalk` (the former name) still
+    /// opens the crosswalk page: the published vocabularies use it as an asset
+    /// type (`https://<host>/crosswalk/<slug>/<version>`).
+    fn from_path(path: &str) -> Self {
+        match path.trim_end_matches('/').rsplit('/').next().unwrap_or("") {
+            "crosswalks" | "crosswalk" => Page::Crosswalk,
+            "ontologies" => Page::Ontologies,
+            _ => Page::Catalog,
+        }
+    }
+}
+
 #[function_component(App)]
 fn app() -> Html {
     let path = window().and_then(|w| w.location().pathname().ok()).unwrap_or_default();
-    let route = path.trim_end_matches('/').rsplit('/').next().unwrap_or("");
-    if route == "crosswalk" {
-        html! { <CrosswalkPage /> }
-    } else if route == "ontologies" {
-        html! { <OntologiesPage /> }
-    } else {
-        html! { <CatalogPage /> }
+    match Page::from_path(&path) {
+        Page::Crosswalk => html! { <CrosswalkPage /> },
+        Page::Ontologies => html! { <OntologiesPage /> },
+        Page::Catalog => html! { <CatalogPage /> },
     }
 }
 

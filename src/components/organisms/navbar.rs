@@ -42,7 +42,7 @@ pub fn navbar(props: &NavbarProps) -> Html {
             <nav class="eovoc-navbar__links">
                 { link(NavRoute::Catalog, ".", "Catalog") }
                 { link(NavRoute::Ontologies, "ontologies", "Ontology Browser") }
-                { link(NavRoute::Crosswalk, "crosswalk", "Crosswalk 3D") }
+                { link(NavRoute::Crosswalk, "crosswalks", "Crosswalk 3D") }
             </nav>
             <ThemeToggle storage_key="eovoc-theme" default_dark=true />
         </header>
