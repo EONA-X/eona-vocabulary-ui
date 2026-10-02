@@ -29,25 +29,54 @@ pub struct Creator {
     pub name: String,
 }
 
-/// The `dcterms:type` literal on a `dcat:Dataset` (see generate.py's
-/// `build_catalog_turtle`) — today always exactly "OWL Ontology", "SHACL
-/// Shapes Graph", or "Crosswalk" (an alignment between two ontologies, see
-/// `KIND_LABELS` in generate.py). `Other` carries any future/unrecognised
-/// literal through verbatim instead of panicking; `pages::catalog` skips the
-/// type badge for it rather than showing something misleading.
+/// A dataset's asset type, as in the published IRIs
+/// (`https://<host>/<asset-type>/<slug>/<version>`): the one covering its
+/// `dcat:type` from the EU asset-classification table (the same table as
+/// eona-vocabularies-reference's `ASSET_TYPES`). The former generator's
+/// `dcterms:type` literals ("OWL Ontology", "SHACL Shapes Graph",
+/// "Crosswalk") are still read when there is no `dcat:type`. `Other` carries
+/// anything unrecognised through; `pages::catalog` shows no badge for it.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum DatasetKind {
-    Owl,
-    Shacl,
+    Ontology,
+    Shape,
     Crosswalk,
+    Vocabulary,
+    Codelist,
     Other(String),
 }
 
+const ASSET_CLASSIFICATION: &str = "http://publications.europa.eu/resource/authority/asset-classification/";
+
+/// EU asset-classification concepts covered by each asset type.
+const ASSET_TYPES: [(&[&str], DatasetKind); 5] = [
+    (&["c_89b4bdb7"], DatasetKind::Ontology),
+    (&["c_b37963b3", "c_3948c2ed"], DatasetKind::Shape),
+    (&["c_bba2bb35"], DatasetKind::Crosswalk),
+    (
+        &["c_64714767", "c_a7773248", "c_5796a20b", "c_ebfb658e", "c_25e514f4", "c_d3bf7907", "c_ecacbeba", "c_b0bfba6e"],
+        DatasetKind::Vocabulary,
+    ),
+    (&["c_cdd11291", "c_5b130cc6"], DatasetKind::Codelist),
+];
+
+impl DatasetKind {
+    /// From a `dcat:type` IRI.
+    pub fn from_asset_class(iri: &str) -> Self {
+        let code = iri.strip_prefix(ASSET_CLASSIFICATION).unwrap_or(iri);
+        ASSET_TYPES
+            .iter()
+            .find(|(codes, _)| codes.contains(&code))
+            .map_or_else(|| DatasetKind::Other(iri.to_string()), |(_, kind)| kind.clone())
+    }
+}
+
 impl From<&str> for DatasetKind {
+    /// From a former `dcterms:type` literal.
     fn from(raw: &str) -> Self {
         match raw {
-            "OWL Ontology" => DatasetKind::Owl,
-            "SHACL Shapes Graph" => DatasetKind::Shacl,
+            "OWL Ontology" => DatasetKind::Ontology,
+            "SHACL Shapes Graph" => DatasetKind::Shape,
             "Crosswalk" => DatasetKind::Crosswalk,
             other => DatasetKind::Other(other.to_string()),
         }
@@ -126,8 +155,9 @@ fn extract_nodes(doc: &Value) -> Vec<&Map<String, Value>> {
 /// anything not under that prefix (defensive — shouldn't happen with the
 /// current generator).
 pub fn site_relative(iri: &str) -> String {
-    const PREFIX: &str = "https://vocab.eona-x.eu/docs";
-    iri.strip_prefix(PREFIX).map(String::from).unwrap_or_else(|| iri.to_string())
+    // vocabulary-hub.eona-x.eu's catalog, then the former generator's.
+    const PREFIXES: [&str; 2] = ["https://vocabulary.eona-x.eu/docs", "https://vocab.eona-x.eu/docs"];
+    PREFIXES.iter().find_map(|p| iri.strip_prefix(p)).map(String::from).unwrap_or_else(|| iri.to_string())
 }
 
 pub fn parse_catalog(doc: &Value) -> CatalogModel {
@@ -157,7 +187,9 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
             let landing_page = first_ref(node, &format!("{DCAT}landingPage"));
             let conforms_to = first_ref(node, &format!("{DCTERMS}conformsTo"));
             let version = first_literal(node, &format!("{DCAT}version"));
-            let kind = first_literal(node, &format!("{DCTERMS}type")).map(|raw| DatasetKind::from(raw.as_str()));
+            let kind = first_ref(node, &format!("{DCAT}type"))
+                .map(|iri| DatasetKind::from_asset_class(&iri))
+                .or_else(|| first_literal(node, &format!("{DCTERMS}type")).map(|raw| DatasetKind::from(raw.as_str())));
             let thumbnail = first_ref(node, &format!("{FOAF}thumbnail"));
             let creator = first_ref(node, &format!("{DCTERMS}creator"))
                 .and_then(|iri| node_map.get(iri.as_str()).copied())
@@ -183,4 +215,62 @@ pub fn parse_catalog(doc: &Value) -> CatalogModel {
     datasets.sort_by(|a, b| a.title.to_lowercase().cmp(&b.title.to_lowercase()));
 
     CatalogModel { title, description, datasets }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+
+    const ASSETTYPE: &str = "http://publications.europa.eu/resource/authority/asset-classification/";
+
+    fn catalog_with(dataset: Value) -> Value {
+        json!([
+            {"@id": "https://vocabulary.eona-x.eu/catalog", "@type": [format!("{DCAT}Catalog")],
+             format!("{DCAT}dataset"): [{"@id": "https://vocabulary.eona-x.eu/catalog/x"}]},
+            dataset
+        ])
+    }
+
+    fn kind_of(dataset: Value) -> Option<DatasetKind> {
+        parse_catalog(&catalog_with(dataset)).datasets.pop().unwrap().kind
+    }
+
+    #[test]
+    fn the_hub_catalog_iris_under_vocabulary_eona_x_eu_resolve_to_site_paths() {
+        assert_eq!(site_relative("https://vocabulary.eona-x.eu/docs/assets/cen-hero.png"), "/assets/cen-hero.png");
+        assert_eq!(site_relative("https://vocabulary.eona-x.eu/docs/ontologies?ontology=netex"), "/ontologies?ontology=netex");
+        // The former generator's host still resolves.
+        assert_eq!(site_relative("https://vocab.eona-x.eu/docs/did/ontology.ttl"), "/did/ontology.ttl");
+    }
+
+    #[test]
+    fn the_kind_is_the_asset_type_covering_the_eu_dcat_type() {
+        for (code, kind) in [
+            ("c_89b4bdb7", DatasetKind::Ontology),
+            ("c_3948c2ed", DatasetKind::Shape),
+            ("c_bba2bb35", DatasetKind::Crosswalk),
+            ("c_a7773248", DatasetKind::Vocabulary),
+            ("c_cdd11291", DatasetKind::Codelist),
+        ] {
+            let dataset = json!({"@id": "https://vocabulary.eona-x.eu/catalog/x",
+                format!("{DCTERMS}identifier"): [{"@value": "x"}],
+                format!("{DCAT}type"): [{"@id": format!("{ASSETTYPE}{code}")}]});
+            assert_eq!(kind_of(dataset), Some(kind), "{code}");
+        }
+    }
+
+    #[test]
+    fn the_former_dcterms_type_labels_still_give_a_kind() {
+        for (label, kind) in [
+            ("OWL Ontology", DatasetKind::Ontology),
+            ("SHACL Shapes Graph", DatasetKind::Shape),
+            ("Crosswalk", DatasetKind::Crosswalk),
+        ] {
+            let dataset = json!({"@id": "https://vocabulary.eona-x.eu/catalog/x",
+                format!("{DCTERMS}identifier"): [{"@value": "x"}],
+                format!("{DCTERMS}type"): [{"@value": label}]});
+            assert_eq!(kind_of(dataset), Some(kind), "{label}");
+        }
+    }
 }

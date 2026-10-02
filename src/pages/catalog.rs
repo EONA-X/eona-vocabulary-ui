@@ -41,14 +41,15 @@ fn version_badge(raw: &str) -> Option<AttrValue> {
     Some(AttrValue::from(raw.to_string()))
 }
 
-/// Short badge text for a dataset's `dcterms:type` — `None` for a missing or
-/// unrecognised kind, so the caller skips the badge rather than showing raw
-/// literal text like "OWL Ontology" that would crowd the thumbnail.
+/// Short badge text for a dataset's asset type — `None` for an unrecognised
+/// kind, so the caller skips the badge rather than showing a raw IRI.
 fn kind_badge_label(kind: &DatasetKind) -> Option<&'static str> {
     match kind {
-        DatasetKind::Owl => Some("OWL"),
-        DatasetKind::Shacl => Some("SHACL"),
+        DatasetKind::Ontology => Some("ONTOLOGY"),
+        DatasetKind::Shape => Some("SHAPE"),
         DatasetKind::Crosswalk => Some("CROSSWALK"),
+        DatasetKind::Vocabulary => Some("VOCABULARY"),
+        DatasetKind::Codelist => Some("CODE LIST"),
         DatasetKind::Other(_) => None,
     }
 }
@@ -58,9 +59,11 @@ fn kind_badge_label(kind: &DatasetKind) -> Option<&'static str> {
 /// every label.
 fn kind_badge_class(kind: &DatasetKind) -> &'static str {
     match kind {
-        DatasetKind::Owl => "dataset-card__badge--owl",
-        DatasetKind::Shacl => "dataset-card__badge--shacl",
+        DatasetKind::Ontology => "dataset-card__badge--ontology",
+        DatasetKind::Shape => "dataset-card__badge--shape",
         DatasetKind::Crosswalk => "dataset-card__badge--crosswalk",
+        DatasetKind::Vocabulary => "dataset-card__badge--vocabulary",
+        DatasetKind::Codelist => "dataset-card__badge--codelist",
         DatasetKind::Other(_) => "",
     }
 }
