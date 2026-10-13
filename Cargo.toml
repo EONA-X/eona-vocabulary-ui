@@ -34,3 +34,10 @@ yew = { version = "0.23.0", features = ["csr"] }
 # Same crate again, with no features: build scripts run on the host, and all
 # build.rs wants is the stylesheet constants, which ship unconditionally.
 eona-ui-toolkit = { path = "crates/eona-ui-toolkit" }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
